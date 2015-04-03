@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PQq-7b-4Ma">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8w-mt-JkD">
+                                <rect key="frame" x="60" y="212" width="200" height="100"/>
+                                <state key="normal" image="us">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ve0-x8-KZn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxZ-A2-Kc3">
+                                <rect key="frame" x="60" y="340" width="200" height="100"/>
+                                <state key="normal" image="germany">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f5a-jZ-OBc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHQ-9B-fI3">
+                                <rect key="frame" x="60" y="84" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JHQ-9B-fI3" secondAttribute="height" multiplier="2:1" id="JIL-EJ-NgM"/>
+                                </constraints>
+                                <state key="normal" image="uk">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O6J-gg-edo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="g8w-mt-JkD" secondAttribute="centerX" id="1WN-LA-dph"/>
+                            <constraint firstItem="g8w-mt-JkD" firstAttribute="width" secondItem="JHQ-9B-fI3" secondAttribute="width" id="EVF-ge-Q1g"/>
+                            <constraint firstItem="JHQ-9B-fI3" firstAttribute="height" secondItem="BxZ-A2-Kc3" secondAttribute="height" id="LIJ-71-BgB"/>
+                            <constraint firstItem="g8w-mt-JkD" firstAttribute="height" secondItem="JHQ-9B-fI3" secondAttribute="height" id="LnE-SU-Qym"/>
+                            <constraint firstItem="JHQ-9B-fI3" firstAttribute="width" secondItem="BxZ-A2-Kc3" secondAttribute="width" id="NrI-1X-JUt"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BxZ-A2-Kc3" secondAttribute="bottom" constant="20" id="PAD-hv-T8q"/>
+                            <constraint firstAttribute="centerX" secondItem="JHQ-9B-fI3" secondAttribute="centerX" id="SQC-L9-Xy2"/>
+                            <constraint firstItem="BxZ-A2-Kc3" firstAttribute="top" secondItem="g8w-mt-JkD" secondAttribute="bottom" constant="28" id="fxW-Co-uV6"/>
+                            <constraint firstAttribute="centerX" secondItem="BxZ-A2-Kc3" secondAttribute="centerX" id="mh6-lS-F1p"/>
+                            <constraint firstItem="JHQ-9B-fI3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="v2D-pd-3R9"/>
+                            <constraint firstItem="g8w-mt-JkD" firstAttribute="top" secondItem="JHQ-9B-fI3" secondAttribute="bottom" constant="28" id="zNW-LE-hjV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8If-FA-xxF"/>
+                    <connections>
+                        <outlet property="button1" destination="JHQ-9B-fI3" id="D4J-Rk-UbT"/>
+                        <outlet property="button2" destination="g8w-mt-JkD" id="B26-Sa-Xlq"/>
+                        <outlet property="button3" destination="BxZ-A2-Kc3" id="GmQ-Eo-vQh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="606" y="129"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h6r-uV-svq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PQq-7b-4Ma" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wvj-fd-8Ft">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="1U5-kR-aSS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fZ-Oc-IhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="129"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="germany" width="200" height="100"/>
+        <image name="uk" width="200" height="100"/>
+        <image name="us" width="200" height="100"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

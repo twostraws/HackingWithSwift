@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="l08-9X-0Bt">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Project19" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QjX-BX-zeb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="JTp-6n-2Ai"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QjX-BX-zeb" secondAttribute="trailing" id="2xd-RH-q5W"/>
+                            <constraint firstItem="QjX-BX-zeb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="4eb-wB-lor"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="QjX-BX-zeb" secondAttribute="bottom" id="62E-ci-d1n"/>
+                            <constraint firstItem="QjX-BX-zeb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RGq-CD-tDn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wjr-ih-BQl"/>
+                    <connections>
+                        <outlet property="mapView" destination="QjX-BX-zeb" id="8E9-dl-ecK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="974" y="1033"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Z2N-2P-zp2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l08-9X-0Bt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q1P-CR-UaA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="YuF-nd-7SU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1r-1O-XwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="260" y="1033"/>
+        </scene>
+    </scenes>
+</document>
