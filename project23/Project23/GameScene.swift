@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		backgroundColor = UIColor.blackColor()
 
 		let starfieldPath = NSBundle.mainBundle().pathForResource("Starfield", ofType: "sks")!
-		starfield = NSKeyedUnarchiver.unarchiveObjectWithFile(starfieldPath) as SKEmitterNode
+		starfield = NSKeyedUnarchiver.unarchiveObjectWithFile(starfieldPath) as! SKEmitterNode
 		starfield.position = CGPoint(x: 1024, y: 384)
 		starfield.advanceSimulationTime(10)
 		addChild(starfield)
@@ -70,8 +70,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		sprite.physicsBody?.angularDamping = 0
 	}
     
-	override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-		let touch = touches.anyObject() as UITouch
+	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+		let touch = touches.first as! UITouch
 		var location = touch.locationInNode(self)
 
 		if location.y < 100 {
@@ -85,7 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	func didBeginContact(contact: SKPhysicsContact) {
 		let explosionPath = NSBundle.mainBundle().pathForResource("explosion", ofType: "sks")!
-		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as SKEmitterNode
+		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as! SKEmitterNode
 		explosion.position = player.position
 		addChild(explosion)
 
@@ -95,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
    
     override func update(currentTime: CFTimeInterval) {
-		for node in children as [SKNode] {
+		for node in children as! [SKNode] {
 			if node.position.x < -300 {
 				node.removeFromParent()
 			}

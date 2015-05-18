@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
-		var meh = window?.rootViewController as UITabBarController
+		var meh = window?.rootViewController as! UITabBarController
 
 		var storyboard = UIStoryboard(name: "Main", bundle: nil)
-		var vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as UINavigationController
+		var vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
 		vc.tabBarItem = UITabBarItem(tabBarSystemItem: .TopRated, tag: 1)
 
 		meh.viewControllers?.append(vc)

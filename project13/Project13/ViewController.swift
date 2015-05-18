@@ -65,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 
 	func applyProcessing() {
-		let inputKeys = currentFilter.inputKeys() as [NSString]
+		let inputKeys = currentFilter.inputKeys() as! [NSString]
 
 		if contains(inputKeys, kCIInputIntensityKey) { currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
 		if contains(inputKeys, kCIInputRadiusKey) { currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }

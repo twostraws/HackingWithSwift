@@ -61,7 +61,7 @@ class ImageViewController: UIViewController {
 		}
 	}
 
-	override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		var currentVal = defaults.integerForKey(image) ?? 0
 		++currentVal

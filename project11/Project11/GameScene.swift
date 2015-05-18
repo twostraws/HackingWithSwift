@@ -101,11 +101,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		slotGlow.runAction(spinForever)
 	}
 
-	override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-		if let touch = touches.anyObject() as? UITouch {
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+		if let touch = touches.first as? UITouch {
 			let location = touch.locationInNode(self)
 
-			let objects = nodesAtPoint(location) as [SKNode]
+			let objects = nodesAtPoint(location) as! [SKNode]
 
 			if contains(objects, editLabel) {
 				editingMode = !editingMode
@@ -176,7 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	func destroyBall(ball: SKNode) {
 		if let myParticlePath = NSBundle.mainBundle().pathForResource("FireParticles", ofType: "sks") {
-			let fireParticles = NSKeyedUnarchiver.unarchiveObjectWithFile(myParticlePath) as SKEmitterNode
+			let fireParticles = NSKeyedUnarchiver.unarchiveObjectWithFile(myParticlePath) as! SKEmitterNode
 			fireParticles.position = ball.position
 			addChild(fireParticles)
 		}

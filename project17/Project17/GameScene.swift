@@ -108,14 +108,14 @@ class GameScene: SKScene {
 		addChild(activeSliceFG)
 	}
 
-	override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 		super.touchesBegan(touches, withEvent: event)
 
 		activeSlicePoints.removeAll(keepCapacity: true)
 
-		let touch = touches.anyObject() as UITouch
+		let touch = touches.first as! UITouch
 		let location = touch.locationInNode(self)
-		let nodes = nodesAtPoint(location) as [SKNode]
+		let nodes = nodesAtPoint(location) as! [SKNode]
 
 		activeSlicePoints.append(location)
 		redrawActiveSlice()
@@ -128,10 +128,10 @@ class GameScene: SKScene {
 		activeSliceFG.alpha = 1
 	}
 
-	override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
 		if gameEnded { return }
 
-		let touch = touches.anyObject() as UITouch
+		let touch = touches.first as! UITouch
 		let location = touch.locationInNode(self)
 
 		activeSlicePoints.append(location)
@@ -141,12 +141,12 @@ class GameScene: SKScene {
 			playSwooshSound()
 		}
 
-		let nodes = nodesAtPoint(location) as [SKNode]
+		let nodes = nodesAtPoint(location) as! [SKNode]
 
 		for node in nodes {
 			if node.name == "enemy" {
 				let explosionPath = NSBundle.mainBundle().pathForResource("sliceHitEnemy", ofType: "sks")!
-				let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as SKEmitterNode
+				let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as! SKEmitterNode
 				emitter.position = node.position
 				addChild(emitter)
 
@@ -163,7 +163,7 @@ class GameScene: SKScene {
 
 				++score
 
-				let index = find(activeEnemies, node as SKSpriteNode)!
+				let index = find(activeEnemies, node as! SKSpriteNode)!
 				activeEnemies.removeAtIndex(index)
 
 				runAction(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
@@ -173,7 +173,7 @@ class GameScene: SKScene {
 				// This is because if we added the spark particles directly to the "bomb" image
 				// node, all the sparks become sliceable as if we'd hit the bomb - it's silly.
 				let explosionPath = NSBundle.mainBundle().pathForResource("sliceHitBomb", ofType: "sks")!
-				let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as SKEmitterNode
+				let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as! SKEmitterNode
 				emitter.position = node.parent!.position
 				addChild(emitter)
 
@@ -188,7 +188,7 @@ class GameScene: SKScene {
 
 				node.parent!.runAction(seq)
 
-				let index = find(activeEnemies, node.parent as SKSpriteNode)!
+				let index = find(activeEnemies, node.parent as! SKSpriteNode)!
 				activeEnemies.removeAtIndex(index)
 
 				runAction(SKAction.playSoundFileNamed("explosion.caf", waitForCompletion: false))
@@ -197,12 +197,12 @@ class GameScene: SKScene {
 		}
 	}
 
-	override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
 		activeSliceBG.runAction(SKAction.fadeOutWithDuration(0.25))
 		activeSliceFG.runAction(SKAction.fadeOutWithDuration(0.25))
 	}
 
-	override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+	override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
 		touchesEnded(touches, withEvent: event)
 	}
 
@@ -339,7 +339,7 @@ class GameScene: SKScene {
 			sound.play()
 
 			let particlePath = NSBundle.mainBundle().pathForResource("sliceFuse", ofType: "sks")!
-			let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as SKEmitterNode
+			let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as! SKEmitterNode
 			emitter.position = CGPoint(x: 76, y: 64)
 			enemy.addChild(emitter)
 		} else {

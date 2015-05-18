@@ -18,8 +18,8 @@ class Person: NSObject, NSCoding {
 	}
 
 	required init(coder aDecoder: NSCoder) {
-		name = aDecoder.decodeObjectForKey("name") as String
-		image = aDecoder.decodeObjectForKey("image") as String
+		name = aDecoder.decodeObjectForKey("name") as! String
+		image = aDecoder.decodeObjectForKey("image") as! String
 	}
 
 	func encodeWithCoder(aCoder: NSCoder) {

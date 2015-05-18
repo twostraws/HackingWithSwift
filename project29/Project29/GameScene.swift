@@ -139,7 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		if let firstNode = firstBody.node {
 			if let secondNode = secondBody.node {
 				if firstNode.name == "banana" && secondNode.name == "building" {
-					bananaHitBuilding(secondNode as BuildingNode, atPoint: contact.contactPoint)
+					bananaHitBuilding(secondNode as! BuildingNode, atPoint: contact.contactPoint)
 				}
 
 				if firstNode.name == "banana" && secondNode.name == "player1" {
@@ -158,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		building.hitAtPoint(buildingLocation)
 
 		let explosionPath = NSBundle.mainBundle().pathForResource("hitBuilding", ofType: "sks")!
-		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as SKEmitterNode
+		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as! SKEmitterNode
 		explosion.position = contactPoint
 		addChild(explosion)
 
@@ -171,7 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	func destroyPlayer(player: SKSpriteNode) {
 		let explosionPath = NSBundle.mainBundle().pathForResource("hitPlayer", ofType: "sks")!
-		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as SKEmitterNode
+		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as! SKEmitterNode
 		explosion.position = player.position
 		addChild(explosion)
 
@@ -200,7 +200,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			currentPlayer = 1
 		}
 
-		viewController.setPlayerNumber(currentPlayer)
+		viewController.activatePlayerNumber(currentPlayer)
 	}
 
     override func update(currentTime: CFTimeInterval) {

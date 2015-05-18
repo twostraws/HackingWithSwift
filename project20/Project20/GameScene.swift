@@ -31,29 +31,29 @@ class GameScene: SKScene {
 		gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: "launchFireworks", userInfo: nil, repeats: true)
 	}
 
-	override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
 		super.touchesBegan(touches, withEvent: event)
 		checkForTouches(touches)
 	}
 
-	override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
 		super.touchesMoved(touches, withEvent: event)
 		checkForTouches(touches)
 	}
 
-	func checkForTouches(touches: NSSet) {
-		let touch = touches.anyObject() as UITouch
+	func checkForTouches(touches: Set<NSObject>) {
+		let touch = touches.first as! UITouch
 
 		let location = touch.locationInNode(self)
-		let nodes = nodesAtPoint(location) as [SKNode]
+		let nodes = nodesAtPoint(location) as! [SKNode]
 
 		for node in nodes {
 			if node.isKindOfClass(SKSpriteNode.self) {
-				let sprite = node as SKSpriteNode
+				let sprite = node as! SKSpriteNode
 
 				if sprite.name == "firework" {
 					for parent in fireworks {
-						let firework = parent.children[0] as SKSpriteNode
+						let firework = parent.children[0] as! SKSpriteNode
 
 						if firework.name == "selected" && firework.color != sprite.color {
 							firework.name = "firework"
@@ -147,7 +147,7 @@ class GameScene: SKScene {
 		node.runAction(move)
 
 		let particlePath = NSBundle.mainBundle().pathForResource("fuse", ofType: "sks")!
-		let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as SKEmitterNode
+		let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as! SKEmitterNode
 		emitter.position = CGPoint(x: 0, y: -22)
 		node.addChild(emitter)
 
@@ -172,7 +172,7 @@ class GameScene: SKScene {
 
 		for var i = fireworks.count - 1; i >= 0; --i {
 			let parent = fireworks[i]
-			let firework = parent.children[0] as SKSpriteNode
+			let firework = parent.children[0] as! SKSpriteNode
 
 			if firework.name == "selected" {
 				// destroy this firework!
@@ -202,7 +202,7 @@ class GameScene: SKScene {
 
 	func explodeFirework(firework: SKNode) {
 		let particlePath = NSBundle.mainBundle().pathForResource("explode", ofType: "sks")!
-		let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as SKEmitterNode
+		let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as! SKEmitterNode
 		emitter.position = firework.position
 		addChild(emitter)
 		

@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 	func adjustForKeyboard(notification: NSNotification) {
 		let userInfo = notification.userInfo!
 
-		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
 		let keyboardViewEndFrame = view.convertRect(keyboardScreenEndFrame, fromView: view.window)
 
 		if notification.name == UIKeyboardWillHideNotification {

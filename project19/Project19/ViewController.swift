@@ -41,7 +41,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 				annotationView.enabled = true
 				annotationView.canShowCallout = true
 
-				let btn = UIButton.buttonWithType(.DetailDisclosure) as UIButton
+				let btn = UIButton.buttonWithType(.DetailDisclosure) as! UIButton
 				annotationView.rightCalloutAccessoryView = btn
 			} else {
 				annotationView.annotation = annotation
@@ -54,7 +54,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 	}
 
 	func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-		let capital = view.annotation as Capital
+		let capital = view.annotation as! Capital
 		let placeName = capital.title
 		let placeInfo = capital.info
 		

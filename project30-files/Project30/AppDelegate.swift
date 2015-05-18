@@ -11,7 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-	var window: UIWindow!
+	var window: UIWindow?
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let vc = SelectionViewController(style: .Plain)
 		let nc = UINavigationController(rootViewController: vc)
-		window.rootViewController = nc
-		window.makeKeyAndVisible()
+		window?.rootViewController = nc
+		window?.makeKeyAndVisible()
 
 		return true
 	}

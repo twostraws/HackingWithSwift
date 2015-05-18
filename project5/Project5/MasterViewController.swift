@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController {
 
 		if let startWordsPath = NSBundle.mainBundle().pathForResource("start", ofType: "txt") {
 			if let startWords = NSString(contentsOfFile: startWordsPath, usedEncoding: nil, error: nil) {
-				allWords = startWords.componentsSeparatedByString("\n") as [String]
+				allWords = startWords.componentsSeparatedByString("\n") as! [String]
 			}
 		} else {
 			allWords = ["silkworm"]
@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController {
 		ac.addTextFieldWithConfigurationHandler(nil)
 
 		let submitAction = UIAlertAction(title: "Submit", style: .Default) { [unowned self, ac] (action: UIAlertAction!) in
-			let answer = ac.textFields![0] as UITextField
+			let answer = ac.textFields![0] as! UITextField
 			self.submitAnswer(answer.text)
 		}
 
@@ -100,7 +100,7 @@ class MasterViewController: UITableViewController {
 	func wordIsReal(word: NSString) -> Bool {
 		let checker = UITextChecker()
 		let range = NSMakeRange(0, word.length)
-		let misspelledRange = checker.rangeOfMisspelledWordInString(word, range: range, startingAt: 0, wrap: false, language: "en")
+		let misspelledRange = checker.rangeOfMisspelledWordInString(word as String, range: range, startingAt: 0, wrap: false, language: "en")
 		return misspelledRange.location == NSNotFound
 	}
 
@@ -123,7 +123,7 @@ class MasterViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 		cell.textLabel!.text = objects[indexPath.row]
 		return cell
 	}

@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	func loadLevel() {
 		if let levelPath = NSBundle.mainBundle().pathForResource("level1", ofType: "txt") {
 			if let levelString = NSString(contentsOfFile: levelPath, usedEncoding: nil, error: nil) {
-				let lines = levelString.componentsSeparatedByString("\n") as [String]
+				let lines = levelString.componentsSeparatedByString("\n") as! [String]
 
 				for (row, line) in enumerate(reverse(lines)) {
 					for (column, letter) in enumerate(line) {
@@ -124,26 +124,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		}
 	}
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-		let touch = touches.anyObject() as UITouch
+
+	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+		let touch = touches.first as! UITouch
 		let location = touch.locationInNode(self)
 
 		lastTouchPosition = location
     }
 
-	override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-		let touch = touches.anyObject() as UITouch
+	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+		let touch = touches.first as! UITouch
 		let location = touch.locationInNode(self)
 
 		lastTouchPosition = location
 	}
 
-	override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+	override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
 		lastTouchPosition = nil
 	}
 
-	override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+	override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
 		lastTouchPosition = nil
 	}
 

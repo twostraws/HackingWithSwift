@@ -66,7 +66,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 	}
 
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageView", forIndexPath: indexPath) as UICollectionViewCell
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageView", forIndexPath: indexPath) as! UICollectionViewCell
 
 		if let imageView = cell.viewWithTag(1000) as? UIImageView {
 			imageView.image = images[indexPath.item]

@@ -10,7 +10,7 @@ import UIKit
 
 func RandomInt(#min: Int, #max: Int) -> Int {
 	if max < min { return min }
-	return Int(arc4random_uniform((max - min) + 1)) + min
+	return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
 }
 
 extension Int {
@@ -20,7 +20,7 @@ extension Int {
 
 	static func random(#min: Int, max: Int) -> Int {
 		if max < min { return min }
-		return Int(arc4random_uniform((max - min) + 1)) + min
+		return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
 	}
 }
 

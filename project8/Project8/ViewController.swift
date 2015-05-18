@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
 		for subview in view.subviews {
 			if subview.tag == 1001 {
-				let btn = subview as UIButton
+				let btn = subview as! UIButton
 				letterButtons.append(btn)
 				btn.addTarget(self, action: "letterTapped:", forControlEvents: .TouchUpInside)
 			}
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
 				var lines = levelContents.componentsSeparatedByString("\n")
 				lines.shuffle()
 
-				for (index, line) in enumerate(lines as [String]) {
+				for (index, line) in enumerate(lines as! [String]) {
 					let parts = line.componentsSeparatedByString(": ")
 					let answer = parts[0]
 					let clue = parts[1]
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
 					clueString += "\(index + 1). \(clue)\n"
 
 					let solutionWord = answer.stringByReplacingOccurrencesOfString("|", withString: "")
-					solutionString += "\(countElements(solutionWord)) letters\n"
+					solutionString += "\(count(solutionWord)) letters\n"
 					solutions.append(solutionWord)
 
 					let bits = answer.componentsSeparatedByString("|")
@@ -126,6 +126,7 @@ class ViewController: UIViewController {
 	func levelUp(action: UIAlertAction!) {
 //		++level //  we only have one level!
 
+		solutions.removeAll(keepCapacity: true)		
 		loadLevel()
 
 		for btn in letterButtons {

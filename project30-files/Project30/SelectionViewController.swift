@@ -25,7 +25,7 @@ class SelectionViewController: UITableViewController {
 
 		// load all the JPEGs into our array
 		let fm = NSFileManager.defaultManager()
-		let tempItems = fm.contentsOfDirectoryAtPath(NSBundle.mainBundle().resourcePath!, error: nil) as [String]
+		let tempItems = fm.contentsOfDirectoryAtPath(NSBundle.mainBundle().resourcePath!, error: nil) as! [String]
 
 		for item in tempItems {
 			if item.pathExtension == "jpg" {

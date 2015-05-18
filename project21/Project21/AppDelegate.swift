@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let options = launchOptions {
 			if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
 				if let userInfo = notification.userInfo {
-					let customField1 = userInfo["CustomField1"] as String
+					let customField1 = userInfo["CustomField1"] as! String
 					// do something neat here
 				}
 			}
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
 		if let userInfo = notification.userInfo {
-			let customField1 = userInfo["CustomField1"] as String
+			let customField1 = userInfo["CustomField1"] as! String
 			println("didReceiveLocalNotification: \(customField1)")
 		}
 	}
