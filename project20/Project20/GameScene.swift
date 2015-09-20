@@ -2,10 +2,11 @@
 //  GameScene.swift
 //  Project20
 //
-//  Created by Hudzilla on 24/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 16/09/2015.
+//  Copyright (c) 2015 Paul Hudson. All rights reserved.
 //
 
+import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene {
@@ -26,52 +27,75 @@ class GameScene: SKScene {
 		let background = SKSpriteNode(imageNamed: "background")
 		background.position = CGPoint(x: 512, y: 384)
 		background.blendMode = .Replace
+		background.zPosition = -1
 		addChild(background)
 
-		gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: "launchFireworks", userInfo: nil, repeats: true)
+//		gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: "launchFireworks", userInfo: nil, repeats: true)
 	}
+   
+	override func update(currentTime: NSTimeInterval) {
+		for var i = fireworks.count - 1; i >= 0; --i {
+			let firework = fireworks[i]
 
-	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-		super.touchesBegan(touches, withEvent: event)
-		checkForTouches(touches)
-	}
-
-	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-		super.touchesMoved(touches, withEvent: event)
-		checkForTouches(touches)
-	}
-
-	func checkForTouches(touches: Set<NSObject>) {
-		let touch = touches.first as! UITouch
-
-		let location = touch.locationInNode(self)
-		let nodes = nodesAtPoint(location) as! [SKNode]
-
-		for node in nodes {
-			if node.isKindOfClass(SKSpriteNode.self) {
-				let sprite = node as! SKSpriteNode
-
-				if sprite.name == "firework" {
-					for parent in fireworks {
-						let firework = parent.children[0] as! SKSpriteNode
-
-						if firework.name == "selected" && firework.color != sprite.color {
-							firework.name = "firework"
-							firework.colorBlendFactor = 1
-						}
-					}
-
-					sprite.name = "selected"
-					sprite.colorBlendFactor = 0
-				}
+			if firework.position.y > 900 {
+				// this uses a position high above so that rockets can explode off screen
+				fireworks.removeAtIndex(i)
+				firework.removeFromParent()
 			}
 		}
+	}
+
+	func createFirework(xMovement xMovement: CGFloat, x: Int, y: Int) {
+		// 1
+		let node = SKNode()
+		node.position = CGPoint(x: x, y: y)
+
+		// 2
+		let firework = SKSpriteNode(imageNamed: "rocket")
+		firework.name = "firework"
+		node.addChild(firework)
+
+		// 3
+		switch GKRandomSource.sharedRandom().nextIntWithUpperBound(3) {
+		case 0:
+			firework.color = UIColor.cyanColor()
+			firework.colorBlendFactor = 1
+
+		case 1:
+			firework.color = UIColor.greenColor()
+			firework.colorBlendFactor = 1
+
+		case 2:
+			firework.color = UIColor.redColor()
+			firework.colorBlendFactor = 1
+
+		default:
+			break
+		}
+
+		// 4
+		let path = UIBezierPath()
+		path.moveToPoint(CGPoint(x: 0, y: 0))
+		path.addLineToPoint(CGPoint(x: xMovement, y: 1000))
+
+		// 5
+		let move = SKAction.followPath(path.CGPath, asOffset: true, orientToPath: true, speed: 200)
+		node.runAction(move)
+
+		// 6
+		let emitter = SKEmitterNode(fileNamed: "fuse.sks")!
+		emitter.position = CGPoint(x: 0, y: -22)
+		node.addChild(emitter)
+
+		// 7
+		fireworks.append(node)
+		addChild(node)
 	}
 
 	func launchFireworks() {
 		let movementAmount: CGFloat = 1800
 
-		switch RandomInt(min: 0, max: 3) {
+		switch GKRandomSource.sharedRandom().nextIntWithUpperBound(4) {
 		case 0:
 			// fire five, straight up
 			createFirework(xMovement: 0, x: 512, y: bottomEdge)
@@ -109,62 +133,49 @@ class GameScene: SKScene {
 		}
 	}
 
-	func createFirework(#xMovement: CGFloat, x: Int, y: Int) {
-		// CREATE A PARENT NODE TO HOLD THE FIREWORK IMAGE AND THE PARTICLES
-		// This is required otherwise we have to place the particle inside
-		// the firework sprite, which makes tap detection difficult - it thinks
-		// you tapped a firework when in fact you might have tapped its particles
+	func checkForTouches(touches: Set<UITouch>) {
+		guard let touch = touches.first else { return }
 
-		let node = SKNode()
-		node.position = CGPoint(x: x, y: y)
+		let location = touch.locationInNode(self)
+		let nodes = nodesAtPoint(location)
 
-		let firework = SKSpriteNode(imageNamed: "rocket")
-		firework.name = "firework"
-		node.addChild(firework)
+		for node in nodes {
+			if node.isKindOfClass(SKSpriteNode.self) {
+				let sprite = node as! SKSpriteNode
 
-		switch RandomInt(min: 0, max: 2) {
-		case 0:
-			firework.color = UIColor.cyanColor()
-			firework.colorBlendFactor = 1
+				if sprite.name == "firework" {
+					for parent in fireworks {
+						let firework = parent.children[0] as! SKSpriteNode
 
-		case 1:
-			firework.color = UIColor.greenColor()
-			firework.colorBlendFactor = 1
+						if firework.name == "selected" && firework.color != sprite.color {
+							firework.name = "firework"
+							firework.colorBlendFactor = 1
+						}
+					}
 
-		case 2:
-			firework.color = UIColor.redColor()
-			firework.colorBlendFactor = 1
-
-		default:
-			break
-		}
-
-		let path = UIBezierPath()
-		path.moveToPoint(CGPoint(x: 0, y: 0))
-		path.addLineToPoint(CGPoint(x: xMovement, y: 1000))
-
-		let move = SKAction.followPath(path.CGPath, asOffset: true, orientToPath: true, speed: 200)
-		node.runAction(move)
-
-		let particlePath = NSBundle.mainBundle().pathForResource("fuse", ofType: "sks")!
-		let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as! SKEmitterNode
-		emitter.position = CGPoint(x: 0, y: -22)
-		node.addChild(emitter)
-
-		fireworks.append(node)
-		addChild(node)
-	}
-
-	override func update(currentTime: NSTimeInterval) {
-		for var i = fireworks.count - 1; i >= 0; --i {
-			let firework = fireworks[i]
-
-			if firework.position.y > 900 {
-				// this uses a position off screen so that rockets can explode off-screen
-				fireworks.removeAtIndex(i)
-				firework.removeFromParent()
+					sprite.name = "selected"
+					sprite.colorBlendFactor = 0
+				}
 			}
 		}
+	}
+
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		super.touchesBegan(touches, withEvent: event)
+		checkForTouches(touches)
+	}
+
+	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		super.touchesMoved(touches, withEvent: event)
+		checkForTouches(touches)
+	}
+
+	func explodeFirework(firework: SKNode) {
+		let emitter = SKEmitterNode(fileNamed: "explode.sks")!
+		emitter.position = firework.position
+		addChild(emitter)
+
+		firework.removeFromParent()
 	}
 
 	func explodeFireworks() {
@@ -185,7 +196,7 @@ class GameScene: SKScene {
 
 		switch numExploded {
 		case 0:
-			// nothing - rubbish!
+			// nothing – rubbish!
 			break
 		case 1:
 			score += 200
@@ -198,14 +209,5 @@ class GameScene: SKScene {
 		default:
 			score += 4000
 		}
-	}
-
-	func explodeFirework(firework: SKNode) {
-		let particlePath = NSBundle.mainBundle().pathForResource("explode", ofType: "sks")!
-		let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath) as! SKEmitterNode
-		emitter.position = firework.position
-		addChild(emitter)
-		
-		firework.removeFromParent()
 	}
 }

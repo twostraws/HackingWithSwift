@@ -25,11 +25,12 @@ class SelectionViewController: UITableViewController {
 
 		// load all the JPEGs into our array
 		let fm = NSFileManager.defaultManager()
-		let tempItems = fm.contentsOfDirectoryAtPath(NSBundle.mainBundle().resourcePath!, error: nil) as! [String]
 
-		for item in tempItems {
-			if item.pathExtension == "jpg" {
-				items.append(item)
+		if let tempItems = try? fm.contentsOfDirectoryAtPath(NSBundle.mainBundle().resourcePath!) {
+			for item in tempItems {
+				if item.hasSuffix(".jpg") {
+					items.append(item)
+				}
 			}
 		}
     }
@@ -66,7 +67,7 @@ class SelectionViewController: UITableViewController {
 
 		// find the image for this cell, and load its thumbnail
 		let currentImage = items[indexPath.row]
-		let imageRootName = currentImage.stringByDeletingPathExtension
+		let imageRootName = currentImage.stringByReplacingOccurrencesOfString(".jpg", withString: "")
 
 		let path = NSBundle.mainBundle().pathForResource(imageRootName, ofType: "png")!
 		cell.imageView!.image = UIImage(contentsOfFile: path)

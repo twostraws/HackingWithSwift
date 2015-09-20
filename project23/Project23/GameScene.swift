@@ -2,10 +2,11 @@
 //  GameScene.swift
 //  Project23
 //
-//  Created by Hudzilla on 24/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 16/09/2015.
+//  Copyright (c) 2015 Paul Hudson. All rights reserved.
 //
 
+import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -23,14 +24,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 
-
-    override func didMoveToView(view: SKView) {
-		gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.35, target: self, selector: "createEnemy", userInfo: nil, repeats: true)
-
+	override func didMoveToView(view: SKView) {
 		backgroundColor = UIColor.blackColor()
 
-		let starfieldPath = NSBundle.mainBundle().pathForResource("Starfield", ofType: "sks")!
-		starfield = NSKeyedUnarchiver.unarchiveObjectWithFile(starfieldPath) as! SKEmitterNode
+		starfield = SKEmitterNode(fileNamed: "Starfield.sks")!
 		starfield.position = CGPoint(x: 1024, y: 384)
 		starfield.advanceSimulationTime(10)
 		addChild(starfield)
@@ -38,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		player = SKSpriteNode(imageNamed: "player")
 		player.position = CGPoint(x: 100, y: 384)
-		player.physicsBody = SKPhysicsBody(texture: player.texture, size: player.size)
+		player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
 		player.physicsBody!.contactTestBitMask = 1
 		addChild(player)
 
@@ -52,26 +49,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		physicsWorld.gravity = CGVector(dx: 0, dy: 0)
 		physicsWorld.contactDelegate = self
 
-		createEnemy()
+		gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.35, target: self, selector: "createEnemy", userInfo: nil, repeats: true)
+	}
+
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+
     }
+   
+	override func update(currentTime: CFTimeInterval) {
+		for node in children {
+			if node.position.x < -300 {
+				node.removeFromParent()
+			}
+		}
+
+		if !gameOver {
+			score += 1
+		}
+	}
 
 	func createEnemy() {
-		possibleEnemies.shuffle()
+		possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(possibleEnemies) as! [String]
+		let randomDistribution = GKRandomDistribution(lowestValue: 50, highestValue: 736)
 
 		let sprite = SKSpriteNode(imageNamed: possibleEnemies[0])
-		sprite.position = CGPoint(x: 1200, y: RandomInt(min: 50, max: 736))
+		sprite.position = CGPoint(x: 1200, y: randomDistribution.nextInt())
 		addChild(sprite)
 
-		sprite.physicsBody = SKPhysicsBody(texture: sprite.texture, size: sprite.size)
+		sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
 		sprite.physicsBody?.categoryBitMask = 1
 		sprite.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
 		sprite.physicsBody?.angularVelocity = 5
 		sprite.physicsBody?.linearDamping = 0
 		sprite.physicsBody?.angularDamping = 0
 	}
-    
-	override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-		let touch = touches.first as! UITouch
+
+	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		guard let touch = touches.first else { return }
 		var location = touch.locationInNode(self)
 
 		if location.y < 100 {
@@ -84,8 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
 
 	func didBeginContact(contact: SKPhysicsContact) {
-		let explosionPath = NSBundle.mainBundle().pathForResource("explosion", ofType: "sks")!
-		let explosion = NSKeyedUnarchiver.unarchiveObjectWithFile(explosionPath) as! SKEmitterNode
+		let explosion = SKEmitterNode(fileNamed: "explosion.sks")!
 		explosion.position = player.position
 		addChild(explosion)
 
@@ -93,16 +107,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		gameOver = true
 	}
-   
-    override func update(currentTime: CFTimeInterval) {
-		for node in children as! [SKNode] {
-			if node.position.x < -300 {
-				node.removeFromParent()
-			}
-		}
-
-		if !gameOver {
-			score += 1
-		}
-    }
 }

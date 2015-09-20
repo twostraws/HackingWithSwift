@@ -2,12 +2,19 @@
 //  BuildingNode.swift
 //  Project29
 //
-//  Created by Hudzilla on 26/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 17/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
+import GameplayKit
 import SpriteKit
 import UIKit
+
+enum CollisionTypes: UInt32 {
+	case Banana = 1
+	case Building = 2
+	case Player = 4
+}
 
 class BuildingNode: SKSpriteNode {
 	var currentImage: UIImage!
@@ -22,21 +29,22 @@ class BuildingNode: SKSpriteNode {
 	}
 
 	func configurePhysics() {
-		physicsBody = SKPhysicsBody(texture: texture, size: size)
+		physicsBody = SKPhysicsBody(texture: texture!, size: size)
 		physicsBody!.dynamic = false
 		physicsBody!.categoryBitMask = CollisionTypes.Building.rawValue
 		physicsBody!.contactTestBitMask = CollisionTypes.Banana.rawValue
 	}
 
 	func drawBuilding(size: CGSize) -> UIImage {
+		// 1
 		UIGraphicsBeginImageContextWithOptions(size, false, 0)
 		let context = UIGraphicsGetCurrentContext()
 
-		// DRAW THE MAIN BUILDING BLOCK
+		// 2
 		let rectangle = CGRect(x: 0, y: 0, width: size.width, height: size.height)
 		var color: UIColor
 
-		switch RandomInt(min: 0, max: 2) {
+		switch GKRandomSource.sharedRandom().nextIntWithUpperBound(3) {
 		case 0:
 			color = UIColor(hue: 0.502, saturation: 0.98, brightness: 0.67, alpha: 1)
 		case 1:
@@ -47,14 +55,14 @@ class BuildingNode: SKSpriteNode {
 
 		CGContextSetFillColorWithColor(context, color.CGColor)
 		CGContextAddRect(context, rectangle)
-		CGContextDrawPath(context, kCGPathFill)
+		CGContextDrawPath(context, .Fill)
 
-		// DRAW WINDOWS
+		// 3
+		let lightOnColor = UIColor(hue: 0.190, saturation: 0.67, brightness: 0.99, alpha: 1)
+		let lightOffColor = UIColor(hue: 0, saturation: 0, brightness: 0.34, alpha: 1)
+
 		for var row: CGFloat = 10; row < size.height - 10; row += 40 {
 			for var col: CGFloat = 10; col < size.width - 10; col += 40 {
-				var lightOnColor = UIColor(hue: 0.190, saturation: 0.67, brightness: 0.99, alpha: 1)
-				var lightOffColor = UIColor(hue: 0, saturation: 0, brightness: 0.34, alpha: 1)
-
 				if RandomInt(min: 0, max: 1) == 0 {
 					CGContextSetFillColorWithColor(context, lightOnColor.CGColor)
 				} else {
@@ -65,6 +73,7 @@ class BuildingNode: SKSpriteNode {
 			}
 		}
 
+		// 4
 		let img = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 
@@ -72,7 +81,7 @@ class BuildingNode: SKSpriteNode {
 	}
 
 	func hitAtPoint(point: CGPoint) {
-		var convertedPoint = CGPoint(x: point.x + size.width / 2.0, y: (size.height / 2.0) - point.y)
+		let convertedPoint = CGPoint(x: point.x + size.width / 2.0, y: abs(point.y - (size.height / 2.0)))
 
 		UIGraphicsBeginImageContextWithOptions(size, false, 0)
 		let context = UIGraphicsGetCurrentContext()
@@ -80,8 +89,8 @@ class BuildingNode: SKSpriteNode {
 		currentImage.drawAtPoint(CGPoint(x: 0, y: 0))
 
 		CGContextAddEllipseInRect(context, CGRect(x: convertedPoint.x - 32, y: convertedPoint.y - 32, width: 64, height: 64))
-		CGContextSetBlendMode(context, kCGBlendModeClear)
-		CGContextDrawPath(context, kCGPathFill)
+		CGContextSetBlendMode(context, .Clear)
+		CGContextDrawPath(context, .Fill)
 
 		let img = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()

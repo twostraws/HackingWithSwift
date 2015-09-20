@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Project18
 //
-//  Created by Hudzilla on 23/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 16/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import iAd
@@ -15,28 +15,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		bannerView = ADBannerView(adType: .Banner)
-		bannerView.setTranslatesAutoresizingMaskIntoConstraints(false)
-		bannerView.delegate = self
-		bannerView.hidden = true
-		view.addSubview(bannerView)
-
-		let viewsDictionary = ["bannerView": bannerView]
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: .allZeros, metrics: nil, views: viewsDictionary))
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: .allZeros, metrics: nil, views: viewsDictionary))
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-	func bannerViewDidLoadAd(banner: ADBannerView!) {
-		bannerView.hidden = false
-	}
-
-	func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-		bannerView.hidden = true
+		assert(1 == 1, "Maths failure!")
+		assert(1 == 2, "Maths failure!")
 	}
 }
 

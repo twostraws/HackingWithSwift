@@ -23,15 +23,15 @@ class ImageViewController: UIViewController {
 		// create an image view that fills the screen
 		imageView = UIImageView()
 		imageView.contentMode = .ScaleAspectFit
-		imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.alpha = 0
 
 		view.addSubview(imageView)
 
 		// make the image view fill the screen
 		let viewsDictionary = ["imageView": imageView]
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[imageView]|", options: .allZeros, metrics:nil, views: viewsDictionary))
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[imageView]|", options: .allZeros, metrics:nil, views: viewsDictionary))
+		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[imageView]|", options: [], metrics:nil, views: viewsDictionary))
+		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[imageView]|", options: [], metrics:nil, views: viewsDictionary))
 
 		// schedule an animation that does something vaguely interesting
 		self.animTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "animateImage", userInfo: nil, repeats: true)
@@ -40,7 +40,7 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		title = image.stringByDeletingPathExtension
+		title = image.stringByReplacingOccurrencesOfString(".jpg", withString: "")
 		imageView.image = UIImage(named: image)
 
 		// force the image to rasterize so we don't have to keep loading it at the original, large size
@@ -61,7 +61,7 @@ class ImageViewController: UIViewController {
 		}
 	}
 
-	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		var currentVal = defaults.integerForKey(image) ?? 0
 		++currentVal

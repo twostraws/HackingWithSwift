@@ -2,21 +2,20 @@
 //  ViewController.swift
 //  Project15
 //
-//  Created by Hudzilla on 22/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 15/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet weak var tap: UIButton!
 	var imageView: UIImageView!
-
 	var currentAnimation = 0
+
+	@IBOutlet weak var tap: UIButton!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 
 		imageView = UIImageView(image: UIImage(named: "penguin"))
 		imageView.center = CGPoint(x: 512, y: 384)
@@ -31,12 +30,12 @@ class ViewController: UIViewController {
 	@IBAction func tapped(sender: AnyObject) {
 		tap.hidden = true
 
-		UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .allZeros,
-//		UIView.animateWithDuration(1, delay: 0, options: .allZeros,
+		UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: [],
 			animations: { [unowned self] in
 				switch self.currentAnimation {
 				case 0:
 					self.imageView.transform = CGAffineTransformMakeScale(2, 2)
+					break
 
 				case 1:
 					self.imageView.transform = CGAffineTransformIdentity
@@ -65,9 +64,8 @@ class ViewController: UIViewController {
 					break
 				}
 		}) { [unowned self] (finished: Bool) in
-			self.tap.hidden = false
+				self.tap.hidden = false
 		}
-		
 
 		++currentAnimation
 
@@ -75,6 +73,5 @@ class ViewController: UIViewController {
 			currentAnimation = 0
 		}
 	}
-
 }
 

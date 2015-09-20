@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Project6b
 //
-//  Created by Hudzilla on 20/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 14/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit

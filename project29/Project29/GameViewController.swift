@@ -2,31 +2,15 @@
 //  GameViewController.swift
 //  Project29
 //
-//  Created by Hudzilla on 26/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 17/09/2015.
+//  Copyright (c) 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
-extension SKNode {
-    class func unarchiveFromFile(file : String) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-            
-            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
-        }
-    }
-}
-
 class GameViewController: UIViewController {
-	@IBOutlet weak var playerNumber: UILabel!
+	var currentGame: GameScene!
 
 	@IBOutlet weak var angleSlider: UISlider!
 	@IBOutlet weak var angleLabel: UILabel!
@@ -35,18 +19,15 @@ class GameViewController: UIViewController {
 	@IBOutlet weak var velocityLabel: UILabel!
 
 	@IBOutlet weak var launchButton: UIButton!
-
-	var currentGame: GameScene!
+	@IBOutlet weak var playerNumber: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		angleChanged(nil)
-		velocityChanged(nil)
+		angleChanged(angleSlider)
+		velocityChanged(velocitySlider)
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-			scene.viewController = self
-
+        if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -59,15 +40,38 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+
 			currentGame = scene
+			scene.viewController = self
         }
     }
 
-	@IBAction func angleChanged(sender: AnyObject!) {
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            return .AllButUpsideDown
+        } else {
+            return .All
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Release any cached data, images, etc that aren't in use.
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+	@IBAction func angleChanged(sender: AnyObject) {
 		angleLabel.text = "Angle: \(Int(angleSlider.value))°"
 	}
 
-	@IBAction func velocityChanged(sender: AnyObject!) {
+	@IBAction func velocityChanged(sender: AnyObject) {
 		velocityLabel.text = "Velocity: \(Int(velocitySlider.value))"
 	}
 
@@ -98,25 +102,4 @@ class GameViewController: UIViewController {
 
 		launchButton.hidden = false
 	}
-
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-
-    override func supportedInterfaceOrientations() -> Int {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
-        } else {
-            return Int(UIInterfaceOrientationMask.All.rawValue)
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
 }

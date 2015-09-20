@@ -2,15 +2,15 @@
 //  Capital.swift
 //  Project19
 //
-//  Created by Hudzilla on 23/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 16/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import MapKit
 import UIKit
 
 class Capital: NSObject, MKAnnotation {
-	var title: String
+	var title: String?
 	var coordinate: CLLocationCoordinate2D
 	var info: String
 

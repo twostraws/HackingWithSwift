@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  Project27a
+//  Project27
 //
-//  Created by Hudzilla on 25/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 17/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		// Do any additional setup after loading the view, typically from a nib.
 
 		drawRectangle()
 	}
@@ -30,7 +31,6 @@ class ViewController: UIViewController {
 		if currentDrawType > 5 {
 			currentDrawType = 0
 		}
-
 
 		switch currentDrawType {
 		case 0:
@@ -59,14 +59,15 @@ class ViewController: UIViewController {
 	func drawRectangle() {
 		UIGraphicsBeginImageContextWithOptions(CGSize(width: 512, height: 512), false, 0)
 		let context = UIGraphicsGetCurrentContext()
+
 		let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
 
 		CGContextSetFillColorWithColor(context, UIColor.redColor().CGColor)
 		CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-		CGContextSetLineWidth(context, 10) // note: this strokes 10px centred on the line (5px either side!), which means it will be clipped to be only 5px
+		CGContextSetLineWidth(context, 10)
 
 		CGContextAddRect(context, rectangle)
-		CGContextDrawPath(context, kCGPathFillStroke)
+		CGContextDrawPath(context, .FillStroke)
 
 		let img = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
@@ -77,15 +78,14 @@ class ViewController: UIViewController {
 	func drawCircle() {
 		UIGraphicsBeginImageContextWithOptions(CGSize(width: 512, height: 512), false, 0)
 		let context = UIGraphicsGetCurrentContext()
-		let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512) // as you can see, this highlights the stroke centre perfectly - use the line below!
-//		let rectangle = CGRect(x: 5, y: 5, width: 502, height: 502)
+		let rectangle = CGRect(x: 5, y: 5, width: 502, height: 502)
 
 		CGContextSetFillColorWithColor(context, UIColor.redColor().CGColor)
 		CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-		CGContextSetLineWidth(context, 10) // note: this strokes 10px centred on the line (5px either side!), which means it will be clipped to be only 5px
+		CGContextSetLineWidth(context, 10)
 
 		CGContextAddEllipseInRect(context, rectangle)
-		CGContextDrawPath(context, kCGPathFillStroke)
+		CGContextDrawPath(context, .FillStroke)
 
 		let img = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
@@ -94,7 +94,6 @@ class ViewController: UIViewController {
 	}
 
 	func drawCheckerboard() {
-		// You can actually do this in Core Image - look up CICheckerboardGenerator
 		UIGraphicsBeginImageContextWithOptions(CGSize(width: 512, height: 512), false, 0)
 		let context = UIGraphicsGetCurrentContext()
 
@@ -129,7 +128,7 @@ class ViewController: UIViewController {
 		let rotations = 16
 		let amount = M_PI_2 / Double(rotations)
 
-		for i in 0 ..< rotations {
+		for _ in 0 ..< rotations {
 			CGContextRotateCTM(context, CGFloat(amount))
 			CGContextAddRect(context, CGRect(x: -128, y: -128, width: 256, height: 256))
 		}
@@ -151,7 +150,7 @@ class ViewController: UIViewController {
 		var first = true
 		var length: CGFloat = 256
 
-		for i in 0 ..< 256 {
+		for _ in 0 ..< 256 {
 			CGContextRotateCTM(context, CGFloat(M_PI_2))
 
 			if first {
@@ -174,22 +173,29 @@ class ViewController: UIViewController {
 	}
 
 	func drawImagesAndText() {
+		// 1
 		UIGraphicsBeginImageContextWithOptions(CGSize(width: 512, height: 512), false, 0)
-		let context = UIGraphicsGetCurrentContext()
 
-		var paragraphStyle = NSMutableParagraphStyle()
+		// 2
+		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.alignment = .Center
+
+		// 3
 		let attrs = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSParagraphStyleAttributeName: paragraphStyle]
 
-		let string = "The best-laid schemes o'\nmice an' men gang aft agley"		
+		// 4
+		let string = "The best-laid schemes o'\nmice an' men gang aft agley"
 		string.drawWithRect(CGRect(x: 32, y: 32, width: 448, height: 448), options: .UsesLineFragmentOrigin, attributes: attrs, context: nil)
 
+		// 5
 		let mouse = UIImage(named: "mouse")
 		mouse?.drawAtPoint(CGPoint(x: 300, y: 150))
 
+		// 6
 		let img = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 
+		// 7
 		imageView.image = img
 	}
 }

@@ -2,8 +2,8 @@
 //  ActionViewController.swift
 //  Extension
 //
-//  Created by Hudzilla on 23/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 16/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
@@ -15,8 +15,8 @@ class ActionViewController: UIViewController {
 	var pageTitle = ""
 	var pageURL = ""
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "done")
 
@@ -27,21 +27,33 @@ class ActionViewController: UIViewController {
 		if let inputItem = extensionContext!.inputItems.first as? NSExtensionItem {
 			if let itemProvider = inputItem.attachments?.first as? NSItemProvider {
 				itemProvider.loadItemForTypeIdentifier(kUTTypePropertyList as String, options: nil) { [unowned self] (dict, error) in
-					if dict != nil {
-						let itemDictionary = dict as! NSDictionary
-						let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as! NSDictionary
+					let itemDictionary = dict as! NSDictionary
+					let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as! NSDictionary
 
-						self.pageTitle = javaScriptValues["title"] as! String
-						self.pageURL = javaScriptValues["URL"] as! String
+					self.pageTitle = javaScriptValues["title"] as! String
+					self.pageURL = javaScriptValues["URL"] as! String
 
-						dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-							self.title = self.pageTitle
-						}
+					dispatch_async(dispatch_get_main_queue()) {
+						self.title = self.pageTitle
 					}
 				}
 			}
 		}
+	}
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+
+	@IBAction func done() {
+		let item = NSExtensionItem()
+		let webDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: ["customJavaScript": script.text]]
+		let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
+		item.attachments = [customJavaScript]
+
+		extensionContext!.completeRequestReturningItems([item], completionHandler: nil)
+	}
 
 	func adjustForKeyboard(notification: NSNotification) {
 		let userInfo = notification.userInfo!
@@ -60,19 +72,4 @@ class ActionViewController: UIViewController {
 		let selectedRange = script.selectedRange
 		script.scrollRangeToVisible(selectedRange)
 	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-    @IBAction func done() {
-		let item = NSExtensionItem()
-		let webDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: ["customJavaScript": script.text]]
-		let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
-		item.attachments = [customJavaScript]
-
-		extensionContext!.completeRequestReturningItems([item], completionHandler: nil)
-    }
-
 }

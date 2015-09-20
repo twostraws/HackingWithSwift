@@ -2,27 +2,26 @@
 //  MasterViewController.swift
 //  Project1
 //
-//  Created by Hudzilla on 19/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 13/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 
 class MasterViewController: UITableViewController {
+
+	var detailViewController: DetailViewController? = nil
 	var objects = [String]()
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
-	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		let fm = NSFileManager.defaultManager()
 		let path = NSBundle.mainBundle().resourcePath!
-		let items = fm.contentsOfDirectoryAtPath(path, error: nil)
+		let items = try! fm.contentsOfDirectoryAtPath(path)
 
-		for item in items as! [String] {
+		for item in items {
 			if item.hasPrefix("nssl") {
 				objects.append(item)
 			}
@@ -30,7 +29,8 @@ class MasterViewController: UITableViewController {
 	}
 
 	override func viewWillAppear(animated: Bool) {
-		tableView.selectRowAtIndexPath(nil, animated: true, scrollPosition: .None)
+		self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+		super.viewWillAppear(animated)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -42,9 +42,12 @@ class MasterViewController: UITableViewController {
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "showDetail" {
-		    if let indexPath = self.tableView.indexPathForSelectedRow() {
-				let detailViewController = segue.destinationViewController as! DetailViewController
-				detailViewController.detailItem = objects[indexPath.row]
+		    if let indexPath = self.tableView.indexPathForSelectedRow {
+				let navigationController = segue.destinationViewController as! UINavigationController
+				let controller = navigationController.topViewController as! DetailViewController
+				controller.detailItem = objects[indexPath.row]
+		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+		        controller.navigationItem.leftItemsSupplementBackButton = true
 		    }
 		}
 	}
@@ -60,14 +63,11 @@ class MasterViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-		cell.textLabel!.text = objects[indexPath.row]
+		let object = objects[indexPath.row]
+		cell.textLabel!.text = object
 		return cell
-	}
-
-	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return 44
 	}
 
 	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

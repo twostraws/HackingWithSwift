@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Project21
 //
-//  Created by Hudzilla on 24/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 16/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
@@ -21,15 +21,14 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func registerLocal(sender: AnyObject) {
-		let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Badge | .Sound, categories: nil)
+		let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
 		UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
 	}
 
 	@IBAction func scheduleLocal(sender: AnyObject) {
-		let settings = UIApplication.sharedApplication().currentUserNotificationSettings()
+		guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
 
 		if settings.types == .None {
-			// user has refused us access to this, or we haven't asked yet
 			let ac = UIAlertController(title: "Can't schedule", message: "Either we don't have permission to schedule notifications, or we haven't asked yet.", preferredStyle: .Alert)
 			ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
 			presentViewController(ac, animated: true, completion: nil)

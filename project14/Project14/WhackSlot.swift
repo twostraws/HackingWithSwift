@@ -2,13 +2,14 @@
 //  WhackSlot.swift
 //  Project14
 //
-//  Created by Hudzilla on 22/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 15/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import SpriteKit
+import UIKit
 
-final class WhackSlot: SKNode {
+class WhackSlot: SKNode {
 	var charNode: SKSpriteNode!
 
 	var visible = false
@@ -21,9 +22,9 @@ final class WhackSlot: SKNode {
 		addChild(sprite)
 
 		let cropNode = SKCropNode()
-		cropNode.maskNode = SKSpriteNode(imageNamed: "whackMask")
 		cropNode.position = CGPoint(x: 0, y: 15)
 		cropNode.zPosition = 1
+		cropNode.maskNode = SKSpriteNode(imageNamed: "whackMask")
 
 		charNode = SKSpriteNode(imageNamed: "penguinGood")
 		charNode.position = CGPoint(x: 0, y: -90)
@@ -33,7 +34,7 @@ final class WhackSlot: SKNode {
 		addChild(cropNode)
 	}
 
-	func show(#hideTime: Double) {
+	func show(hideTime hideTime: Double) {
 		if visible { return }
 
 		charNode.xScale = 1
@@ -51,7 +52,7 @@ final class WhackSlot: SKNode {
 			charNode.name = "charEnemy"
 		}
 
-		runAfterDelay(hideTime * 3.5) { [unowned self] in
+		RunAfterDelay(hideTime * 3.5) { [unowned self] in
 			self.hide()
 		}
 	}

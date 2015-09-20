@@ -2,11 +2,11 @@
 //  Person.swift
 //  Project10
 //
-//  Created by Hudzilla on 21/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 15/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Person: NSObject {
 	var name: String

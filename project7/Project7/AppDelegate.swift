@@ -2,24 +2,29 @@
 //  AppDelegate.swift
 //  Project7
 //
-//  Created by Hudzilla on 20/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 14/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
 	var window: UIWindow?
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
-		var tabBarController = window?.rootViewController as! UITabBarController
+		let splitViewController = self.window!.rootViewController as! UISplitViewController
+		let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+		navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+		splitViewController.delegate = self
 
-		var storyboard = UIStoryboard(name: "Main", bundle: nil)
-		var vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
+		let tabBarController = splitViewController.viewControllers[0] as! UITabBarController
+
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard.instantiateViewControllerWithIdentifier("NavController") as! UINavigationController
 		vc.tabBarItem = UITabBarItem(tabBarSystemItem: .TopRated, tag: 1)
 
 		tabBarController.viewControllers?.append(vc)
@@ -49,6 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 
+	// MARK: - Split view
+
+	func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+	    guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
+	    guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
+	    if topAsDetailController.detailItem == nil {
+	        // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+	        return true
+	    }
+	    return false
+	}
 
 }
 

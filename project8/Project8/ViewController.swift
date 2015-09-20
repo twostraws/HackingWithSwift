@@ -2,11 +2,11 @@
 //  ViewController.swift
 //  Project8
 //
-//  Created by Hudzilla on 20/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 15/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
-import Foundation
+import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
@@ -29,52 +29,14 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 
-		for subview in view.subviews {
-			if subview.tag == 1001 {
-				let btn = subview as! UIButton
-				letterButtons.append(btn)
-				btn.addTarget(self, action: "letterTapped:", forControlEvents: .TouchUpInside)
-			}
+		for subview in view.subviews where subview.tag == 1001 {
+			let btn = subview as! UIButton
+			letterButtons.append(btn)
+			btn.addTarget(self, action: "letterTapped:", forControlEvents: .TouchUpInside)
 		}
 
 		loadLevel()
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-	@IBAction func submitTapped(sender: AnyObject) {
-		if let solutionPosition = find(solutions, currentAnswer.text) {
-			activatedButtons.removeAll()
-
-			var splitClues = answersLabel.text!.componentsSeparatedByString("\n")
-			splitClues[solutionPosition] = currentAnswer.text
-			answersLabel.text = join("\n", splitClues)
-
-			currentAnswer.text = ""
-
-			++score
-
-			if score % 7 == 0 {
-				let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .Alert)
-				ac.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: levelUp))
-				presentViewController(ac, animated: true, completion: nil)
-			}
-		}
-	}
-
-	@IBAction func clearTapped(sender: AnyObject) {
-		currentAnswer.text = ""
-
-		for btn in activatedButtons {
-			btn.hidden = false
-		}
-
-		activatedButtons.removeAll()
 	}
 
 	func loadLevel() {
@@ -83,11 +45,11 @@ class ViewController: UIViewController {
 		var letterBits = [String]()
 
 		if let levelFilePath = NSBundle.mainBundle().pathForResource("level\(level)", ofType: "txt") {
-			if let levelContents = NSString(contentsOfFile: levelFilePath, usedEncoding: nil, error: nil) {
+			if let levelContents = try? String(contentsOfFile: levelFilePath, usedEncoding: nil) {
 				var lines = levelContents.componentsSeparatedByString("\n")
-				lines.shuffle()
+				lines = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(lines) as! [String]
 
-				for (index, line) in enumerate(lines as! [String]) {
+				for (index, line) in lines.enumerate() {
 					let parts = line.componentsSeparatedByString(": ")
 					let answer = parts[0]
 					let clue = parts[1]
@@ -95,7 +57,7 @@ class ViewController: UIViewController {
 					clueString += "\(index + 1). \(clue)\n"
 
 					let solutionWord = answer.stringByReplacingOccurrencesOfString("|", withString: "")
-					solutionString += "\(count(solutionWord)) letters\n"
+					solutionString += "\(solutionWord.characters.count) letters\n"
 					solutions.append(solutionWord)
 
 					let bits = answer.componentsSeparatedByString("|")
@@ -107,8 +69,8 @@ class ViewController: UIViewController {
 		cluesLabel.text = clueString.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
 		answersLabel.text = solutionString.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
 
-		letterBits.shuffle()
-		letterButtons.shuffle()
+		letterBits = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(letterBits) as! [String]
+		letterButtons = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(letterButtons) as! [UIButton]
 
 		if letterBits.count == letterButtons.count {
 			for i in 0 ..< letterBits.count {
@@ -117,16 +79,46 @@ class ViewController: UIViewController {
 		}
 	}
 
+	@IBAction func submitTapped(sender: AnyObject) {
+		if let solutionPosition = solutions.indexOf(currentAnswer.text!) {
+			activatedButtons.removeAll()
+
+			var splitClues = answersLabel.text!.componentsSeparatedByString("\n")
+			splitClues[solutionPosition] = currentAnswer.text!
+			answersLabel.text = splitClues.joinWithSeparator("\n")
+
+			currentAnswer.text = ""
+			++score
+
+			if score % 7 == 0 {
+				let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .Alert)
+				ac.addAction(UIAlertAction(title: "Let's go!", style: .Default, handler: levelUp))
+				presentViewController(ac, animated: true, completion: nil)
+			}
+		}
+	}
+
+
+	@IBAction func clearTapped(sender: AnyObject) {
+		currentAnswer.text = ""
+
+		for btn in activatedButtons {
+			btn.hidden = false
+		}
+
+		activatedButtons.removeAll()
+	}
+
 	func letterTapped(btn: UIButton) {
-		currentAnswer.text = currentAnswer.text + btn.titleLabel!.text!
+		currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
 		activatedButtons.append(btn)
 		btn.hidden = true
 	}
 
 	func levelUp(action: UIAlertAction!) {
-//		++level //  we only have one level!
+		++level
+		solutions.removeAll(keepCapacity: true)
 
-		solutions.removeAll(keepCapacity: true)		
 		loadLevel()
 
 		for btn in letterButtons {

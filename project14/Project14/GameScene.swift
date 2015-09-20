@@ -2,33 +2,17 @@
 //  GameScene.swift
 //  Project14
 //
-//  Created by Hudzilla on 22/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 15/09/2015.
+//  Copyright (c) 2015 Paul Hudson. All rights reserved.
 //
-//  The image whackBackground.png and whackBackground@2x.png were
-//  based upon vector artwork created by FreeVectorStock.com under
-//  the following licence:
-//
-//  This vector art is under the Attribution Creative Commons 3.0 license 
-//  (http://creativecommons.org/about/licenses/)
-//  That means YOU MUST GIVE ATTRIBUTION to Vector Open Stock for this artwork
-//  either if you use it in your designs or you republish in a website. Please
-//  add a DO FOLLOW LINK TO:
-//
-//	Text: Vector Open Stock
-//	URL: www.vectoropenstock.com
-//
-//	This license lets others distribute, remix, tweak, and build upon your work,
-//  even commercially, as long as they credit you for the original creation.
-//  This is the most accommodating of licenses offered, in terms of what others
-//  can do with your works licensed under Attribution.
 
+import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene {
 	var slots = [WhackSlot]()
-
 	var popupTime = 0.85
+
 	var numRounds = 0
 
 	var gameScore: SKLabelNode!
@@ -38,10 +22,11 @@ class GameScene: SKScene {
 		}
 	}
 
-    override func didMoveToView(view: SKView) {
+	override func didMoveToView(view: SKView) {
 		let background = SKSpriteNode(imageNamed: "whackBackground")
 		background.position = CGPoint(x: 512, y: 384)
 		background.blendMode = .Replace
+		background.zPosition = -1
 		addChild(background)
 
 		gameScore = SKLabelNode(fontNamed: "Chalkduster")
@@ -56,7 +41,7 @@ class GameScene: SKScene {
 		for i in 0 ..< 5 { createSlotAt(CGPoint(x: 100 + (i * 170), y: 230)) }
 		for i in 0 ..< 4 { createSlotAt(CGPoint(x: 180 + (i * 170), y: 140)) }
 
-		runAfterDelay(1) { [unowned self] in
+		RunAfterDelay(1) { [unowned self] in
 			self.createEnemy()
 		}
 	}
@@ -68,42 +53,43 @@ class GameScene: SKScene {
 		slots.append(slot)
 	}
 
-	override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-		let touch = touches.first as! UITouch
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		if let touch = touches.first {
+			let location = touch.locationInNode(self)
+			let nodes = nodesAtPoint(location)
 
-		let location = touch.locationInNode(self)
-		let nodes = nodesAtPoint(location) as! [SKNode]
+			for node in nodes {
+				if node.name == "charFriend" {
+					let whackSlot = node.parent!.parent as! WhackSlot
+					if !whackSlot.visible { continue }
+					if whackSlot.isHit { continue }
 
-		for node in nodes {
-			if node.name == "charFriend" {
-				// they shouldn't have whacked this penguin
-				let whackSlot = node.parent!.parent as! WhackSlot
-				if !whackSlot.visible { continue }
-				if whackSlot.isHit { continue }
+					whackSlot.hit()
+					score -= 5
 
-				whackSlot.hit()
-				score -= 5
+					runAction(SKAction.playSoundFileNamed("whackBad.caf", waitForCompletion:false))
+				} else if node.name == "charEnemy" {
+					let whackSlot = node.parent!.parent as! WhackSlot
+					if !whackSlot.visible { continue }
+					if whackSlot.isHit { continue }
 
-				runAction(SKAction.playSoundFileNamed("whackBad.caf", waitForCompletion:false))
-			} else if node.name == "charEnemy" {
-				// they should have whacked this one
-				let whackSlot = node.parent!.parent as! WhackSlot
-				if !whackSlot.visible { continue }
-				if whackSlot.isHit { continue }
+					whackSlot.charNode.xScale = 0.85
+					whackSlot.charNode.yScale = 0.85
 
-				whackSlot.charNode.xScale = 0.85
-				whackSlot.charNode.yScale = 0.85
+					whackSlot.hit()
+					++score
 
-				whackSlot.hit()
-				++score
-
-				runAction(SKAction.playSoundFileNamed("whack.caf", waitForCompletion:false))
+					runAction(SKAction.playSoundFileNamed("whack.caf", waitForCompletion:false))
+				}
 			}
 		}
 	}
 
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+    }
+
 	func createEnemy() {
-		popupTime *= 0.991
 		++numRounds
 
 		if numRounds >= 30 {
@@ -113,23 +99,26 @@ class GameScene: SKScene {
 
 			let gameOver = SKSpriteNode(imageNamed: "gameOver")
 			gameOver.position = CGPoint(x: 512, y: 384)
+			gameOver.zPosition = 1
 			addChild(gameOver)
-			
+
 			return
 		}
 
-		slots.shuffle()
+		popupTime *= 0.991
+
+		slots = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(slots) as! [WhackSlot]
 		slots[0].show(hideTime: popupTime)
 
-		if RandomInt(min: 0, max: 12) > 5 { slots[1].show(hideTime: popupTime) }
-		if RandomInt(min: 0, max: 12) > 8 {	slots[2].show(hideTime: popupTime) }
+		if RandomInt(min: 0, max: 12) > 4 { slots[1].show(hideTime: popupTime) }
+		if RandomInt(min: 0, max: 12) > 8 {    slots[2].show(hideTime: popupTime) }
 		if RandomInt(min: 0, max: 12) > 10 { slots[3].show(hideTime: popupTime) }
-		if RandomInt(min: 0, max: 12) > 11 { slots[4].show(hideTime: popupTime)	}
+		if RandomInt(min: 0, max: 12) > 11 { slots[4].show(hideTime: popupTime)    }
 
 		let minDelay = popupTime / 2.0
 		let maxDelay = popupTime * 2
 
-		runAfterDelay(RandomDouble(min: minDelay, max: maxDelay)) { [unowned self] in
+		RunAfterDelay(RandomDouble(min: minDelay, max: maxDelay)) { [unowned self] in
 			self.createEnemy()
 		}
 	}

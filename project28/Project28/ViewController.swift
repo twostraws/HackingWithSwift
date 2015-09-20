@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Project28
 //
-//  Created by Hudzilla on 25/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 17/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
 import LocalAuthentication
@@ -11,18 +11,16 @@ import UIKit
 
 class ViewController: UIViewController {
 	@IBOutlet weak var secret: UITextView!
-	@IBOutlet weak var authenticate: UIButton!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		title = "Nothing to see here"
-
 		let notificationCenter = NSNotificationCenter.defaultCenter()
 		notificationCenter.addObserver(self, selector: "adjustForKeyboard:", name: UIKeyboardWillHideNotification, object: nil)
 		notificationCenter.addObserver(self, selector: "adjustForKeyboard:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-
 		notificationCenter.addObserver(self, selector: "saveSecretMessage", name: UIApplicationWillResignActiveNotification, object: nil)
+
+		title = "Nothing to see here"
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -49,11 +47,11 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func authenticateUser(sender: AnyObject) {
-		var context = LAContext()
-		var error : NSError?
+		let context = LAContext()
+		var error: NSError?
 
 		if context.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
-			var reason = "Identify yourself!"
+			let reason = "Identify yourself!"
 
 			context.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
 				[unowned self] (success: Bool, authenticationError: NSError?) -> Void in
@@ -64,10 +62,10 @@ class ViewController: UIViewController {
 					} else {
 						if let error = authenticationError {
 							if error.code == LAError.UserFallback.rawValue {
-								let ac = UIAlertController(title: "Passcode? Ha!", message: "It's Touch ID or nothing – sorry!", preferredStyle: .Alert)
-								ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-								self.presentViewController(ac, animated: true, completion: nil)
-								return
+									let ac = UIAlertController(title: "Passcode? Ha!", message: "It's Touch ID or nothing – sorry!", preferredStyle: .Alert)
+									ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+									self.presentViewController(ac, animated: true, completion: nil)
+									return
 							}
 						}
 
@@ -80,7 +78,7 @@ class ViewController: UIViewController {
 		} else {
 			let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .Alert)
 			ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-			presentViewController(ac, animated: true, completion: nil)
+			self.presentViewController(ac, animated: true, completion: nil)
 		}
 	}
 
@@ -96,8 +94,8 @@ class ViewController: UIViewController {
 	func saveSecretMessage() {
 		if !secret.hidden {
 			KeychainWrapper.setString(secret.text, forKey: "SecretMessage")
-			secret.hidden = true
 			secret.resignFirstResponder()
+			secret.hidden = true
 			title = "Nothing to see here"
 		}
 	}

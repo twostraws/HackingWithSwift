@@ -2,10 +2,11 @@
 //  ViewController.swift
 //  Project2
 //
-//  Created by Hudzilla on 19/11/2014.
-//  Copyright (c) 2014 Hudzilla. All rights reserved.
+//  Created by Hudzilla on 13/09/2015.
+//  Copyright © 2015 Paul Hudson. All rights reserved.
 //
 
+import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
@@ -20,41 +21,28 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		countries.append("estonia")
-		countries.append("france")
-		countries.append("germany")
-		countries.append("ireland")
-		countries.append("italy")
-		countries.append("monaco")
-		countries.append("nigeria")
-		countries.append("poland")
-		countries.append("russia")
-		countries.append("spain")
-		countries.append("uk")
-		countries.append("us")
+		countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
 
 		button1.layer.borderWidth = 1
 		button2.layer.borderWidth = 1
 		button3.layer.borderWidth = 1
 
+		button1.layer.borderColor = UIColor.lightGrayColor().CGColor
+		button2.layer.borderColor = UIColor.lightGrayColor().CGColor
+		button3.layer.borderColor = UIColor.lightGrayColor().CGColor
+
 		askQuestion(nil)
 	}
 
 	func askQuestion(action: UIAlertAction!) {
-		countries.shuffle()
+		countries = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(countries) as! [String]
 
 		button1.setImage(UIImage(named: countries[0]), forState: .Normal)
 		button2.setImage(UIImage(named: countries[1]), forState: .Normal)
 		button3.setImage(UIImage(named: countries[2]), forState: .Normal)
 
-		correctAnswer = Int(arc4random_uniform(3))
-
+		correctAnswer = GKRandomSource.sharedRandom().nextIntWithUpperBound(3)
 		title = countries[correctAnswer].uppercaseString
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 
 	@IBAction func buttonTapped(sender: UIButton) {
@@ -72,6 +60,13 @@ class ViewController: UIViewController {
 		ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: askQuestion))
 		presentViewController(ac, animated: true, completion: nil)
 	}
+
+
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
 
 }
 
