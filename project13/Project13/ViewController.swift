@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 		currentImage = newImage
 
-		let beginImage = CIImage(image: currentImage)
+        let beginImage = CIImage(image: currentImage)
 		currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
 
 		applyProcessing()
@@ -74,18 +74,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	func setFilter(action: UIAlertAction!) {
 		currentFilter = CIFilter(name: action.title!)
 
-		let beginImage = CIImage(image: currentImage)
+        //Check if the image is set to avoid crashing due to find nil while unwrapping an optional value.
+        guard currentImage != nil else { return }
+        
+        let beginImage = CIImage(image: currentImage)
 		currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
 
 		applyProcessing()
 	}
 
 	@IBAction func save(sender: AnyObject) {
-		UIImageWriteToSavedPhotosAlbum(imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        //Check if the image is set to avoid crashing due to find nil while unwrapping an optional value.
+        guard imageView.image != nil else { return }
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
 	}
 
 	@IBAction func intensityChanged(sender: AnyObject) {
-		applyProcessing()
+        //Check if the image is set to avoid crashing while calling applyProcessing().
+        guard currentImage != nil else { return }
+        applyProcessing()
 	}
 
 	func applyProcessing() {
