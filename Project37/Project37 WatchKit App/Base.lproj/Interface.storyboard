@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Project37_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" verticalAlignment="center" text="Please read the instructions on your phone before continuing." textAlignment="center" numberOfLines="0" id="xV8-ST-VIW"/>
+                        <button width="1" alignment="left" verticalAlignment="center" title="I'm Ready" id="c9U-gz-lkO">
+                            <connections>
+                                <action selector="hideWelcomeText" destination="AgC-eL-Hgc" id="kcz-r5-bq5"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="hideButton" destination="c9U-gz-lkO" id="wal-Ou-8SS"/>
+                        <outlet property="welcomeText" destination="xV8-ST-VIW" id="Xz0-GA-pFU"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
