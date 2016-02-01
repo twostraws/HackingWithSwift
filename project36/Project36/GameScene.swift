@@ -265,7 +265,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			let sound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
 			runAction(sound)
 
-			++score
+			score += 1
 
 			return
 		}

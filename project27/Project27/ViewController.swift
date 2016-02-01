@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func redrawTapped(sender: AnyObject) {
-		++currentDrawType
+		currentDrawType += 1
 
 		if currentDrawType > 5 {
 			currentDrawType = 0

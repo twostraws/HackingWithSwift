@@ -50,10 +50,10 @@ class ViewController: UIViewController {
 
 		if sender.tag == correctAnswer {
 			title = "Correct"
-			++score
+			score += 1
 		} else {
 			title = "Wrong"
-			--score
+			score -= 1
 		}
 
 		let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .Alert)

@@ -67,7 +67,7 @@ class ViewController: UIViewController {
 				self.tap.hidden = false
 		}
 
-		++currentAnimation
+		currentAnimation += 1
 
 		if currentAnimation > 7 {
 			currentAnimation = 0

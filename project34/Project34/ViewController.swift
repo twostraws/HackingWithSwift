@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		for var column = 0; column < Board.width; column++ {
+		for _ in 0 ..< Board.width {
 			placedChips.append([UIView]())
 		}
 

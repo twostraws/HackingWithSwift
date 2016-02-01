@@ -64,7 +64,7 @@ class ImageViewController: UIViewController {
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		var currentVal = defaults.integerForKey(image) ?? 0
-		++currentVal
+		currentVal += 1
 
 		defaults.setInteger(currentVal, forKey:image)
 

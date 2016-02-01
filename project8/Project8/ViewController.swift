@@ -88,7 +88,7 @@ class ViewController: UIViewController {
 			answersLabel.text = splitClues.joinWithSeparator("\n")
 
 			currentAnswer.text = ""
-			++score
+			score += 1
 
 			if score % 7 == 0 {
 				let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .Alert)
@@ -116,7 +116,7 @@ class ViewController: UIViewController {
 	}
 
 	func levelUp(action: UIAlertAction!) {
-		++level
+		level += 1
 		solutions.removeAll(keepCapacity: true)
 
 		loadLevel()

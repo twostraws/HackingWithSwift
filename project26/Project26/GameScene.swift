@@ -180,7 +180,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		if node.name == "vortex" {
 			player.physicsBody!.dynamic = false
 			gameOver = true
-			--score
+			score -= 1
 
 			let move = SKAction.moveTo(node.position, duration: 0.25)
 			let scale = SKAction.scaleTo(0.0001, duration: 0.25)
@@ -193,7 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		} else if node.name == "star" {
 			node.removeFromParent()
-			++score
+			score += 1
 		} else if node.name == "finish" {
 			// next level?
 		}

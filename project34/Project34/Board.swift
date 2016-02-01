@@ -65,8 +65,8 @@ class Board: NSObject, GKGameModel {
 	}
 
 	func nextEmptySlotInColumn(column: Int) -> Int? {
-		for var row = 0; row < Board.height; row++ {
-			if chipInColumn(column, row:row) == .None {
+		for row in 0 ..< Board.height {
+			if chipInColumn(column, row: row) == .None {
 				return row
 			}
 		}
@@ -85,7 +85,7 @@ class Board: NSObject, GKGameModel {
 	}
 
 	func isFull() -> Bool {
-		for var column = 0; column < Board.width; column++ {
+		for column in 0 ..< Board.width {
 			if canMoveInColumn(column) {
 				return false
 			}
@@ -97,8 +97,8 @@ class Board: NSObject, GKGameModel {
 	func isWinForPlayer(player: GKGameModelPlayer) -> Bool {
 		let chip = (player as! Player).chip
 
-		for var row = 0; row < Board.height; row++ {
-			for var col = 0; col < Board.width; col++ {
+		for row in 0 ..< Board.height {
+			for col in 0 ..< Board.width {
 				if squaresMatchChip(chip, row: row, col: col, moveX: 1, moveY: 0) {
 					return true
 				} else if squaresMatchChip(chip, row: row, col: col, moveX: 0, moveY: 1) {
@@ -139,7 +139,7 @@ class Board: NSObject, GKGameModel {
 			var moves = [Move]()
 
 			// 4
-			for var column = 0; column < Board.width; column++ {
+			for column in 0 ..< Board.width {
 				if canMoveInColumn(column) {
 					// 5
 					moves.append(Move(column: column))

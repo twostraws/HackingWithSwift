@@ -171,7 +171,7 @@ class GameScene: SKScene {
 				node.runAction(seq)
 
 				// 6
-				++score
+				score += 1
 
 				// 7
 				let index = activeEnemies.indexOf(node as! SKSpriteNode)!
@@ -232,7 +232,7 @@ class GameScene: SKScene {
 		let path = UIBezierPath()
 		path.moveToPoint(activeSlicePoints[0])
 
-		for var i = 1; i < activeSlicePoints.count; ++i {
+		for i in 1 ..< activeSlicePoints.count {
 			path.addLineToPoint(activeSlicePoints[i])
 		}
 
@@ -246,7 +246,7 @@ class GameScene: SKScene {
 
 		for node in activeEnemies {
 			if node.name == "bombContainer" {
-				++bombCount
+				bombCount += 1
 				break
 			}
 		}
@@ -435,13 +435,13 @@ class GameScene: SKScene {
 		}
 
 
-		++sequencePosition
+		sequencePosition += 1
 
 		nextSequenceQueued = false
 	}
 
 	func subtractLife() {
-		--lives
+		lives -= 1
 
 		runAction(SKAction.playSoundFileNamed("wrong.caf", waitForCompletion: false))
 

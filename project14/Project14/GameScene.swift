@@ -77,7 +77,7 @@ class GameScene: SKScene {
 					whackSlot.charNode.yScale = 0.85
 
 					whackSlot.hit()
-					++score
+					score += 1
 
 					runAction(SKAction.playSoundFileNamed("whack.caf", waitForCompletion:false))
 				}
@@ -90,7 +90,7 @@ class GameScene: SKScene {
     }
 
 	func createEnemy() {
-		++numRounds
+		numRounds += 1
 
 		if numRounds >= 30 {
 			for slot in slots {
