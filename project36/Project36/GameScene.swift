@@ -271,7 +271,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 
 		if contact.bodyA.node == player || contact.bodyB.node == player {
-			if let explosion = SKEmitterNode(fileNamed: "PlayerExplosion.sks") {
+			if let explosion = SKEmitterNode(fileNamed: "PlayerExplosion") {
 				explosion.position = player.position
 				addChild(explosion)
 			}

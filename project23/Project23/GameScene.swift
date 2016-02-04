@@ -27,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	override func didMoveToView(view: SKView) {
 		backgroundColor = UIColor.blackColor()
 
-		starfield = SKEmitterNode(fileNamed: "Starfield.sks")!
+		starfield = SKEmitterNode(fileNamed: "Starfield")!
 		starfield.position = CGPoint(x: 1024, y: 384)
 		starfield.advanceSimulationTime(10)
 		addChild(starfield)
@@ -99,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
 
 	func didBeginContact(contact: SKPhysicsContact) {
-		let explosion = SKEmitterNode(fileNamed: "explosion.sks")!
+		let explosion = SKEmitterNode(fileNamed: "explosion")!
 		explosion.position = player.position
 		addChild(explosion)
 

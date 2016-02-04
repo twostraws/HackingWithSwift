@@ -172,7 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
 
 	func destroyPlayer(player: SKSpriteNode) {
-		let explosion = SKEmitterNode(fileNamed: "hitPlayer.sks")!
+		let explosion = SKEmitterNode(fileNamed: "hitPlayer")!
 		explosion.position = player.position
 		addChild(explosion)
 
@@ -207,7 +207,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		let buildingLocation = convertPoint(contactPoint, toNode: building)
 		building.hitAtPoint(buildingLocation)
 
-		let explosion = SKEmitterNode(fileNamed: "hitBuilding.sks")!
+		let explosion = SKEmitterNode(fileNamed: "hitBuilding")!
 		explosion.position = contactPoint
 		addChild(explosion)
 

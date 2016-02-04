@@ -151,7 +151,7 @@ class GameScene: SKScene {
 		for node in nodes {
 			if node.name == "enemy" {
 				// 1
-				let emitter = SKEmitterNode(fileNamed: "sliceHitEnemy.sks")!
+				let emitter = SKEmitterNode(fileNamed: "sliceHitEnemy")!
 				emitter.position = node.position
 				addChild(emitter)
 
@@ -180,7 +180,7 @@ class GameScene: SKScene {
 				// 8
 				runAction(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
 			} else if node.name == "bomb" {
-				let emitter = SKEmitterNode(fileNamed: "sliceHitBomb.sks")!
+				let emitter = SKEmitterNode(fileNamed: "sliceHitBomb")!
 				emitter.position = node.parent!.position
 				addChild(emitter)
 
@@ -343,7 +343,7 @@ class GameScene: SKScene {
 			sound.play()
 
 			// 5
-			let emitter = SKEmitterNode(fileNamed: "sliceFuse.sks")!
+			let emitter = SKEmitterNode(fileNamed: "sliceFuse")!
 			emitter.position = CGPoint(x: 76, y: 64)
 			enemy.addChild(emitter)
 		} else {

@@ -81,7 +81,7 @@ class GameScene: SKScene {
 		node.runAction(move)
 
 		// 6
-		let emitter = SKEmitterNode(fileNamed: "fuse.sks")!
+		let emitter = SKEmitterNode(fileNamed: "fuse")!
 		emitter.position = CGPoint(x: 0, y: -22)
 		node.addChild(emitter)
 
@@ -169,7 +169,7 @@ class GameScene: SKScene {
 	}
 
 	func explodeFirework(firework: SKNode) {
-		let emitter = SKEmitterNode(fileNamed: "explode.sks")!
+		let emitter = SKEmitterNode(fileNamed: "explode")!
 		emitter.position = firework.position
 		addChild(emitter)
 
