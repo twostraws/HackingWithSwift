@@ -201,7 +201,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 	func loadSavedData() {
 		if fetchedResultsController == nil {
 			let fetch = NSFetchRequest(entityName: "Commit")
-			let sort = NSSortDescriptor(key: "date", ascending: false)
+			let sort = NSSortDescriptor(key: "author.name", ascending: true)
 			fetch.sortDescriptors = [sort]
 			fetch.fetchBatchSize = 20
 

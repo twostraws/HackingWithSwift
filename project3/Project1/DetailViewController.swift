@@ -56,6 +56,7 @@ class DetailViewController: UIViewController {
 
 	func shareTapped() {
 		let vc = UIActivityViewController(activityItems: [detailImageView.image!], applicationActivities: [])
+		vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
 		presentViewController(vc, animated: true, completion: nil)
 	}
 
