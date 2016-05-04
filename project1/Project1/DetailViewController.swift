@@ -34,8 +34,6 @@ class DetailViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		self.configureView()
-
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "shareTapped")
 	}
 
 	override func didReceiveMemoryWarning() {

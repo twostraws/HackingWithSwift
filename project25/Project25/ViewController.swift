@@ -22,8 +22,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 		super.viewDidLoad()
 
 		title = "Selfie Share"
-		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "showConnectionPrompt")
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "importPicture")
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(showConnectionPrompt))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(importPicture))
 
 		peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
 		mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .Required)
@@ -58,9 +58,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		var newImage: UIImage
 
-		if let possibleImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+		if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
 			newImage = possibleImage
-		} else if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+		} else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
 			newImage = possibleImage
 		} else {
 			return

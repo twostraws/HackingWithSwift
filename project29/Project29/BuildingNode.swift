@@ -61,8 +61,8 @@ class BuildingNode: SKSpriteNode {
 		let lightOnColor = UIColor(hue: 0.190, saturation: 0.67, brightness: 0.99, alpha: 1)
 		let lightOffColor = UIColor(hue: 0, saturation: 0, brightness: 0.34, alpha: 1)
 
-		for var row: CGFloat = 10; row < size.height - 10; row += 40 {
-			for var col: CGFloat = 10; col < size.width - 10; col += 40 {
+		for row in 10.stride(to: Int(size.height - 10), by: 40) {
+			for col in 10.stride(to: Int(size.width - 10), by: 40) {
 				if RandomInt(min: 0, max: 1) == 0 {
 					CGContextSetFillColorWithColor(context, lightOnColor.CGColor)
 				} else {

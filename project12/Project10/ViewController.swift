@@ -16,7 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewPerson")
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addNewPerson))
 
 		let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -85,9 +85,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		var newImage: UIImage
 
-		if let possibleImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+		if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
 			newImage = possibleImage
-		} else if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+		} else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
 			newImage = possibleImage
 		} else {
 			return

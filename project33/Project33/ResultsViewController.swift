@@ -20,7 +20,7 @@ class ResultsViewController: UITableViewController {
 		super.viewDidLoad()
 
 		title = "Genre: \(whistle.genre)"
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .Plain, target: self, action: "downloadTapped")
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .Plain, target: self, action: #selector(downloadTapped))
 
 		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
@@ -167,14 +167,14 @@ class ResultsViewController: UITableViewController {
 						self.whistle.audio = asset.fileURL
 
 						dispatch_async(dispatch_get_main_queue()) {
-							self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .Plain, target: self, action: "listenTapped")
+							self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .Plain, target: self, action: #selector(self.listenTapped))
 						}
 					}
 				}
 			} else {
 				dispatch_async(dispatch_get_main_queue()) {
 					// meaningful error message here!
-					self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .Plain, target: self, action: "downloadTapped")
+					self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .Plain, target: self, action: #selector(self.downloadTapped))
 				}
 			}
 		}

@@ -118,22 +118,22 @@ class ViewController: UIViewController, WCSessionDelegate {
 		for card in allCards {
 			if card == tapped {
 				card.wasTapped()
-				card.performSelector("wasntTapped", withObject: nil, afterDelay: 1)
+				card.performSelector(#selector(card.wasntTapped), withObject: nil, afterDelay: 1)
 			} else {
 				card.wasntTapped()
 			}
 		}
 
-		performSelector("loadCards", withObject: nil, afterDelay: 2)
+		performSelector(#selector(loadCards), withObject: nil, afterDelay: 2)
 	}
 
 	func createParticles() {
 		let particleEmitter = CAEmitterLayer()
 
-		particleEmitter.emitterPosition = CGPointMake(view.frame.size.width / 2.0, -50)
-		particleEmitter.emitterShape = kCAEmitterLayerLine;
-		particleEmitter.emitterSize = CGSizeMake(view.frame.size.width, 1);
-		particleEmitter.renderMode = kCAEmitterLayerAdditive;
+		particleEmitter.emitterPosition = CGPoint(x: view.frame.width / 2.0, y: -50)
+		particleEmitter.emitterShape = kCAEmitterLayerLine
+		particleEmitter.emitterSize = CGSize(width: view.frame.width, height: 1)
+		particleEmitter.renderMode = kCAEmitterLayerAdditive
 
 		let cell = CAEmitterCell()
 		cell.birthRate = 2
@@ -169,7 +169,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 			let location = touch.locationInView(cardContainer)
 
 			for card in allCards {
-				if CGRectContainsPoint(card.view.frame, location) {
+				if card.view.frame.contains(location) {
 					if view.traitCollection.forceTouchCapability == .Available {
 						if touch.force == touch.maximumPossibleForce {
 							card.front.image = UIImage(named: "cardStar")

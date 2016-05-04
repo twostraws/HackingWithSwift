@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		super.viewDidLoad()
 
 		title = "YACIFP"
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "importPicture")
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(importPicture))
 
 		context = CIContext(options: nil)
 		currentFilter = CIFilter(name: "CISepiaTone")
@@ -36,9 +36,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 		var newImage: UIImage
 
-		if let possibleImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+		if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
 			newImage = possibleImage
-		} else if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+		} else if let possibleImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
 			newImage = possibleImage
 		} else {
 			return
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 
 	@IBAction func save(sender: AnyObject) {
-		UIImageWriteToSavedPhotosAlbum(imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+		UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
 	}
 
 	@IBAction func intensityChanged(sender: AnyObject) {

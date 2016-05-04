@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
 	func addChipAtColumn(column: Int, row: Int, color: UIColor) {
 		let button = columnButtons[column]
-		let size = min(button.frame.size.width, button.frame.size.height / 6)
+		let size = min(button.frame.width, button.frame.height / 6)
 		let rect = CGRect(x: 0, y: 0, width: size, height: size)
 
 		if (placedChips[column].count < row + 1) {
@@ -80,12 +80,12 @@ class ViewController: UIViewController {
 
 	func positionForChipAtColumn(column: Int, row: Int) -> CGPoint {
 		let button = columnButtons[column]
-		let size = min(button.frame.size.width, button.frame.size.height / 6)
+		let size = min(button.frame.width, button.frame.height / 6)
 
-		let xOffset = CGRectGetMidX(button.frame)
-		var yOffset = CGRectGetMaxY(button.frame) - size / 2
+		let xOffset = button.frame.midX
+		var yOffset = button.frame.maxY - size / 2
 		yOffset -= size * CGFloat(row)
-		return CGPointMake(xOffset, yOffset)
+		return CGPoint(x: xOffset, y: yOffset)
 	}
 
 	func updateUI() {

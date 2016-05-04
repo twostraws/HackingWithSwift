@@ -34,7 +34,7 @@ class ImageViewController: UIViewController {
 		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[imageView]|", options: [], metrics:nil, views: viewsDictionary))
 
 		// schedule an animation that does something vaguely interesting
-		self.animTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "animateImage", userInfo: nil, repeats: true)
+		self.animTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(animateImage), userInfo: nil, repeats: true)
 	}
 
     override func viewDidLoad() {

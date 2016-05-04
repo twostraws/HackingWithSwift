@@ -37,8 +37,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		super.viewDidLoad()
 
 		title = "What's that Whistle?"
-		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .Plain, target: self, action: "selectGenre")
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addWhistle")
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .Plain, target: self, action: #selector(selectGenre))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addWhistle))
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .Plain, target: nil, action: nil)
 	}
 

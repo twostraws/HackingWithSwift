@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
 		if let detail = self.detailItem {
 		    if let label = self.detailDescriptionLabel {
 				label.text = detail.message
-				navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Commit 1/\(detail.author.commits.count)", style: .Plain, target: self, action: "showAuthorCommits")
+				navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Commit 1/\(detail.author.commits.count)", style: .Plain, target: self, action: #selector(showAuthorCommits))
 		    }
 		}
 	}

@@ -14,12 +14,12 @@
 		519D7BFA1BAE0726002F39AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519D7BF81BAE0726002F39AC /* Main.storyboard */; };
 		519D7BFC1BAE0726002F39AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 519D7BFB1BAE0726002F39AC /* Assets.xcassets */; };
 		519D7BFF1BAE0726002F39AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519D7BFD1BAE0726002F39AC /* LaunchScreen.storyboard */; };
-		519D7C1A1BAE0AAC002F39AC /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C141BAE0AAC002F39AC /* coin.wav */; settings = {ASSET_TAGS = (); }; };
-		519D7C1B1BAE0AAC002F39AC /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C151BAE0AAC002F39AC /* explosion.wav */; settings = {ASSET_TAGS = (); }; };
-		519D7C1C1BAE0AAC002F39AC /* music.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C161BAE0AAC002F39AC /* music.m4a */; settings = {ASSET_TAGS = (); }; };
-		519D7C1D1BAE0AAC002F39AC /* PlayerExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C171BAE0AAC002F39AC /* PlayerExplosion.sks */; settings = {ASSET_TAGS = (); }; };
-		519D7C1E1BAE0AAC002F39AC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C181BAE0AAC002F39AC /* README.txt */; settings = {ASSET_TAGS = (); }; };
-		519D7C1F1BAE0AAC002F39AC /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C191BAE0AAC002F39AC /* spark.png */; settings = {ASSET_TAGS = (); }; };
+		519D7C1A1BAE0AAC002F39AC /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C141BAE0AAC002F39AC /* coin.wav */; };
+		519D7C1B1BAE0AAC002F39AC /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C151BAE0AAC002F39AC /* explosion.wav */; };
+		519D7C1C1BAE0AAC002F39AC /* music.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C161BAE0AAC002F39AC /* music.m4a */; };
+		519D7C1D1BAE0AAC002F39AC /* PlayerExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C171BAE0AAC002F39AC /* PlayerExplosion.sks */; };
+		519D7C1E1BAE0AAC002F39AC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C181BAE0AAC002F39AC /* README.txt */; };
+		519D7C1F1BAE0AAC002F39AC /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 519D7C191BAE0AAC002F39AC /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,6 +323,7 @@
 				519D7C051BAE0726002F39AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

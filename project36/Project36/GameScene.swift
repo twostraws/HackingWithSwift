@@ -42,8 +42,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		physicsWorld.gravity = CGVectorMake(0.0, -5.0)
 		physicsWorld.contactDelegate = self
 
-		backgroundMusic = SKAudioNode(fileNamed: "music.m4a")
-		addChild(backgroundMusic)
+		if let musicURL = NSBundle.mainBundle().URLForResource("music", withExtension: "m4a") {
+			backgroundMusic = SKAudioNode(URL: musicURL)
+			addChild(backgroundMusic)
+		}
 	}
 
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -112,8 +114,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		let bottomSky = SKSpriteNode(color: UIColor(hue: 0.55, saturation: 0.16, brightness: 0.96, alpha: 1), size: CGSize(width: frame.width, height: frame.height * 0.33))
 		topSky.anchorPoint = CGPoint(x: 0.5, y: 1)
 
-		topSky.position = CGPoint(x: CGRectGetMidX(frame), y: frame.size.height)
-		bottomSky.position = CGPoint(x: CGRectGetMidX(frame), y: bottomSky.frame.height / 2)
+		topSky.position = CGPoint(x: frame.midX, y: frame.height)
+		bottomSky.position = CGPoint(x: frame.midX, y: bottomSky.frame.height / 2)
 
 		addChild(topSky)
 		addChild(bottomSky)
@@ -208,7 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		// 4
 		topRock.position = CGPoint(x: xPosition, y: yPosition + topRock.size.height + rockDistance)
 		bottomRock.position = CGPoint(x: xPosition, y: yPosition - rockDistance)
-		rockCollision.position = CGPoint(x: xPosition + (rockCollision.size.width * 2), y: CGRectGetMidY(frame))
+		rockCollision.position = CGPoint(x: xPosition + (rockCollision.size.width * 2), y: frame.midY)
 
 		let endPosition = frame.width + (topRock.frame.width * 2)
 
@@ -235,7 +237,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		scoreLabel = SKLabelNode(fontNamed: "Optima-ExtraBlack")
 		scoreLabel.fontSize = 24
 
-		scoreLabel.position = CGPointMake(CGRectGetMaxX(frame) - 20, CGRectGetMaxY(frame) - 40)
+		scoreLabel.position = CGPoint(x: frame.maxX - 20, y: frame.maxY - 40)
 		scoreLabel.horizontalAlignmentMode = .Right
 		scoreLabel.text = "SCORE: 0"
 		scoreLabel.fontColor = UIColor.blackColor()
@@ -245,11 +247,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	func createLogos() {
 		logo = SKSpriteNode(imageNamed: "logo")
-		logo.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+		logo.position = CGPoint(x: frame.midX, y: frame.midY)
 		addChild(logo)
 
 		gameOver = SKSpriteNode(imageNamed: "gameover")
-		gameOver.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+		gameOver.position = CGPoint(x: frame.midX, y: frame.midY)
 		gameOver.alpha = 0
 		addChild(gameOver)
 	}
@@ -282,7 +284,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			gameOver.alpha = 1
 			gameState = .Dead
 			backgroundMusic.runAction(SKAction.stop())
-
 			player.removeFromParent()
 			speed = 0
 		}

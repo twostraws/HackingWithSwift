@@ -23,14 +23,14 @@ class ViewController: UIViewController, WKNavigationDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: "openTapped")
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: #selector(openTapped))
 
 		progressView = UIProgressView(progressViewStyle: .Default)
 		progressView.sizeToFit()
 		let progressButton = UIBarButtonItem(customView: progressView)
 
 		let spacer = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-		let refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: webView, action: "reload")
+		let refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: webView, action: #selector(webView.reload))
 
 		toolbarItems = [progressButton, spacer, refresh]
 		navigationController?.toolbarHidden = false

@@ -71,7 +71,7 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		recordButton.translatesAutoresizingMaskIntoConstraints = false
 		recordButton.setTitle("Tap to Record", forState: .Normal)
 		recordButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-		recordButton.addTarget(self, action: "recordTapped", forControlEvents: .TouchUpInside)
+		recordButton.addTarget(self, action: #selector(recordTapped), forControlEvents: .TouchUpInside)
 		stackView.addArrangedSubview(recordButton)
 
 		playButton = UIButton()
@@ -80,7 +80,7 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		playButton.hidden = true
 		playButton.alpha = 0
 		playButton.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-		playButton.addTarget(self, action: "playTapped", forControlEvents: .TouchUpInside)
+		playButton.addTarget(self, action: #selector(playTapped), forControlEvents: .TouchUpInside)
 		stackView.addArrangedSubview(playButton)
 	}
 
@@ -151,7 +151,7 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 				}
 			}
 
-			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: "nextTapped")
+			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: #selector(nextTapped))
 		} else {
 			recordButton.setTitle("Tap to Record", forState: .Normal)
 

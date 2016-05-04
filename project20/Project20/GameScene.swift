@@ -30,7 +30,7 @@ class GameScene: SKScene {
 		background.zPosition = -1
 		addChild(background)
 
-		gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: "launchFireworks", userInfo: nil, repeats: true)
+		gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
 	}
    
 	override func update(currentTime: NSTimeInterval) {
@@ -138,7 +138,7 @@ class GameScene: SKScene {
 		let nodes = nodesAtPoint(location)
 
 		for node in nodes {
-			if node.isKindOfClass(SKSpriteNode.self) {
+			if node is SKSpriteNode {
 				let sprite = node as! SKSpriteNode
 
 				if sprite.name == "firework" {

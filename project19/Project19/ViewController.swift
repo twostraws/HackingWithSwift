@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 		let identifier = "Capital"
 
 		// 2
-		if annotation.isKindOfClass(Capital.self) {
+		if annotation is Capital {
 			// 3
 			var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
 

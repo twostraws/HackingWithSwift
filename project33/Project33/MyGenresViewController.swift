@@ -23,7 +23,7 @@ class MyGenresViewController: UITableViewController {
 		}
 
 		title = "Notify me about…"
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "saveTapped")
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(saveTapped))
 		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 

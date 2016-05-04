@@ -85,7 +85,7 @@ class SubmitViewController: UIViewController {
 					self.spinner.stopAnimating()
 				}
 
-				self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneTapped")
+				self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(self.doneTapped))
 			}
 		}
 	}

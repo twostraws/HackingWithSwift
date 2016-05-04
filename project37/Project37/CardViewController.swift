@@ -20,7 +20,7 @@ class CardViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.bounds = CGRectMake(0, 0, 100, 140)
+		view.bounds = CGRect(x: 0, y: 0, width: 100, height: 140)
 		front = UIImageView(image: UIImage(named: "cardBack"))
 		back = UIImageView(image: UIImage(named: "cardBack"))
 
@@ -34,11 +34,11 @@ class CardViewController: UIViewController {
 			self.back.alpha = 1
 		}
 
-		let tap = UITapGestureRecognizer(target: self, action: "cardTapped")
+		let tap = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
 		back.userInteractionEnabled = true
 		back.addGestureRecognizer(tap)
 
-		performSelector("wiggle", withObject: nil, afterDelay: 1)
+		performSelector(#selector(wiggle), withObject: nil, afterDelay: 1)
 	}
 
     override func didReceiveMemoryWarning() {
@@ -72,9 +72,9 @@ class CardViewController: UIViewController {
 					self.back.transform = CGAffineTransformIdentity;
 			}
 
-			performSelector("wiggle", withObject: nil, afterDelay: 8)
+			performSelector(#selector(wiggle), withObject: nil, afterDelay: 8)
 		} else {
-			performSelector("wiggle", withObject: nil, afterDelay: 2)
+			performSelector(#selector(wiggle), withObject: nil, afterDelay: 2)
 		}
 	}
 }

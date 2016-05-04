@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 		for subview in view.subviews where subview.tag == 1001 {
 			let btn = subview as! UIButton
 			letterButtons.append(btn)
-			btn.addTarget(self, action: "letterTapped:", forControlEvents: .TouchUpInside)
+			btn.addTarget(self, action: #selector(letterTapped), forControlEvents: .TouchUpInside)
 		}
 
 		loadLevel()

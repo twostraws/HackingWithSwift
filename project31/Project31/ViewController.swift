@@ -19,8 +19,8 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
 
 		setDefaultTitle()
 
-		let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addWebView")
-		let delete = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteWebView")
+		let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addWebView))
+		let delete = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(deleteWebView))
 		navigationItem.rightBarButtonItems = [delete, add]
 	}
 
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
 		webView.layer.borderColor = UIColor.blueColor().CGColor
 		selectWebView(webView)
 
-		let recognizer = UITapGestureRecognizer(target: self, action: "webViewTapped:")
+		let recognizer = UITapGestureRecognizer(target: self, action: #selector(webViewTapped))
 		recognizer.delegate = self
 		webView.addGestureRecognizer(recognizer)
 	}

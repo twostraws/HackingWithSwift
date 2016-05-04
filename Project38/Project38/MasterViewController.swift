@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		navigationItem.leftBarButtonItem = self.editButtonItem()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "changeFilter")
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: #selector(changeFilter))
 
 		if let split = self.splitViewController {
 		    let controllers = split.viewControllers
@@ -32,7 +32,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 		startCoreData()
 		loadSavedData()
 
-		performSelectorInBackground("fetchCommits", withObject: nil)
+		performSelectorInBackground(#selector(fetchCommits), withObject: nil)
 	}
 
 	override func viewWillAppear(animated: Bool) {
