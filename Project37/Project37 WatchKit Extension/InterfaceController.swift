@@ -2,21 +2,21 @@
 //  InterfaceController.swift
 //  Project37 WatchKit Extension
 //
-//  Created by Hudzilla on 06/01/2016.
+//  Created by TwoStraws on 25/08/2016.
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import WatchConnectivity
-import WatchKit
 import Foundation
+import WatchKit
+import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 	@IBOutlet var welcomeText: WKInterfaceLabel!
 	@IBOutlet var hideButton: WKInterfaceButton!
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         // Configure interface objects here.
     }
@@ -25,10 +25,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
 
-		if (WCSession.isSupported()) {
-			let session = WCSession.defaultSession()
+		if WCSession.isSupported() {
+			let session = WCSession.default()
 			session.delegate = self
-			session.activateSession()
+			session.activate()
 		}
     }
 
@@ -42,7 +42,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 		hideButton.setHidden(true)
 	}
 
-	func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-		WKInterfaceDevice().playHaptic(.Click)
+	func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+
+	}
+
+	func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+		WKInterfaceDevice().play(.click)
 	}
 }

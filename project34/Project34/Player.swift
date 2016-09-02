@@ -2,8 +2,8 @@
 //  Player.swift
 //  Project34
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 25/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import GameplayKit
@@ -15,28 +15,28 @@ class Player: NSObject, GKGameModelPlayer {
 	var name: String
 	var playerId: Int
 
-	static var allPlayers = [Player(chip: .Red), Player(chip: .Black)]
+	static var allPlayers = [Player(chip: .red), Player(chip: .black)]
+
+	var opponent: Player {
+		if chip == .red {
+			return Player.allPlayers[1]
+		} else {
+			return Player.allPlayers[0]
+		}
+	}
 
 	init(chip: ChipColor) {
 		self.chip = chip
 		self.playerId = chip.rawValue
 
-		if chip == .Red {
-			color = .redColor()
+		if chip == .red {
+			color = .red
 			name = "Red"
 		} else {
-			color = .blackColor()
+			color = .black
 			name = "Black"
 		}
 
 		super.init()
-	}
-
-	var opponent: Player {
-		if chip == .Red {
-			return Player.allPlayers[1]
-		} else {
-			return Player.allPlayers[0]
-		}
 	}
 }

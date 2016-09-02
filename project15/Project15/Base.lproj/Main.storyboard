@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,29 +15,28 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rc-Dv-rjF">
-                                <rect key="frame" x="277" y="542" width="46" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oof-nM-6eb">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="WSn-5D-enz"/>
-                                    <constraint firstAttribute="height" constant="44" id="wbq-qH-wQA"/>
+                                    <constraint firstAttribute="width" constant="46" id="Bbv-ND-TJK"/>
+                                    <constraint firstAttribute="height" constant="44" id="Zxp-bH-2fz"/>
                                 </constraints>
                                 <state key="normal" title="Tap"/>
                                 <connections>
-                                    <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M7e-yn-ILj"/>
+                                    <action selector="tapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcT-IC-2w6"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6rc-Dv-rjF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q7m-F9-vHf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6rc-Dv-rjF" secondAttribute="bottom" constant="14" id="s6K-8x-1Kp"/>
+                            <constraint firstItem="oof-nM-6eb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ELv-ud-n9N"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oof-nM-6eb" secondAttribute="bottom" constant="32" id="IWe-di-9gY"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tap" destination="6rc-Dv-rjF" id="BkU-YE-lOz"/>
+                        <outlet property="tap" destination="oof-nM-6eb" id="FMe-ww-2Wg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

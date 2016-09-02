@@ -2,70 +2,55 @@
 //  DetailViewController.swift
 //  Project1
 //
-//  Created by Hudzilla on 13/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 12/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import Social
 import UIKit
 
 class DetailViewController: UIViewController {
+	@IBOutlet weak var imageView: UIImageView!
+	var selectedImage: String?
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-	@IBOutlet weak var detailImageView: UIImageView!
+		title = selectedImage
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
 
-
-	var detailItem: String? {
-		didSet {
-		    // Update the view.
-		    self.configureView()
+		if let imageToLoad = selectedImage {
+			imageView.image  = UIImage(named: imageToLoad)
 		}
-	}
-
-	func configureView() {
-		// Update the user interface for the detail item.
-		if let detail = self.detailItem {
-			if let imageView = self.detailImageView {
-				imageView.image = UIImage(named: detail)
-			}
-		}
-	}
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		self.configureView()
-
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		navigationController?.hidesBarsOnTap = true
-	}
-
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillDisappear(animated)
-		navigationController?.hidesBarsOnTap = false
-	}
+    }
 
 	func shareTapped() {
-		let vc = UIActivityViewController(activityItems: [detailImageView.image!], applicationActivities: [])
+		let vc = UIActivityViewController(activityItems: [imageView.image!], applicationActivities: [])
 		vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-		presentViewController(vc, animated: true, completion: nil)
+		present(vc, animated: true)
+
+		//if let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) {
+		//	vc.setInitialText("Look at this great picture!")
+		//	vc.add(imageView.image!)
+		//	vc.add(URL(string: "http://www.photolib.noaa.gov/nssl"))
+		//	present(vc, animated: true)
+		//}
 	}
 
-//	func shareTapped() {
-//		let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-//		vc.setInitialText("Look at this great picture!")
-//		vc.addImage(detailImageView.image!)
-//		vc.addURL(NSURL(string: "http://www.photolib.noaa.gov/nssl"))
-//		presentViewController(vc, animated: true, completion: nil)
-//	}
-}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11224.2" systemVersion="15F34" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Author" representedClassName=".Author" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="author" inverseEntity="Commit" syncable="YES"/>
     </entity>
-    <entity name="Commit" representedClassName=".Commit" syncable="YES">
-        <attribute name="date" attributeType="Date" syncable="YES"/>
+    <entity name="Commit" representedClassName="Commit" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="message" attributeType="String" syncable="YES"/>
         <attribute name="sha" attributeType="String" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
@@ -18,7 +18,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Author" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="Commit" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Author" positionX="-54" positionY="18" width="128" height="90"/>
     </elements>
 </model>

@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Project4
 //
-//  Created by Hudzilla on 13/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 13/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,7 @@ import WebKit
 class ViewController: UIViewController, WKNavigationDelegate {
 	var webView: WKWebView!
 	var progressView: UIProgressView!
+
 	var websites = ["apple.com", "hackingwithswift.com"]
 
 	override func loadView() {
@@ -23,69 +24,69 @@ class ViewController: UIViewController, WKNavigationDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .Plain, target: self, action: #selector(openTapped))
+		let url = URL(string: "https://" + websites[0])!
+		webView.load(URLRequest(url: url))
+		webView.allowsBackForwardNavigationGestures = true
 
-		progressView = UIProgressView(progressViewStyle: .Default)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+
+		progressView = UIProgressView(progressViewStyle: .default)
 		progressView.sizeToFit()
 		let progressButton = UIBarButtonItem(customView: progressView)
 
-		let spacer = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-		let refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: webView, action: #selector(webView.reload))
+		let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
 
 		toolbarItems = [progressButton, spacer, refresh]
-		navigationController?.toolbarHidden = false
+		navigationController?.isToolbarHidden = false
 
-		let url = NSURL(string: "https://" + websites[0])!
-		webView.loadRequest(NSURLRequest(URL: url))
-		webView.allowsBackForwardNavigationGestures = true
-
-		webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
 	}
 
 	func openTapped() {
-		let ac = UIAlertController(title: "Open page…", message: nil, preferredStyle: .ActionSheet)
+		let ac = UIAlertController(title: "Open page…", message: nil, preferredStyle: .actionSheet)
 
 		for website in websites {
-			ac.addAction(UIAlertAction(title: website, style: .Default, handler: openPage))
+			ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
 		}
 
-		ac.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-		presentViewController(ac, animated: true, completion: nil)
+		ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		present(ac, animated: true)
 	}
 
 	func openPage(action: UIAlertAction!) {
-		let url = NSURL(string: "https://" + action.title!)!
-		webView.loadRequest(NSURLRequest(URL: url))
+		let url = URL(string: "https://" + action.title!)!
+		webView.load(URLRequest(url: url))
 	}
 
-	func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 		title = webView.title
 	}
 
-	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-		if keyPath == "estimatedProgress" {
-			progressView.progress = Float(webView.estimatedProgress)
-		}
-	}
-
-	func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-		let url = navigationAction.request.URL
+	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+		let url = navigationAction.request.url
 
 		if let host = url!.host {
 			for website in websites {
-				if host.rangeOfString(website) != nil {
-					decisionHandler(.Allow)
+				if host.range(of: website) != nil {
+					decisionHandler(.allow)
 					return
 				}
 			}
 		}
 
-		decisionHandler(.Cancel)
+		decisionHandler(.cancel)
+	}
+
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		if keyPath == "estimatedProgress" {
+			progressView.progress = Float(webView.estimatedProgress)
+		}
+	}
+
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
 	}
 }
 

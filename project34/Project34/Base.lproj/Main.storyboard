@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x3H-I3-aze">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9ES-46-xyU">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,59 +15,51 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="inl-Uc-g4E">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YZS-VW-zfC">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhe-ZE-QrS">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiI-ke-PW4">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Be-bv-ytm"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nfK-Vk-iLV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVZ-xq-X1T">
-                                        <rect key="frame" x="86" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwX-wR-dRT">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C3E-7N-juI"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="USB-qw-n4Y"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4o-wn-1Mz">
-                                        <rect key="frame" x="172" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrQ-rg-f8E">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mgq-Vv-pWG"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R3c-nS-1nh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veB-cq-mG4">
-                                        <rect key="frame" x="258" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJd-YP-jEy">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZyW-sn-qQf"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wvh-8U-uL8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QoR-j9-wxn">
-                                        <rect key="frame" x="344" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoU-dw-0zg">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5He-bQ-ey8"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6qS-P5-KVR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA5-hZ-9VX">
-                                        <rect key="frame" x="430" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkz-iL-eu8">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hs0-6e-DUD"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pcb-gT-gxr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRY-jv-urL">
-                                        <rect key="frame" x="516" y="0.0" width="84" height="536"/>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bE3-7v-M4h">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="baA-oS-aC4"/>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tdg-bE-P6u"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -73,44 +67,44 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="inl-Uc-g4E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5pA-dr-JIF"/>
-                            <constraint firstAttribute="trailing" secondItem="inl-Uc-g4E" secondAttribute="trailing" id="cNo-is-DW2"/>
-                            <constraint firstItem="inl-Uc-g4E" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lcN-at-LVX"/>
-                            <constraint firstItem="inl-Uc-g4E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tHr-Wh-ubr"/>
+                            <constraint firstItem="YZS-VW-zfC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3kc-Kc-hfc"/>
+                            <constraint firstAttribute="trailing" secondItem="YZS-VW-zfC" secondAttribute="trailing" id="UwX-eM-Vb7"/>
+                            <constraint firstItem="YZS-VW-zfC" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Wzw-q9-IrZ"/>
+                            <constraint firstItem="YZS-VW-zfC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dkU-YD-OPe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zaX-Cf-8vh"/>
+                    <navigationItem key="navigationItem" id="K23-LM-k5g"/>
                     <connections>
-                        <outletCollection property="columnButtons" destination="fhe-ZE-QrS" collectionClass="NSMutableArray" id="Fio-nB-qMf"/>
-                        <outletCollection property="columnButtons" destination="qVZ-xq-X1T" collectionClass="NSMutableArray" id="3DH-g7-LsS"/>
-                        <outletCollection property="columnButtons" destination="P4o-wn-1Mz" collectionClass="NSMutableArray" id="3JL-DA-gZV"/>
-                        <outletCollection property="columnButtons" destination="veB-cq-mG4" collectionClass="NSMutableArray" id="fqS-JW-Afc"/>
-                        <outletCollection property="columnButtons" destination="QoR-j9-wxn" collectionClass="NSMutableArray" id="xC3-hV-MBm"/>
-                        <outletCollection property="columnButtons" destination="yA5-hZ-9VX" collectionClass="NSMutableArray" id="JkL-b6-o9e"/>
-                        <outletCollection property="columnButtons" destination="vRY-jv-urL" collectionClass="NSMutableArray" id="nn4-hf-cuE"/>
+                        <outletCollection property="columnButtons" destination="fiI-ke-PW4" collectionClass="NSMutableArray" id="4uY-39-LUU"/>
+                        <outletCollection property="columnButtons" destination="kwX-wR-dRT" collectionClass="NSMutableArray" id="N5Y-te-GXs"/>
+                        <outletCollection property="columnButtons" destination="XrQ-rg-f8E" collectionClass="NSMutableArray" id="6ai-vm-Ifa"/>
+                        <outletCollection property="columnButtons" destination="TJd-YP-jEy" collectionClass="NSMutableArray" id="vAo-PW-rWw"/>
+                        <outletCollection property="columnButtons" destination="VoU-dw-0zg" collectionClass="NSMutableArray" id="XSj-8u-D7x"/>
+                        <outletCollection property="columnButtons" destination="wkz-iL-eu8" collectionClass="NSMutableArray" id="aMm-HG-sUR"/>
+                        <outletCollection property="columnButtons" destination="bE3-7v-M4h" collectionClass="NSMutableArray" id="b4t-fy-GbK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1579" y="379"/>
+            <point key="canvasLocation" x="890.39999999999998" y="777.66116941529242"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="1nH-nq-MnX">
+        <scene sceneID="oo5-VD-MBB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3H-I3-aze" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9ES-46-xyU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="U4L-PG-ED4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Odg-rF-Wox">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mS8-Wg-5pI"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GbO-0W-nfU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iMF-Gq-bRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oaM-l2-8Kf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="379"/>
+            <point key="canvasLocation" x="117.59999999999999" y="777.66116941529242"/>
         </scene>
     </scenes>
 </document>

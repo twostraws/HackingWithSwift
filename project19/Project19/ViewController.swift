@@ -2,14 +2,14 @@
 //  ViewController.swift
 //  Project19
 //
-//  Created by Hudzilla on 16/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import MapKit
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
 	@IBOutlet weak var mapView: MKMapView!
 
 	override func viewDidLoad() {
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 		let rome = Capital(title: "Rome", coordinate: CLLocationCoordinate2D(latitude: 41.9, longitude: 12.5), info: "Has a whole country inside it.")
 		let washington = Capital(title: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself.")
 
-		mapView.addAnnotations([london, oslo, paris, rome, washington])
+		 mapView.addAnnotations([london, oslo, paris, rome, washington])
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -29,22 +29,22 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		// 1
 		let identifier = "Capital"
 
 		// 2
 		if annotation is Capital {
 			// 3
-			var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+			var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
 
 			if annotationView == nil {
 				//4
-				annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:identifier)
+				annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
 				annotationView!.canShowCallout = true
 
 				// 5
-				let btn = UIButton(type: .DetailDisclosure)
+				let btn = UIButton(type: .detailDisclosure)
 				annotationView!.rightCalloutAccessoryView = btn
 			} else {
 				// 6
@@ -58,14 +58,14 @@ class ViewController: UIViewController {
 		return nil
 	}
 
-	func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+	func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
 		let capital = view.annotation as! Capital
 		let placeName = capital.title
 		let placeInfo = capital.info
 
-		let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .Alert)
-		ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-		presentViewController(ac, animated: true, completion: nil)
+		let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default))
+		present(ac, animated: true)
 	}
 }
 

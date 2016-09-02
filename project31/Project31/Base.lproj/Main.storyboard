@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uTp-kr-Sgd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U9B-vl-jGd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,60 +15,58 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ev7-kW-6lT">
-                                <rect key="frame" x="5" y="69" width="590" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCV-n0-onT">
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2pm-FU-dqS"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eZ7-rO-3Zg"/>
                                 </connections>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gbh-wU-9c7">
-                                <rect key="frame" x="0.0" y="104" width="600" height="496"/>
-                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GKF-Ao-LWn"/>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gbh-wU-9c7" firstAttribute="top" secondItem="ev7-kW-6lT" secondAttribute="bottom" constant="5" id="3ee-PA-etx"/>
-                            <constraint firstItem="Gbh-wU-9c7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Apl-uq-M3I"/>
-                            <constraint firstItem="ev7-kW-6lT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="Obo-ec-26d"/>
-                            <constraint firstAttribute="trailing" secondItem="Gbh-wU-9c7" secondAttribute="trailing" id="aI8-F9-fTx"/>
-                            <constraint firstItem="Gbh-wU-9c7" firstAttribute="top" secondItem="ev7-kW-6lT" secondAttribute="bottom" constant="5" id="jVc-dW-Gdg"/>
-                            <constraint firstAttribute="trailing" secondItem="ev7-kW-6lT" secondAttribute="trailing" constant="5" id="ony-PR-k29"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Gbh-wU-9c7" secondAttribute="bottom" id="w2r-dw-vA1"/>
-                            <constraint firstItem="ev7-kW-6lT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="xig-aD-hhk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GKF-Ao-LWn" secondAttribute="bottom" id="0Ub-tn-p7k"/>
+                            <constraint firstItem="GKF-Ao-LWn" firstAttribute="top" secondItem="cCV-n0-onT" secondAttribute="bottom" constant="5" id="1VK-2m-Tyb"/>
+                            <constraint firstItem="GKF-Ao-LWn" firstAttribute="top" secondItem="cCV-n0-onT" secondAttribute="bottom" constant="5" id="8Ic-tf-FM2"/>
+                            <constraint firstAttribute="trailing" secondItem="GKF-Ao-LWn" secondAttribute="trailing" id="BVS-3H-kGK"/>
+                            <constraint firstItem="cCV-n0-onT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="H6h-Eu-UXd"/>
+                            <constraint firstItem="GKF-Ao-LWn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Iv0-c0-dLO"/>
+                            <constraint firstAttribute="trailing" secondItem="cCV-n0-onT" secondAttribute="trailing" constant="5" id="LCT-fG-gvg"/>
+                            <constraint firstItem="cCV-n0-onT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="pHQ-Mw-cEt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="opA-Qv-OP9"/>
+                    <navigationItem key="navigationItem" id="Nlt-zG-l2o"/>
                     <connections>
-                        <outlet property="addressBar" destination="ev7-kW-6lT" id="uT1-gJ-QKA"/>
-                        <outlet property="stackView" destination="Gbh-wU-9c7" id="pdh-OY-OJa"/>
+                        <outlet property="addressBar" destination="cCV-n0-onT" id="dZE-Ap-hi9"/>
+                        <outlet property="stackView" destination="GKF-Ao-LWn" id="4tP-DK-A0i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="379"/>
+            <point key="canvasLocation" x="905" y="778"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="OBD-Jl-y3J">
+        <scene sceneID="FfT-GP-LzH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uTp-kr-Sgd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U9B-vl-jGd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eZ3-SY-kpH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qXM-2V-vOk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bRU-bE-h5v"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qSZ-AW-Y01"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zqD-tP-fS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADv-kb-R9N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="379"/>
+            <point key="canvasLocation" x="117.59999999999999" y="777.66116941529242"/>
         </scene>
     </scenes>
 </document>

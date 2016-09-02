@@ -2,12 +2,13 @@
 //  GameViewController.swift
 //  Project29
 //
-//  Created by Hudzilla on 17/09/2015.
-//  Copyright (c) 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 19/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
+import GameplayKit
 
 class GameViewController: UIViewController {
 	var currentGame: GameScene!
@@ -27,34 +28,35 @@ class GameViewController: UIViewController {
 		angleChanged(angleSlider)
 		velocityChanged(velocitySlider)
 
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "GameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
 
-			currentGame = scene
-			scene.viewController = self
+				currentGame = scene as! GameScene
+				currentGame.viewController = self
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
     }
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate: Bool {
         return true
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
 
@@ -63,43 +65,43 @@ class GameViewController: UIViewController {
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden: Bool {
         return true
     }
 
-	@IBAction func angleChanged(sender: AnyObject) {
+	@IBAction func angleChanged(_ sender: AnyObject) {
 		angleLabel.text = "Angle: \(Int(angleSlider.value))°"
 	}
 
-	@IBAction func velocityChanged(sender: AnyObject) {
+	@IBAction func velocityChanged(_ sender: AnyObject) {
 		velocityLabel.text = "Velocity: \(Int(velocitySlider.value))"
 	}
 
-	@IBAction func launch(sender: AnyObject) {
-		angleSlider.hidden = true
-		angleLabel.hidden = true
+	@IBAction func launch(_ sender: AnyObject) {
+		angleSlider.isHidden = true
+		angleLabel.isHidden = true
 
-		velocitySlider.hidden = true
-		velocityLabel.hidden = true
+		velocitySlider.isHidden = true
+		velocityLabel.isHidden = true
 
-		launchButton.hidden = true
+		launchButton.isHidden = true
 
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
 
-	func activatePlayerNumber(number: Int) {
+	func activatePlayer(number: Int) {
 		if number == 1 {
 			playerNumber.text = "<<< PLAYER ONE"
 		} else {
 			playerNumber.text = "PLAYER TWO >>>"
 		}
 
-		angleSlider.hidden = false
-		angleLabel.hidden = false
+		angleSlider.isHidden = false
+		angleLabel.isHidden = false
 
-		velocitySlider.hidden = false
-		velocityLabel.hidden = false
+		velocitySlider.isHidden = false
+		velocityLabel.isHidden = false
 
-		launchButton.hidden = false
+		launchButton.isHidden = false
 	}
 }

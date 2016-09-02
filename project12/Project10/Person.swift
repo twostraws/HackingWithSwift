@@ -2,8 +2,8 @@
 //  Person.swift
 //  Project10
 //
-//  Created by Hudzilla on 15/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
@@ -18,12 +18,12 @@ class Person: NSObject, NSCoding {
 	}
 
 	required init(coder aDecoder: NSCoder) {
-		name = aDecoder.decodeObjectForKey("name") as! String
-		image = aDecoder.decodeObjectForKey("image") as! String
+		name = aDecoder.decodeObject(forKey: "name") as! String
+		image = aDecoder.decodeObject(forKey: "image") as! String
 	}
 
-	func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(name, forKey: "name")
-		aCoder.encodeObject(image, forKey: "image")
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(name, forKey: "name")
+		aCoder.encode(image, forKey: "image")
 	}
 }

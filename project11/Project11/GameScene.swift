@@ -2,8 +2,8 @@
 //  GameScene.swift
 //  Project11
 //
-//  Created by Hudzilla on 15/09/2015.
-//  Copyright (c) 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import GameplayKit
@@ -30,30 +30,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 
-    override func didMoveToView(view: SKView) {
+	override func didMove(to view: SKView) {
 		let background = SKSpriteNode(imageNamed: "background.jpg")
 		background.position = CGPoint(x: 512, y: 384)
-		background.blendMode = .Replace
+		background.blendMode = .replace
 		background.zPosition = -1
 		addChild(background)
 
-		physicsBody = SKPhysicsBody(edgeLoopFromRect: frame)
+		physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
 		physicsWorld.contactDelegate = self
 
-		makeSlotAt(CGPoint(x: 128, y: 0), isGood: true)
-		makeSlotAt(CGPoint(x: 384, y: 0), isGood: false)
-		makeSlotAt(CGPoint(x: 640, y: 0), isGood: true)
-		makeSlotAt(CGPoint(x: 896, y:0), isGood: false)
+		makeSlot(at: CGPoint(x: 128, y: 0), isGood: true)
+		makeSlot(at: CGPoint(x: 384, y: 0), isGood: false)
+		makeSlot(at: CGPoint(x: 640, y: 0), isGood: true)
+		makeSlot(at: CGPoint(x: 896, y:0), isGood: false)
 
-		makeBouncerAt(CGPoint(x: 0, y: 0))
-		makeBouncerAt(CGPoint(x: 256, y: 0))
-		makeBouncerAt(CGPoint(x: 512, y: 0))
-		makeBouncerAt(CGPoint(x: 768, y: 0))
-		makeBouncerAt(CGPoint(x: 1024, y: 0))
+		makeBouncer(at: CGPoint(x: 0, y: 0))
+		makeBouncer(at: CGPoint(x: 256, y: 0))
+		makeBouncer(at: CGPoint(x: 512, y: 0))
+		makeBouncer(at: CGPoint(x: 768, y: 0))
+		makeBouncer(at: CGPoint(x: 1024, y: 0))
 
 		scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
 		scoreLabel.text = "Score: 0"
-		scoreLabel.horizontalAlignmentMode = .Right
+		scoreLabel.horizontalAlignmentMode = .right
 		scoreLabel.position = CGPoint(x: 980, y: 700)
 		addChild(scoreLabel)
 
@@ -62,12 +62,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		editLabel.position = CGPoint(x: 80, y: 700)
 		addChild(editLabel)
     }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		if let touch = touches.first {
-			let location = touch.locationInNode(self)
 
-			let objects = nodesAtPoint(location) as [SKNode]
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		if let touch = touches.first {
+			let location = touch.location(in: self)
+			let objects = nodes(at: location)
 
 			if objects.contains(editLabel) {
 				editingMode = !editingMode
@@ -78,9 +77,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 					box.zRotation = RandomCGFloat(min: 0, max: 3)
 					box.position = location
 
-					box.physicsBody = SKPhysicsBody(rectangleOfSize: box.size)
-					box.physicsBody!.dynamic = false
-					
+					box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
+					box.physicsBody!.isDynamic = false
+
 					addChild(box)
 				} else {
 					let ball = SKSpriteNode(imageNamed: "ballRed")
@@ -94,21 +93,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			}
 		}
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-    }
 
-	func makeBouncerAt(position: CGPoint) {
+	func makeBouncer(at position: CGPoint) {
 		let bouncer = SKSpriteNode(imageNamed: "bouncer")
 		bouncer.position = position
 		bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
-		bouncer.physicsBody!.contactTestBitMask = bouncer.physicsBody!.collisionBitMask
-		bouncer.physicsBody!.dynamic = false
+		bouncer.physicsBody!.isDynamic = false
 		addChild(bouncer)
 	}
 
-	func makeSlotAt(position: CGPoint, isGood: Bool) {
+	func makeSlot(at position: CGPoint, isGood: Bool) {
 		var slotBase: SKSpriteNode
 		var slotGlow: SKSpriteNode
 
@@ -125,41 +119,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		slotBase.position = position
 		slotGlow.position = position
 
-		slotBase.physicsBody = SKPhysicsBody(rectangleOfSize: slotBase.size)
-		slotBase.physicsBody!.dynamic = false
+		slotBase.physicsBody = SKPhysicsBody(rectangleOf: slotBase.size)
+		slotBase.physicsBody!.isDynamic = false
 
 		addChild(slotBase)
 		addChild(slotGlow)
 
-		let spin = SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 10)
-		let spinForever = SKAction.repeatActionForever(spin)
-		slotGlow.runAction(spinForever)
+		let spin = SKAction.rotate(byAngle: CGFloat.pi, duration: 10)
+		let spinForever = SKAction.repeatForever(spin)
+		slotGlow.run(spinForever)
 	}
 
-	func didBeginContact(contact: SKPhysicsContact) {
-		if contact.bodyA.node!.name == "ball" {
-			collisionBetweenBall(contact.bodyA.node!, object: contact.bodyB.node!)
-		} else if contact.bodyB.node!.name == "ball" {
-			collisionBetweenBall(contact.bodyB.node!, object: contact.bodyA.node!)
-		}
-	}
-
-	func collisionBetweenBall(ball: SKNode, object: SKNode) {
+	func collisionBetween(ball: SKNode, object: SKNode) {
 		if object.name == "good" {
-			destroyBall(ball)
+			destroy(ball: ball)
 			score += 1
 		} else if object.name == "bad" {
-			destroyBall(ball)
+			destroy(ball: ball)
 			score -= 1
 		}
 	}
 
-	func destroyBall(ball: SKNode) {
+	func destroy(ball: SKNode) {
 		if let fireParticles = SKEmitterNode(fileNamed: "FireParticles") {
 			fireParticles.position = ball.position
 			addChild(fireParticles)
 		}
 
 		ball.removeFromParent()
+	}
+
+	func didBegin(_ contact: SKPhysicsContact) {
+		if contact.bodyA.node?.name == "ball" {
+			collisionBetween(ball: contact.bodyA.node!, object: contact.bodyB.node!)
+		} else if contact.bodyB.node?.name == "ball" {
+			collisionBetween(ball: contact.bodyB.node!, object: contact.bodyA.node!)
+		}
 	}
 }

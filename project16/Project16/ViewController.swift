@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Project16
 //
-//  Created by Hudzilla on 16/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit

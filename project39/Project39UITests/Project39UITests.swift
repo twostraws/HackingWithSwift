@@ -2,13 +2,14 @@
 //  Project39UITests.swift
 //  Project39UITests
 //
-//  Created by Hudzilla on 04/03/2016.
+//  Created by TwoStraws on 26/08/2016.
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import XCTest
 
 class Project39UITests: XCTestCase {
+        
     override func setUp() {
         super.setUp()
         
@@ -24,9 +25,9 @@ class Project39UITests: XCTestCase {
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+		super.tearDown()
     }
-    
+
 	func testInitialStateIsCorrect() {
 		let table = XCUIApplication().tables
 		XCTAssertEqual(table.cells.count, 7, "There should be 7 rows initially")

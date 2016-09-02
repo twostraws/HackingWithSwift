@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Project28
 //
-//  Created by Hudzilla on 17/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 19/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import LocalAuthentication
@@ -15,12 +15,12 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let notificationCenter = NSNotificationCenter.defaultCenter()
-		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillHideNotification, object: nil)
-		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIKeyboardWillChangeFrameNotification, object: nil)
-		notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: UIApplicationWillResignActiveNotification, object: nil)
-
 		title = "Nothing to see here"
+
+		let notificationCenter = NotificationCenter.default
+		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
+		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+		notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: Notification.Name.UIApplicationWillResignActive, object: nil)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -28,14 +28,14 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func adjustForKeyboard(notification: NSNotification) {
+	func adjustForKeyboard(notification: Notification) {
 		let userInfo = notification.userInfo!
 
-		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-		let keyboardViewEndFrame = view.convertRect(keyboardScreenEndFrame, fromView: view.window)
+		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+		let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
-		if notification.name == UIKeyboardWillHideNotification {
-			secret.contentInset = UIEdgeInsetsZero
+		if notification.name == NSNotification.Name.UIKeyboardWillHide {
+			secret.contentInset = UIEdgeInsets.zero
 		} else {
 			secret.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
 		}
@@ -46,56 +46,47 @@ class ViewController: UIViewController {
 		secret.scrollRangeToVisible(selectedRange)
 	}
 
-	@IBAction func authenticateUser(sender: AnyObject) {
+	@IBAction func authenticateTapped(_ sender: AnyObject) {
 		let context = LAContext()
 		var error: NSError?
 
-		if context.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+		if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
 			let reason = "Identify yourself!"
 
-			context.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
-				[unowned self] (success: Bool, authenticationError: NSError?) -> Void in
+			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+				[unowned self] (success, authenticationError) in
 
-				dispatch_async(dispatch_get_main_queue()) {
+				DispatchQueue.main.async {
 					if success {
 						self.unlockSecretMessage()
 					} else {
-						if let error = authenticationError {
-							if error.code == LAError.UserFallback.rawValue {
-									let ac = UIAlertController(title: "Passcode? Ha!", message: "It's Touch ID or nothing – sorry!", preferredStyle: .Alert)
-									ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-									self.presentViewController(ac, animated: true, completion: nil)
-									return
-							}
-						}
-
-						let ac = UIAlertController(title: "Authentication failed", message: "Your fingerprint could not be verified; please try again.", preferredStyle: .Alert)
-						ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-						self.presentViewController(ac, animated: true, completion: nil)
+						let ac = UIAlertController(title: "Authentication failed", message: "Your fingerprint could not be verified; please try again.", preferredStyle: .alert)
+						ac.addAction(UIAlertAction(title: "OK", style: .default))
+						self.present(ac, animated: true)
 					}
 				}
 			}
 		} else {
-			let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .Alert)
-			ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-			self.presentViewController(ac, animated: true, completion: nil)
+			let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .alert)
+			ac.addAction(UIAlertAction(title: "OK", style: .default))
+			self.present(ac, animated: true)
 		}
 	}
 
 	func unlockSecretMessage() {
-		secret.hidden = false
+		secret.isHidden = false
 		title = "Secret stuff!"
 
-		if let text = KeychainWrapper.stringForKey("SecretMessage") {
+		if let text = KeychainWrapper.standardKeychainAccess().string(forKey: "SecretMessage") {
 			secret.text = text
 		}
 	}
 
 	func saveSecretMessage() {
-		if !secret.hidden {
-			KeychainWrapper.setString(secret.text, forKey: "SecretMessage")
+		if !secret.isHidden {
+			KeychainWrapper.standardKeychainAccess().setString(secret.text, forKey: "SecretMessage")
 			secret.resignFirstResponder()
-			secret.hidden = true
+			secret.isHidden = true
 			title = "Nothing to see here"
 		}
 	}

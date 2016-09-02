@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,11 +16,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVd-ab-7Ez" customClass="GradientView" customModule="Project37" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Blr-70-J42" customClass="GradientView" customModule="Project37" customModuleProvider="target">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -29,33 +30,31 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tU1-VU-lNR">
-                                <rect key="frame" x="60" y="140" width="480" height="320"/>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLm-Er-nlw">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="5BC-d5-WSC"/>
-                                    <constraint firstAttribute="width" constant="480" id="HqA-gI-Ydl"/>
+                                    <constraint firstAttribute="width" constant="480" id="n2e-Kk-Ii6"/>
+                                    <constraint firstAttribute="height" constant="320" id="qCn-lP-AXj"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HVd-ab-7Ez" secondAttribute="bottom" id="3hm-TR-BzB"/>
-                            <constraint firstItem="tU1-VU-lNR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4YQ-tW-Z1s"/>
-                            <constraint firstItem="HVd-ab-7Ez" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YgU-Zm-iW0"/>
-                            <constraint firstAttribute="trailing" secondItem="HVd-ab-7Ez" secondAttribute="trailing" id="Ywy-H6-agb"/>
-                            <constraint firstItem="tU1-VU-lNR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tXa-WY-myL"/>
-                            <constraint firstItem="HVd-ab-7Ez" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zrY-ry-Udu"/>
+                            <constraint firstItem="nLm-Er-nlw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7yr-YP-ejQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Blr-70-J42" secondAttribute="trailing" id="QJi-1b-aav"/>
+                            <constraint firstItem="Blr-70-J42" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="U8s-Zl-lYo"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Blr-70-J42" secondAttribute="bottom" id="ciH-m7-7sV"/>
+                            <constraint firstItem="Blr-70-J42" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="hxa-NC-PWB"/>
+                            <constraint firstItem="nLm-Er-nlw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="j3j-38-sp6"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cardContainer" destination="tU1-VU-lNR" id="zfu-RW-5ye"/>
-                        <outlet property="gradientView" destination="tU1-VU-lNR" id="qIg-0l-dMK"/>
+                        <outlet property="cardContainer" destination="nLm-Er-nlw" id="Xh1-80-UXV"/>
+                        <outlet property="gradientView" destination="Blr-70-J42" id="8cz-Or-Tna"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324" y="387"/>
         </scene>
     </scenes>
 </document>

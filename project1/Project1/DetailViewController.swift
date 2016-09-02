@@ -2,53 +2,40 @@
 //  DetailViewController.swift
 //  Project1
 //
-//  Created by Hudzilla on 13/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 12/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 
 class DetailViewController: UIViewController {
+	@IBOutlet weak var imageView: UIImageView!
+	var selectedImage: String?
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-	@IBOutlet weak var detailImageView: UIImageView!
+		title = selectedImage
 
-
-	var detailItem: String? {
-		didSet {
-		    // Update the view.
-		    self.configureView()
+		if let imageToLoad = selectedImage {
+			imageView.image  = UIImage(named: imageToLoad)
 		}
-	}
+    }
 
-	func configureView() {
-		// Update the user interface for the detail item.
-		if let detail = self.detailItem {
-			if let imageView = self.detailImageView {
-				imageView.image = UIImage(named: detail)
-			}
-		}
-	}
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		self.configureView()
-	}
+    /*
+    // MARK: - Navigation
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		navigationController?.hidesBarsOnTap = true
-	}
-
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillDisappear(animated)
-		navigationController?.hidesBarsOnTap = false
-	}
 }
-

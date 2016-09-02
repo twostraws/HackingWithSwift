@@ -2,7 +2,7 @@
 //  PlayData.swift
 //  Project39
 //
-//  Created by Hudzilla on 04/03/2016.
+//  Created by TwoStraws on 26/08/2016.
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
@@ -11,18 +11,16 @@ import Foundation
 class PlayData {
 	var allWords = [String]()
 	private(set) var filteredWords = [String]()
-
 	var wordCounts: NSCountedSet!
 
 	init() {
-		if let path = NSBundle.mainBundle().pathForResource("plays", ofType: "txt") {
-			if let plays = try? String(contentsOfFile: path, usedEncoding: nil) {
-				allWords = plays.componentsSeparatedByCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
-
+		if let path = Bundle.main.path(forResource: "plays", ofType: "txt") {
+			if let plays = try? String(contentsOfFile: path) {
+				allWords = plays.components(separatedBy: CharacterSet.alphanumerics.inverted)
 				allWords = allWords.filter { $0 != "" }
 
 				wordCounts = NSCountedSet(array: allWords)
-				let sorted = wordCounts.allObjects.sort { wordCounts.countForObject($0) > wordCounts.countForObject($1) }
+				let sorted = wordCounts.allObjects.sorted { wordCounts.count(for: $0) > wordCounts.count(for: $1) }
 				allWords = sorted as! [String]
 			}
 		}
@@ -30,15 +28,15 @@ class PlayData {
 		applyUserFilter("swift")
 	}
 
-	func applyFilter(filter: (String) -> Bool) {
-		filteredWords = allWords.filter(filter)
+	func applyUserFilter(_ input: String) {
+		if let userNumber = Int(input) {
+			applyFilter { self.wordCounts.count(for: $0) >= userNumber }
+		} else {
+			applyFilter { $0.range(of: input, options: .caseInsensitive) != nil }
+		}
 	}
 
-	func applyUserFilter(input: String) {
-		if let userNumber = Int(input) {
-			applyFilter { self.wordCounts.countForObject($0) >= userNumber }
-		} else {
-			applyFilter { $0.rangeOfString(input, options: .CaseInsensitiveSearch) != nil }
-		}
-	}	
+	func applyFilter(_ filter: (String) -> Bool) {
+		filteredWords = allWords.filter(filter)
+	}
 }

@@ -2,8 +2,8 @@
 //  MyGenresViewController.swift
 //  Project33
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 24/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import CloudKit
@@ -15,93 +15,91 @@ class MyGenresViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let defaults = NSUserDefaults.standardUserDefaults()
-		if let savedGenres = defaults.objectForKey("myGenres") as? [String] {
+		let defaults = UserDefaults.standard
+		if let savedGenres = defaults.object(forKey: "myGenres") as? [String] {
 			myGenres = savedGenres
 		} else {
 			myGenres = [String]()
 		}
 
 		title = "Notify me about…"
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(saveTapped))
-		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 
-    // MARK: - Table view data source
-
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return SelectGenreViewController.genres.count
-	}
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SelectGenreViewController.genres.count
+    }
 
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
 		let genre = SelectGenreViewController.genres[indexPath.row]
 		cell.textLabel?.text = genre
 
 		if myGenres.contains(genre) {
-			cell.accessoryType = .Checkmark
+			cell.accessoryType = .checkmark
 		} else {
-			cell.accessoryType = .None
+			cell.accessoryType = .none
 		}
 
 		return cell
 	}
 
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if let cell = tableView.cellForRow(at: indexPath) {
 			let selectedGenre = SelectGenreViewController.genres[indexPath.row]
 
-			if cell.accessoryType == .None {
-				cell.accessoryType = .Checkmark
+			if cell.accessoryType == .none {
+				cell.accessoryType = .checkmark
 				myGenres.append(selectedGenre)
 			} else {
-				cell.accessoryType = .None
+				cell.accessoryType = .none
 
-				if let index = myGenres.indexOf(selectedGenre) {
-					myGenres.removeAtIndex(index)
+				if let index = myGenres.index(of: selectedGenre) {
+					myGenres.remove(at: index)
 				}
 			}
 		}
 
-		tableView.deselectRowAtIndexPath(indexPath, animated: false)
+		tableView.deselectRow(at: indexPath, animated: false)
 	}
 
 	func saveTapped() {
-		let defaults = NSUserDefaults.standardUserDefaults()
-		defaults.setObject(myGenres, forKey: "myGenres")
+		let defaults = UserDefaults.standard
+		defaults.set(myGenres, forKey: "myGenres")
 
-		let database = CKContainer.defaultContainer().publicCloudDatabase
+		let database = CKContainer.default().publicCloudDatabase
 
-		database.fetchAllSubscriptionsWithCompletionHandler() { [unowned self] (subscriptions, error) -> Void in
+		database.fetchAllSubscriptions { [unowned self] subscriptions, error in
 			if error == nil {
 				if let subscriptions = subscriptions {
 					for subscription in subscriptions {
-						database.deleteSubscriptionWithID(subscription.subscriptionID, completionHandler: { (str, error) -> Void in
+						database.delete(withSubscriptionID: subscription.subscriptionID) { str, error in
 							if error != nil {
 								// do your error handling here!
 								print(error!.localizedDescription)
 							}
-						})
+						}
 					}
 
 					for genre in self.myGenres {
 						let predicate = NSPredicate(format:"genre = %@", genre)
-						let subscription = CKSubscription(recordType: "Whistles", predicate: predicate, options: .FiresOnRecordCreation)
+						let subscription = CKQuerySubscription(recordType: "Whistles", predicate: predicate, options: .firesOnRecordCreation)
 
 						let notification = CKNotificationInfo()
 						notification.alertBody = "There's a new whistle in the \(genre) genre."
-						notification.soundName = UILocalNotificationDefaultSoundName
+						notification.soundName = "default"
 
 						subscription.notificationInfo = notification
 
-						database.saveSubscription(subscription) { (result, error) -> Void in
-							if error != nil {
-								print(error!.localizedDescription)
+						database.save(subscription) { result, error in
+							if let error = error {
+								print(error.localizedDescription)
 							}
 						}
 					}

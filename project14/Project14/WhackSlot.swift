@@ -2,8 +2,8 @@
 //  WhackSlot.swift
 //  Project14
 //
-//  Created by Hudzilla on 15/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import SpriteKit
@@ -12,11 +12,11 @@ import UIKit
 class WhackSlot: SKNode {
 	var charNode: SKSpriteNode!
 
-	var visible = false
+	var isVisible = false
 	var isHit = false
 
-	func configureAtPosition(pos: CGPoint) {
-		position = pos
+	func configure(at position: CGPoint) {
+		self.position = position
 
 		let sprite = SKSpriteNode(imageNamed: "whackHole")
 		addChild(sprite)
@@ -34,14 +34,14 @@ class WhackSlot: SKNode {
 		addChild(cropNode)
 	}
 
-	func show(hideTime hideTime: Double) {
-		if visible { return }
+	func show(hideTime: Double) {
+		if isVisible { return }
 
 		charNode.xScale = 1
 		charNode.yScale = 1
+		charNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.05))
 
-		charNode.runAction(SKAction.moveByX(0, y: 80, duration: 0.05))
-		visible = true
+		isVisible = true
 		isHit = false
 
 		if RandomInt(min: 0, max: 2) == 0 {
@@ -52,24 +52,25 @@ class WhackSlot: SKNode {
 			charNode.name = "charEnemy"
 		}
 
-		RunAfterDelay(hideTime * 3.5) { [unowned self] in
+		DispatchQueue.main.asyncAfter(deadline: .now() + (hideTime * 3.5)) { [unowned self] in
 			self.hide()
 		}
 	}
 
 	func hide() {
-		if !visible { return }
+		if !isVisible { return }
 
-		charNode.runAction(SKAction.moveByX(0, y:-80, duration:0.05))
-		visible = false
+		charNode.run(SKAction.moveBy(x: 0, y:-80, duration:0.05))
+		isVisible = false
 	}
 
 	func hit() {
 		isHit = true
 
-		let delay = SKAction.waitForDuration(0.25)
-		let hide = SKAction.moveByX(0, y:-80, duration:0.5)
-		let notVisible = SKAction.runBlock { [unowned self] in self.visible = false }
-		charNode.runAction(SKAction.sequence([delay, hide, notVisible]))
+		let delay = SKAction.wait(forDuration: 0.25)
+		let hide = SKAction.moveBy(x: 0, y:-80, duration:0.5)
+		let notVisible = SKAction.run { [unowned self] in self.isVisible = false }
+		charNode.run(SKAction.sequence([delay, hide, notVisible]))
 	}
+
 }

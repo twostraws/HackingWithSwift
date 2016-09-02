@@ -2,8 +2,8 @@
 //  ResultsViewController.swift
 //  Project33
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 24/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import AVFoundation
@@ -16,36 +16,36 @@ class ResultsViewController: UITableViewController {
 
 	var whistlePlayer: AVAudioPlayer!
 
-    override func viewDidLoad() {
+	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		title = "Genre: \(whistle.genre)"
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .Plain, target: self, action: #selector(downloadTapped))
+		title = "Genre: \(whistle.genre!)"
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(downloadTapped))
 
-		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
-		let reference = CKReference(recordID: whistle.recordID, action: CKReferenceAction.DeleteSelf)
+		let reference = CKReference(recordID: whistle.recordID, action: .deleteSelf)
 		let pred = NSPredicate(format: "owningWhistle == %@", reference)
 		let sort = NSSortDescriptor(key: "creationDate", ascending: true)
 		let query = CKQuery(recordType: "Suggestions", predicate: pred)
 		query.sortDescriptors = [sort]
 
-		CKContainer.defaultContainer().publicCloudDatabase.performQuery(query, inZoneWithID: nil) { [unowned self] (results, error) -> Void in
-			if error == nil {
-				if let results = results {
-					self.parseResults(results)
-				}
+		CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { [unowned self] results, error in
+			if let error = error {
+				print(error.localizedDescription)
 			} else {
-				print(error!.localizedDescription)
+				if let results = results {
+					self.parseResults(records: results)
+				}
 			}
 		}
     }
 
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 2
 	}
 
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		if section == 1 {
 			return "Suggested songs"
 		}
@@ -53,7 +53,7 @@ class ResultsViewController: UITableViewController {
 		return nil
 	}
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if section == 0 {
 			return 1
 		} else {
@@ -61,14 +61,14 @@ class ResultsViewController: UITableViewController {
 		}
 	}
 
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-		cell.selectionStyle = .None
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		cell.selectionStyle = .none
 		cell.textLabel?.numberOfLines = 0
 
 		if indexPath.section == 0 {
 			// the user's comments about this whistle
-			cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
 
 			if whistle.comments.characters.count == 0 {
 				cell.textLabel?.text = "Comments: None"
@@ -76,12 +76,12 @@ class ResultsViewController: UITableViewController {
 				cell.textLabel?.text = whistle.comments
 			}
 		} else {
-			cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
 
 			if indexPath.row == suggestions.count {
 				// this is our extra row
 				cell.textLabel?.text = "Add suggestion"
-				cell.selectionStyle = .Gray
+				cell.selectionStyle = .gray
 			} else {
 				cell.textLabel?.text = suggestions[indexPath.row]
 			}
@@ -90,52 +90,49 @@ class ResultsViewController: UITableViewController {
 		return cell
 	}
 
-	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
 	}
 
-	override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
 	}
 
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard indexPath.section == 1 && indexPath.row == suggestions.count else { return }
 
-		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		tableView.deselectRow(at: indexPath, animated: true)
 
-		let ac = UIAlertController(title: "Suggest a song…", message: nil, preferredStyle: .Alert)
-		var suggestion: UITextField!
+		let ac = UIAlertController(title: "Suggest a song…", message: nil, preferredStyle: .alert)
+		ac.addTextField()
 
-		ac.addTextFieldWithConfigurationHandler { (textField) -> Void in
-			suggestion = textField
-			textField.autocorrectionType = .Yes
-		}
-
-		ac.addAction(UIAlertAction(title: "Submit", style: .Default) { (action) -> Void in
-			if suggestion.text?.characters.count > 0 {
-				self.addSuggestion(suggestion.text!)
+		ac.addAction(UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] action in
+			if let textField = ac.textFields?[0] {
+				if textField.text!.characters.count > 0 {
+					self.add(suggestion: textField.text!)
+				}
 			}
 		})
 
-		ac.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-		presentViewController(ac, animated: true, completion: nil)
+		ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		present(ac, animated: true)
 	}
 
-	func addSuggestion(suggest: String) {
+	func add(suggestion: String) {
 		let whistleRecord = CKRecord(recordType: "Suggestions")
-		let reference = CKReference(recordID: whistle.recordID, action: .DeleteSelf)
-		whistleRecord["text"] = suggest
-		whistleRecord["owningWhistle"] = reference
+		let reference = CKReference(recordID: whistle.recordID, action: .deleteSelf)
+		whistleRecord["text"] = suggestion as CKRecordValue
+		whistleRecord["owningWhistle"] = reference as CKRecordValue
 
-		CKContainer.defaultContainer().publicCloudDatabase.saveRecord(whistleRecord) { [unowned self] (record, error) -> Void in
-			dispatch_async(dispatch_get_main_queue()) {
+		CKContainer.default().publicCloudDatabase.save(whistleRecord) { [unowned self] record, error in
+			DispatchQueue.main.async {
 				if error == nil {
-					self.suggestions.append(suggest)
+					self.suggestions.append(suggestion)
 					self.tableView.reloadData()
 				} else {
-					let ac = UIAlertController(title: "Error", message: "There was a problem submitting your suggestion: \(error!.localizedDescription)", preferredStyle: .Alert)
-					ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-					self.presentViewController(ac, animated: true, completion: nil)
+					let ac = UIAlertController(title: "Error", message: "There was a problem submitting your suggestion: \(error!.localizedDescription)", preferredStyle: .alert)
+					ac.addAction(UIAlertAction(title: "OK", style: .default))
+					self.present(ac, animated: true)
 				}
 			}
 		}
@@ -148,33 +145,34 @@ class ResultsViewController: UITableViewController {
 			newSuggestions.append(record["text"] as! String)
 		}
 
-		dispatch_async(dispatch_get_main_queue()) {
+		DispatchQueue.main.async { [unowned self] in
 			self.suggestions = newSuggestions
 			self.tableView.reloadData()
 		}
 	}
 
 	func downloadTapped() {
-		let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-		spinner.tintColor = UIColor.blackColor()
+		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+		spinner.tintColor = UIColor.black
 		spinner.startAnimating()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
-		CKContainer.defaultContainer().publicCloudDatabase.fetchRecordWithID(whistle.recordID) { [unowned self] (record, error) -> Void in
-			if error == nil {
+		CKContainer.default().publicCloudDatabase.fetch(withRecordID: whistle.recordID) { [unowned self] record, error in
+			if let error = error {
+				DispatchQueue.main.async {
+					// meaningful error message here!
+					print(error.localizedDescription)
+					self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(self.downloadTapped))
+				}
+			} else {
 				if let record = record {
 					if let asset = record["audio"] as? CKAsset {
 						self.whistle.audio = asset.fileURL
 
-						dispatch_async(dispatch_get_main_queue()) {
-							self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .Plain, target: self, action: #selector(self.listenTapped))
+						DispatchQueue.main.async {
+							self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .plain, target: self, action: #selector(self.listenTapped))
 						}
 					}
-				}
-			} else {
-				dispatch_async(dispatch_get_main_queue()) {
-					// meaningful error message here!
-					self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .Plain, target: self, action: #selector(self.downloadTapped))
 				}
 			}
 		}
@@ -182,12 +180,12 @@ class ResultsViewController: UITableViewController {
 
 	func listenTapped() {
 		do {
-			whistlePlayer = try AVAudioPlayer(contentsOfURL: whistle.audio)
+			whistlePlayer = try AVAudioPlayer(contentsOf: whistle.audio)
 			whistlePlayer.play()
 		} catch {
-			let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your whistle; please try re-recording.", preferredStyle: .Alert)
-			ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-			presentViewController(ac, animated: true, completion: nil)
+			let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your whistle; please try re-recording.", preferredStyle: .alert)
+			ac.addAction(UIAlertAction(title: "OK", style: .default))
+			present(ac, animated: true)
 		}
 	}
 }

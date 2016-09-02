@@ -2,8 +2,8 @@
 //  SubmitViewController.swift
 //  Project33
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 24/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import CloudKit
@@ -20,28 +20,29 @@ class SubmitViewController: UIViewController {
 	override func loadView() {
 		super.loadView()
 
-		view.backgroundColor = UIColor.grayColor()
+		view.backgroundColor = UIColor.gray
 
 		stackView = UIStackView()
 		stackView.spacing = 10
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.distribution = UIStackViewDistribution.FillEqually
-		stackView.alignment = UIStackViewAlignment.Center
-		stackView.axis = .Vertical
+		stackView.distribution = UIStackViewDistribution.fillEqually
+		stackView.alignment = .center
+		stackView.axis = .vertical
 		view.addSubview(stackView)
 
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[stackView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["stackView": stackView]))
-		view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant:0))
+		stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+		stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+		stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
 		status = UILabel()
 		status.translatesAutoresizingMaskIntoConstraints = false
 		status.text = "Submitting…"
-		status.textColor = UIColor.whiteColor()
-		status.font = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+		status.textColor = UIColor.white
+		status.font = UIFont.preferredFont(forTextStyle: .title1)
 		status.numberOfLines = 0
-		status.textAlignment = .Center
+		status.textAlignment = .center
 
-		spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+		spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
 		spinner.translatesAutoresizingMaskIntoConstraints = false
 		spinner.hidesWhenStopped = true
 		spinner.startAnimating()
@@ -57,7 +58,7 @@ class SubmitViewController: UIViewController {
 		navigationItem.hidesBackButton = true
 	}
 
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 
 		doSubmission()
@@ -65,32 +66,32 @@ class SubmitViewController: UIViewController {
 
 	func doSubmission() {
 		let whistleRecord = CKRecord(recordType: "Whistles")
-		whistleRecord["genre"] = genre
-		whistleRecord["comments"] = comments
+		whistleRecord["genre"] = genre as CKRecordValue
+		whistleRecord["comments"] = comments as CKRecordValue
 
 		let audioURL = RecordWhistleViewController.getWhistleURL()
 		let whistleAsset = CKAsset(fileURL: audioURL)
 		whistleRecord["audio"] = whistleAsset
 
-		CKContainer.defaultContainer().publicCloudDatabase.saveRecord(whistleRecord) { [unowned self] (record, error) -> Void in
-			dispatch_async(dispatch_get_main_queue()) {
-				if error == nil {
+		CKContainer.default().publicCloudDatabase.save(whistleRecord) { [unowned self] record, error in
+			DispatchQueue.main.async {
+				if let error = error {
+					self.status.text = "Error: \(error.localizedDescription)"
+					self.spinner.stopAnimating()
+				} else {
 					self.view.backgroundColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 1)
 					self.status.text = "Done!"
 					self.spinner.stopAnimating()
 
-					ViewController.dirty = true
-				} else {
-					self.status.text = "Error: \(error!.localizedDescription)"
-					self.spinner.stopAnimating()
+					ViewController.isDirty = true
 				}
 
-				self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(self.doneTapped))
+				self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneTapped))
 			}
 		}
 	}
 
 	func doneTapped() {
-		navigationController?.popToRootViewControllerAnimated(true)
+		_ = navigationController?.popToRootViewController(animated: true)
 	}
 }

@@ -2,15 +2,15 @@
 //  GameScene.swift
 //  Project20
 //
-//  Created by Hudzilla on 16/09/2015.
-//  Copyright (c) 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene {
-	var gameTimer: NSTimer!
+	var gameTimer: Timer!
 	var fireworks = [SKNode]()
 
 	let leftEdge = -22
@@ -23,27 +23,17 @@ class GameScene: SKScene {
 		}
 	}
 
-	override func didMoveToView(view: SKView) {
+	override func didMove(to view: SKView) {
 		let background = SKSpriteNode(imageNamed: "background")
 		background.position = CGPoint(x: 512, y: 384)
-		background.blendMode = .Replace
+		background.blendMode = .replace
 		background.zPosition = -1
 		addChild(background)
 
-		gameTimer = NSTimer.scheduledTimerWithTimeInterval(6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
-	}
-   
-	override func update(currentTime: NSTimeInterval) {
-		for (index, firework) in fireworks.enumerate().reverse() {
-			if firework.position.y > 900 {
-				// this uses a position high above so that rockets can explode off screen
-				fireworks.removeAtIndex(index)
-				firework.removeFromParent()
-			}
-		}
-	}
+		gameTimer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(launchFireworks), userInfo: nil, repeats: true)
+    }
 
-	func createFirework(xMovement xMovement: CGFloat, x: Int, y: Int) {
+	func createFirework(xMovement: CGFloat, x: Int, y: Int) {
 		// 1
 		let node = SKNode()
 		node.position = CGPoint(x: x, y: y)
@@ -54,17 +44,17 @@ class GameScene: SKScene {
 		node.addChild(firework)
 
 		// 3
-		switch GKRandomSource.sharedRandom().nextIntWithUpperBound(3) {
+		switch GKRandomSource.sharedRandom().nextInt(upperBound: 3) {
 		case 0:
-			firework.color = UIColor.cyanColor()
+			firework.color = .cyan
 			firework.colorBlendFactor = 1
 
 		case 1:
-			firework.color = UIColor.greenColor()
+			firework.color = .green
 			firework.colorBlendFactor = 1
 
 		case 2:
-			firework.color = UIColor.redColor()
+			firework.color = .red
 			firework.colorBlendFactor = 1
 
 		default:
@@ -73,12 +63,12 @@ class GameScene: SKScene {
 
 		// 4
 		let path = UIBezierPath()
-		path.moveToPoint(CGPoint(x: 0, y: 0))
-		path.addLineToPoint(CGPoint(x: xMovement, y: 1000))
+		path.move(to: CGPoint(x: 0, y: 0))
+		path.addLine(to: CGPoint(x: xMovement, y: 1000))
 
 		// 5
-		let move = SKAction.followPath(path.CGPath, asOffset: true, orientToPath: true, speed: 200)
-		node.runAction(move)
+		let move = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: 200)
+		node.run(move)
 
 		// 6
 		let emitter = SKEmitterNode(fileNamed: "fuse")!
@@ -93,7 +83,7 @@ class GameScene: SKScene {
 	func launchFireworks() {
 		let movementAmount: CGFloat = 1800
 
-		switch GKRandomSource.sharedRandom().nextIntWithUpperBound(4) {
+		switch GKRandomSource.sharedRandom().nextInt(upperBound: 4) {
 		case 0:
 			// fire five, straight up
 			createFirework(xMovement: 0, x: 512, y: bottomEdge)
@@ -131,13 +121,13 @@ class GameScene: SKScene {
 		}
 	}
 
-	func checkForTouches(touches: Set<UITouch>) {
+	func checkTouches(_ touches: Set<UITouch>) {
 		guard let touch = touches.first else { return }
 
-		let location = touch.locationInNode(self)
-		let nodes = nodesAtPoint(location)
+		let location = touch.location(in: self)
+		let nodesAtPoint = nodes(at: location)
 
-		for node in nodes {
+		for node in nodesAtPoint {
 			if node is SKSpriteNode {
 				let sprite = node as! SKSpriteNode
 
@@ -158,17 +148,27 @@ class GameScene: SKScene {
 		}
 	}
 
-	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		super.touchesBegan(touches, withEvent: event)
-		checkForTouches(touches)
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		checkTouches(touches)
 	}
 
-	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		super.touchesMoved(touches, withEvent: event)
-		checkForTouches(touches)
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesMoved(touches, with: event)
+		checkTouches(touches)
 	}
 
-	func explodeFirework(firework: SKNode) {
+	override func update(_ currentTime: TimeInterval) {
+		for (index, firework) in fireworks.enumerated().reversed() {
+			if firework.position.y > 900 {
+				// this uses a position high above so that rockets can explode off screen
+				fireworks.remove(at: index)
+				firework.removeFromParent()
+			}
+		}
+	}
+
+	func explode(firework: SKNode) {
 		let emitter = SKEmitterNode(fileNamed: "explode")!
 		emitter.position = firework.position
 		addChild(emitter)
@@ -179,14 +179,13 @@ class GameScene: SKScene {
 	func explodeFireworks() {
 		var numExploded = 0
 
-		for (index, fireworkGroup) in fireworks.enumerate().reverse() {
-			let firework = fireworkGroup.children[0] as! SKSpriteNode
+		for (index, fireworkContainer) in fireworks.enumerated().reversed() {
+			let firework = fireworkContainer.children[0] as! SKSpriteNode
 
 			if firework.name == "selected" {
 				// destroy this firework!
-				explodeFirework(fireworkGroup)
-				fireworks.removeAtIndex(index)
-
+				explode(firework: fireworkContainer)
+				fireworks.remove(at: index)
 				numExploded += 1
 			}
 		}

@@ -2,12 +2,18 @@
 //  ViewController.swift
 //  Project34
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 25/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import GameplayKit
 import UIKit
+
+enum ChipColor: Int {
+	case none = 0
+	case red
+	case black
+}
 
 class ViewController: UIViewController {
 	@IBOutlet var columnButtons: [UIButton]!
@@ -20,13 +26,13 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		for _ in 0 ..< Board.width {
-			placedChips.append([UIView]())
-		}
-
 		strategist = GKMinmaxStrategist()
 		strategist.maxLookAheadDepth = 7
 		strategist.randomSource = nil
+
+		for _ in 0 ..< Board.width {
+			placedChips.append([UIView]())
+		}
 
 		resetBoard()
 	}
@@ -34,6 +40,7 @@ class ViewController: UIViewController {
 	func resetBoard() {
 		board = Board()
 		strategist.gameModel = board
+
 		updateUI()
 
 		for i in 0 ..< placedChips.count {
@@ -41,21 +48,26 @@ class ViewController: UIViewController {
 				chip.removeFromSuperview()
 			}
 
-			placedChips[i].removeAll(keepCapacity: true)
+			placedChips[i].removeAll(keepingCapacity: true)
 		}
 	}
 
-	@IBAction func makeMove(sender: UIButton) {
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
+	@IBAction func makeMove(_ sender: UIButton) {
 		let column = sender.tag
 
-		if let row = board.nextEmptySlotInColumn(column) {
-			board.addChip(board.currentPlayer.chip, inColumn: column)
-			addChipAtColumn(column, row: row, color: board.currentPlayer.color)
+		if let row = board.nextEmptySlot(in: column) {
+			board.add(chip: board.currentPlayer.chip, in: column)
+			addChip(inColumn: column, row: row, color: board.currentPlayer.color)
 			continueGame()
 		}
 	}
 
-	func addChipAtColumn(column: Int, row: Int, color: UIColor) {
+	func addChip(inColumn column: Int, row: Int, color: UIColor) {
 		let button = columnButtons[column]
 		let size = min(button.frame.width, button.frame.height / 6)
 		let rect = CGRect(x: 0, y: 0, width: size, height: size)
@@ -63,22 +75,22 @@ class ViewController: UIViewController {
 		if (placedChips[column].count < row + 1) {
 			let newChip = UIView()
 			newChip.frame = rect
-			newChip.userInteractionEnabled = false
+			newChip.isUserInteractionEnabled = false
 			newChip.backgroundColor = color
 			newChip.layer.cornerRadius = size / 2
-			newChip.center = positionForChipAtColumn(column, row: row)
-			newChip.transform = CGAffineTransformMakeTranslation(0, -800)
+			newChip.center = positionForChip(inColumn: column, row: row)
+			newChip.transform = CGAffineTransform(translationX: 0, y: -800)
 			view.addSubview(newChip)
 
-			UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseIn, animations: { () -> Void in
-				newChip.transform = CGAffineTransformIdentity
-				}, completion: nil)
+			UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+				newChip.transform = CGAffineTransform.identity
+			})
 
 			placedChips[column].append(newChip)
 		}
 	}
 
-	func positionForChipAtColumn(column: Int, row: Int) -> CGPoint {
+	func positionForChip(inColumn column: Int, row: Int) -> CGPoint {
 		let button = columnButtons[column]
 		let size = min(button.frame.width, button.frame.height / 6)
 
@@ -91,7 +103,7 @@ class ViewController: UIViewController {
 	func updateUI() {
 		title = "\(board.currentPlayer.name)'s Turn"
 
-		if board.currentPlayer.chip == .Black {
+		if board.currentPlayer.chip == .black {
 			startAIMove()
 		}
 	}
@@ -101,7 +113,7 @@ class ViewController: UIViewController {
 		var gameOverTitle: String? = nil
 
 		// 2
-		if board.isWinForPlayer(board.currentPlayer) {
+		if board.isWin(for: board.currentPlayer) {
 			gameOverTitle = "\(board.currentPlayer.name) Wins!"
 		} else if board.isFull() {
 			gameOverTitle = "Draw!"
@@ -109,13 +121,13 @@ class ViewController: UIViewController {
 
 		// 3
 		if gameOverTitle != nil {
-			let alert = UIAlertController(title: gameOverTitle, message: nil, preferredStyle: .Alert)
-			let alertAction = UIAlertAction(title: "Play Again", style: .Default) { [unowned self] (action) in
+			let alert = UIAlertController(title: gameOverTitle, message: nil, preferredStyle: .alert)
+			let alertAction = UIAlertAction(title: "Play Again", style: .default) { [unowned self] (action) in
 				self.resetBoard()
 			}
 
 			alert.addAction(alertAction)
-			presentViewController(alert, animated: true, completion: nil)
+			present(alert, animated: true)
 
 			return
 		}
@@ -126,34 +138,34 @@ class ViewController: UIViewController {
 	}
 
 	func columnForAIMove() -> Int? {
-		if let aiMove = strategist.bestMoveForPlayer(board.currentPlayer) as? Move {
+		if let aiMove = strategist.bestMove(for: board.currentPlayer) as? Move {
 			return aiMove.column
 		}
 
 		return nil
 	}
 
-	func makeAIMoveInColumn(column: Int) {
-		columnButtons.forEach { $0.enabled = true }
+	func makeAIMove(in column: Int) {
+		columnButtons.forEach { $0.isEnabled = true }
 		navigationItem.leftBarButtonItem = nil
 
-		if let row = board.nextEmptySlotInColumn(column) {
-			board.addChip(board.currentPlayer.chip, inColumn: column)
-			addChipAtColumn(column, row:row, color: board.currentPlayer.color)
+		if let row = board.nextEmptySlot(in: column) {
+			board.add(chip: board.currentPlayer.chip, in: column)
+			addChip(inColumn: column, row:row, color: board.currentPlayer.color)
 
 			continueGame()
 		}
 	}
 
 	func startAIMove() {
-		columnButtons.forEach { $0.enabled = false }
+		columnButtons.forEach { $0.isEnabled = false }
 
-		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 		spinner.startAnimating()
 
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner)
 
-		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { [unowned self] in
+		DispatchQueue.global().async { [unowned self] in
 			let strategistTime = CFAbsoluteTimeGetCurrent()
 			let column = self.columnForAIMove()!
 			let delta = CFAbsoluteTimeGetCurrent() - strategistTime
@@ -161,15 +173,10 @@ class ViewController: UIViewController {
 			let aiTimeCeiling = 1.0
 			let delay = min(aiTimeCeiling - delta, aiTimeCeiling)
 
-			self.runAfterDelay(delay) {
-				self.makeAIMoveInColumn(column)
+			DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+				self.makeAIMove(in: column)
 			}
 		}
-	}
-
-	func runAfterDelay(delay: NSTimeInterval, block: dispatch_block_t) {
-		let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-		dispatch_after(time, dispatch_get_main_queue(), block)
 	}
 }
 

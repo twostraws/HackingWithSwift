@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,39 +15,37 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="psy-is-Wa6">
-                                <rect key="frame" x="44" y="44" width="512" height="512"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8UB-c2-Buy"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjb-IU-SI5">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="512" id="FmR-jS-4Bk"/>
-                                    <constraint firstAttribute="height" constant="512" id="hA7-5r-d5n"/>
+                                    <constraint firstAttribute="width" constant="80" id="3Zj-mc-wlp"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wO1-1P-qDF">
-                                <rect key="frame" x="274" y="562" width="52" height="30"/>
                                 <state key="normal" title="Redraw"/>
                                 <connections>
-                                    <action selector="redrawTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ivP-5q-qlY"/>
+                                    <action selector="redrawTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9U-19-Djc"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="psy-is-Wa6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Par-9A-xqL"/>
-                            <constraint firstItem="wO1-1P-qDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s0M-IF-bC2"/>
-                            <constraint firstItem="wO1-1P-qDF" firstAttribute="top" secondItem="psy-is-Wa6" secondAttribute="bottom" constant="6" id="vJw-76-HTS"/>
-                            <constraint firstItem="psy-is-Wa6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xPN-im-hfl"/>
+                            <constraint firstItem="8UB-c2-Buy" firstAttribute="centerX" secondItem="pjb-IU-SI5" secondAttribute="centerX" id="6tX-XO-sig"/>
+                            <constraint firstItem="8UB-c2-Buy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7RR-zP-FEe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pjb-IU-SI5" secondAttribute="bottom" constant="20" id="F1S-ik-zbT"/>
+                            <constraint firstItem="8UB-c2-Buy" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="GZB-MK-klr"/>
+                            <constraint firstItem="8UB-c2-Buy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="JgQ-BT-bd3"/>
+                            <constraint firstAttribute="trailing" secondItem="8UB-c2-Buy" secondAttribute="trailing" id="qxT-4r-GMb"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="psy-is-Wa6" id="4Ou-76-3m0"/>
+                        <outlet property="imageView" destination="8UB-c2-Buy" id="FOC-OK-6YU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="299" y="387"/>
+            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
 </document>

@@ -2,100 +2,44 @@
 //  ViewController.swift
 //  Project33
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 24/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import CloudKit
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-	static var dirty = true
-
-	var tableView: UITableView!
-
+class ViewController: UITableViewController {
 	var whistles = [Whistle]()
-
-	override func loadView() {
-		super.loadView()
-
-		view.backgroundColor = UIColor.whiteColor()
-
-		tableView = UITableView()
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		tableView.dataSource = self
-		tableView.delegate = self
-		view.addSubview(tableView)
-
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: .AlignAllCenterX, metrics: nil, views: ["tableView": tableView]))
-		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[guide][tableView]|", options: .AlignAllCenterX, metrics: nil, views: ["guide": topLayoutGuide, "tableView": tableView]))
-
-		tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-	}
-
+    static var isDirty = true
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		title = "What's that Whistle?"
-		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .Plain, target: self, action: #selector(selectGenre))
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addWhistle))
-		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .Plain, target: nil, action: nil)
+
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .plain, target: self, action: #selector(selectGenre))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addWhistle))
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 
-	override func viewWillAppear(animated: Bool) {
+	func addWhistle() {
+		let vc = RecordWhistleViewController()
+		navigationController?.pushViewController(vc, animated: true)
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 		if let indexPath = tableView.indexPathForSelectedRow {
-			tableView.deselectRowAtIndexPath(indexPath, animated: true)
+			tableView.deselectRow(at: indexPath, animated: true)
 		}
 
-		if ViewController.dirty {
+		if ViewController.isDirty {
 			loadWhistles()
 		}
-	}
-
-	func makeAttributedString(title title: String, subtitle: String) -> NSAttributedString {
-		let titleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: UIColor.purpleColor()]
-		let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
-
-		let titleString = NSMutableAttributedString(string: "\(title)", attributes: titleAttributes)
-
-		if subtitle.characters.count > 0 {
-			let subtitleString = NSAttributedString(string: "\n\(subtitle)", attributes: subtitleAttributes)
-			titleString.appendAttributedString(subtitleString)
-		}
-
-		return titleString
-	}
-
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
-	}
-
-	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.whistles.count
-	}
-
-	func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-
-	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-
-	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-		cell.accessoryType = .DisclosureIndicator
-		cell.textLabel?.attributedText =  makeAttributedString(title: whistles[indexPath.row].genre, subtitle: whistles[indexPath.row].comments)
-		cell.textLabel?.numberOfLines = 0
-		return cell
-	}
-
-	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		let vc = ResultsViewController()
-		vc.whistle = whistles[indexPath.row]
-		navigationController?.pushViewController(vc, animated: true)
 	}
 
 	func loadWhistles() {
@@ -110,7 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		var newWhistles = [Whistle]()
 
-		operation.recordFetchedBlock = { (record) in
+		operation.recordFetchedBlock = { record in
 			let whistle = Whistle()
 			whistle.recordID = record.recordID
 			whistle.genre = record["genre"] as! String
@@ -119,29 +63,64 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		}
 
 		operation.queryCompletionBlock = { [unowned self] (cursor, error) in
-			dispatch_async(dispatch_get_main_queue()) {
+			DispatchQueue.main.async {
 				if error == nil {
-					ViewController.dirty = false
+					ViewController.isDirty = false
 					self.whistles = newWhistles
 					self.tableView.reloadData()
 				} else {
-					let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .Alert)
-					ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-					self.presentViewController(ac, animated: true, completion: nil)
+					let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of whistles; please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+					ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+					self.present(ac, animated: true)
 				}
 			}
 		}
 
-		CKContainer.defaultContainer().publicCloudDatabase.addOperation(operation)
+		CKContainer.default().publicCloudDatabase.add(operation)
 	}
 
-	func addWhistle() {
-		let vc = RecordWhistleViewController()
+	func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
+		let titleAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline), NSForegroundColorAttributeName: UIColor.purple]
+		let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)]
+
+		let titleString = NSMutableAttributedString(string: "\(title)", attributes: titleAttributes)
+
+		if subtitle.characters.count > 0 {
+			let subtitleString = NSAttributedString(string: "\n\(subtitle)", attributes: subtitleAttributes)
+			titleString.append(subtitleString)
+		}
+
+		return titleString
+	}
+
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		cell.accessoryType = .disclosureIndicator
+		cell.textLabel?.attributedText =  makeAttributedString(title: whistles[indexPath.row].genre, subtitle: whistles[indexPath.row].comments)
+		cell.textLabel?.numberOfLines = 0
+		return cell
+	}
+
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return self.whistles.count
+	}
+
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableViewAutomaticDimension
+	}
+
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableViewAutomaticDimension
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let vc = ResultsViewController()
+		vc.whistle = whistles[indexPath.row]
 		navigationController?.pushViewController(vc, animated: true)
 	}
 
 	func selectGenre() {
-		let vc = RecordWhistleViewController()
+		let vc = MyGenresViewController()
 		navigationController?.pushViewController(vc, animated: true)
 	}
 }

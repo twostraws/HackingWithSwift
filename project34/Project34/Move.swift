@@ -2,8 +2,8 @@
 //  Move.swift
 //  Project34
 //
-//  Created by Hudzilla on 19/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 25/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import GameplayKit

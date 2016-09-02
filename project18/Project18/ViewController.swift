@@ -2,21 +2,28 @@
 //  ViewController.swift
 //  Project18
 //
-//  Created by Hudzilla on 16/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import iAd
 import UIKit
 
-class ViewController: UIViewController, ADBannerViewDelegate {
-	var bannerView: ADBannerView!
-
+class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		print("I'm inside the viewDidLoad() method!")
+		print(1, 2, 3, 4, 5, separator: "-")
+
 		assert(1 == 1, "Maths failure!")
-		assert(1 == 2, "Maths failure!")
+
+		for i in 1 ... 100 {
+			print("Got number \(i)")
+		}
+	}
+
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
 	}
 }
 

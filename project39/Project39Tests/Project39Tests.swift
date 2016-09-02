@@ -2,7 +2,7 @@
 //  Project39Tests.swift
 //  Project39Tests
 //
-//  Created by Hudzilla on 04/03/2016.
+//  Created by TwoStraws on 26/08/2016.
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import XCTest
 @testable import Project39
 
 class Project39Tests: XCTestCase {
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,13 +28,13 @@ class Project39Tests: XCTestCase {
 
 	func testWordCountsAreCorrect() {
 		let playData = PlayData()
-		XCTAssertEqual(playData.wordCounts.countForObject("home"), 174, "Home does not appear 174 times")
-		XCTAssertEqual(playData.wordCounts.countForObject("fun"), 4, "Fun does not appear 174 times")
-		XCTAssertEqual(playData.wordCounts.countForObject("mortal"), 41, "Mortal does not appear 41 times")
+		XCTAssertEqual(playData.wordCounts.count(for: "home"), 174, "Home does not appear 174 times")
+		XCTAssertEqual(playData.wordCounts.count(for: "fun"), 4, "Fun does not appear 174 times")
+		XCTAssertEqual(playData.wordCounts.count(for: "mortal"), 41, "Mortal does not appear 41 times")
 	}
 
 	func testWordsLoadQuickly() {
-		measureBlock {
+		measure {
 			_ = PlayData()
 		}
 	}

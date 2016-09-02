@@ -1,7 +1,7 @@
 # Hacking with Swift
 This is the source code to accompany Hacking with Swift, [a free tutorial series that teaches Swift coding for iOS](https://www.hackingwithswift.com).
 
-All projects should be compatible with Xcode 7.3 and iOS 9. Where appropriate, separate project files have been provided so that you can follow the tutorial from scratch without having to dig around in the completed project folder.
+All projects should be compatible with Xcode 8 and iOS 10. Where appropriate, separate project files have been provided so that you can follow the tutorial from scratch without having to dig around in the completed project folder.
 
 If you have questions, you can find me on Twitter [@twostraws](https://www.twitter.com/twostraws).
 
@@ -10,18 +10,24 @@ If you have questions, you can find me on Twitter [@twostraws](https://www.twitt
 
 - [Buy the Hacking with Swift book and support my work](https://gumroad.com/l/hws-book-pack)
 
-The Hacking with Swift book contains over 1200 pages of tutorials and example code, and makes a great addition to any developer's collection. Thank you to everyone who bought the book – your purchase helps me create more great Swift content in the future!
+The Hacking with Swift book contains over 1300 pages of tutorials and example code, and makes a great addition to any developer's collection. Thank you to everyone who bought the book – your purchase helps me create more great Swift content in the future!
 
 - [Buy the Pro Swift book and video course](https://gumroad.com/l/proswift)
 
-Pro Swift is the sequel to Hacking with Swift, and includes a 250-page guide to helping you write faster, more efficient Swift, accompanied by over 70 videos demonstrating each technique. If you want to dive into functional programming, learn more about MVVM, get to grips with @autoclosure and @noescape, or try your hand at protocol-oriented development, Pro Swift is for you.
+Pro Swift is the sequel to Hacking with Swift, and includes a 250-page guide to helping you write faster, more efficient Swift, accompanied by over 70 videos demonstrating each technique. If you want to dive into functional programming, learn more about MVVM, get to grips with @autoclosure and @escaping, or try your hand at protocol-oriented development, Pro Swift is for you.
+
+- [Buy Practical iOS 10](https://gumroad.com/l/ios10)
+
+Practical iOS 10 delivers seven all-new projects designed to teach you the new features of iOS 10 in depth, including iMessage apps, SiriKit, rich notifications, speech recognition, Core Spotlight app integration, and more.
 
 - [Buy Objective-C for Swift Developers](https://gumroad.com/l/objcswift)
 
 If you're looking to complete your iOS knowledge, Objective-C for Swift Developers is a book that's designed to teach you Objective-C as fast as possible by drawing parallels between it and Swift. It also includes a video walkthrough where I recreate a Hacking with Swift project in Objective-C, so you can see exactly how both languages compare.
 
+- [What's new in Swift 3?](https://www.hackingwithswift.com/swift3)
 - [What's new in Swift 2.2? (includes video)](https://www.hackingwithswift.com/swift2-2)
 - [What's new in Swift 2? (includes video)](https://www.hackingwithswift.com/swift2)
+- [What's new in iOS 10?](https://www.hackingwithswift.com/ios10)
 - [What's new in iOS 9?](https://www.hackingwithswift.com/ios9)
 - [Free Swift example code](https://www.hackingwithswift.com/example-code)
 

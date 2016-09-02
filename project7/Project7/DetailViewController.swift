@@ -2,8 +2,8 @@
 //  DetailViewController.swift
 //  Project7
 //
-//  Created by Hudzilla on 14/09/2015.
-//  Copyright © 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 15/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
@@ -37,4 +37,3 @@ class DetailViewController: UIViewController {
 		}
 	}
 }
-

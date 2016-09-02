@@ -2,8 +2,8 @@
 //  GameScene.swift
 //  Project23
 //
-//  Created by Hudzilla on 16/09/2015.
-//  Copyright (c) 2015 Paul Hudson. All rights reserved.
+//  Created by TwoStraws on 19/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import GameplayKit
@@ -13,10 +13,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var starfield: SKEmitterNode!
 	var player: SKSpriteNode!
 
-	var possibleEnemies = ["ball", "hammer", "tv"]
-	var gameTimer: NSTimer!
-	var gameOver = false
-
 	var scoreLabel: SKLabelNode!
 	var score: Int = 0 {
 		didSet {
@@ -24,8 +20,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 	}
 
-	override func didMoveToView(view: SKView) {
-		backgroundColor = UIColor.blackColor()
+	var possibleEnemies = ["ball", "hammer", "tv"]
+	var gameTimer: Timer!
+	var isGameOver = false
+
+	override func didMove(to view: SKView) {
+		backgroundColor = UIColor.black
 
 		starfield = SKEmitterNode(fileNamed: "Starfield")!
 		starfield.position = CGPoint(x: 1024, y: 384)
@@ -41,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
 		scoreLabel.position = CGPoint(x: 16, y: 16)
-		scoreLabel.horizontalAlignmentMode = .Left
+		scoreLabel.horizontalAlignmentMode = .left
 		addChild(scoreLabel)
 
 		score = 0
@@ -49,28 +49,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		physicsWorld.gravity = CGVector(dx: 0, dy: 0)
 		physicsWorld.contactDelegate = self
 
-		gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
-	}
-
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-
-    }
-   
-	override func update(currentTime: CFTimeInterval) {
-		for node in children {
-			if node.position.x < -300 {
-				node.removeFromParent()
-			}
-		}
-
-		if !gameOver {
-			score += 1
-		}
+		gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
 	}
 
 	func createEnemy() {
-		possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(possibleEnemies) as! [String]
+		possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleEnemies) as! [String]
 		let randomDistribution = GKRandomDistribution(lowestValue: 50, highestValue: 736)
 
 		let sprite = SKSpriteNode(imageNamed: possibleEnemies[0])
@@ -85,9 +68,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		sprite.physicsBody?.angularDamping = 0
 	}
 
-	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+	override func update(_ currentTime: TimeInterval) {
+		for node in children {
+			if node.position.x < -300 {
+				node.removeFromParent()
+			}
+		}
+
+		if !isGameOver {
+			score += 1
+		}
+	}
+
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 		guard let touch = touches.first else { return }
-		var location = touch.locationInNode(self)
+		var location = touch.location(in: self)
 
 		if location.y < 100 {
 			location.y = 100
@@ -98,13 +93,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		player.position = location
 	}
 
-	func didBeginContact(contact: SKPhysicsContact) {
+	func didBegin(_ contact: SKPhysicsContact) {
 		let explosion = SKEmitterNode(fileNamed: "explosion")!
 		explosion.position = player.position
 		addChild(explosion)
 
 		player.removeFromParent()
 
-		gameOver = true
+		isGameOver = true
 	}
 }

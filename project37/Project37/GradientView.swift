@@ -2,21 +2,21 @@
 //  GradientView.swift
 //  Project37
 //
-//  Created by Hudzilla on 06/01/2016.
+//  Created by TwoStraws on 25/08/2016.
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable class GradientView: UIView {
-	@IBInspectable var topColor: UIColor = UIColor.whiteColor()
-	@IBInspectable var bottomColor: UIColor = UIColor.blackColor()
+	@IBInspectable var topColor: UIColor = UIColor.white
+	@IBInspectable var bottomColor: UIColor = UIColor.black
 
-	override class func layerClass() -> AnyClass {
+	override class var layerClass: AnyClass {
 		return CAGradientLayer.self
 	}
 
 	override func layoutSubviews() {
-		(layer as! CAGradientLayer).colors = [topColor.CGColor, bottomColor.CGColor]
+		(layer as! CAGradientLayer).colors = [topColor.cgColor, bottomColor.cgColor]
 	}
 }
