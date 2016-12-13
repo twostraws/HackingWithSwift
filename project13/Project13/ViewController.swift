@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		// Dispose of any resources that can be recreated.
 	}
 
-	@IBAction func changeFilter(_ sender: AnyObject) {
+	@IBAction func changeFilter(_ sender: Any) {
 		let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
 		ac.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
@@ -45,11 +45,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		present(ac, animated: true)
 	}
 
-	@IBAction func save(_ sender: AnyObject) {
+	@IBAction func save(_ sender: Any) {
 		UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
 	}
 
-	@IBAction func intensityChanged(_ sender: AnyObject) {
+	@IBAction func intensityChanged(_ sender: Any) {
 		applyProcessing()
 	}
 
@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	}
 
 
-	func setFilter(action: UIAlertAction!) {
+	func setFilter(action: UIAlertAction) {
 		guard currentImage != nil else { return }
 
 		currentFilter = CIFilter(name: action.title!)

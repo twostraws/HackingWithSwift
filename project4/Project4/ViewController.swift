@@ -54,7 +54,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
 		present(ac, animated: true)
 	}
 
-	func openPage(action: UIAlertAction!) {
+	func openPage(action: UIAlertAction) {
 		let url = URL(string: "https://" + action.title!)!
 		webView.load(URLRequest(url: url))
 	}

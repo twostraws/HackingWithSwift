@@ -87,12 +87,12 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		present(ac, animated: true)
 	}
 
-	func startHosting(action: UIAlertAction!) {
+	func startHosting(action: UIAlertAction) {
 		mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "hws-project25", discoveryInfo: nil, session: mcSession)
 		mcAdvertiserAssistant.start()
 	}
 
-	func joinSession(action: UIAlertAction!) {
+	func joinSession(action: UIAlertAction) {
 		let mcBrowser = MCBrowserViewController(serviceType: "hws-project25", session: mcSession)
 		mcBrowser.delegate = self
 		present(mcBrowser, animated: true)

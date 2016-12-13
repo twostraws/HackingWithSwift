@@ -118,7 +118,7 @@ class ViewController: UIViewController {
 		activatedButtons.removeAll()
 	}
 
-	func levelUp(action: UIAlertAction!) {
+	func levelUp(action: UIAlertAction) {
 		level += 1
 		solutions.removeAll(keepingCapacity: true)
 

@@ -268,6 +268,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			return
 		}
 
+        guard contact.bodyA.node != nil && contact.bodyB.node != nil else {
+            return
+        }
+
 		if contact.bodyA.node == player || contact.bodyB.node == player {
 			if let explosion = SKEmitterNode(fileNamed: "PlayerExplosion") {
 				explosion.position = player.position
