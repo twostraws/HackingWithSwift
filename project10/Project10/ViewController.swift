@@ -57,7 +57,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		let imageName = UUID().uuidString
 		let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
 
-		if let jpegData = UIImageJPEGRepresentation(image, 80) {
+		if let jpegData = UIImageJPEGRepresentation(image, 0.8) {
 			try? jpegData.write(to: imagePath)
 		}
 
