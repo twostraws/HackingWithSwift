@@ -39,6 +39,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		cell.imageView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor
 		cell.imageView.layer.borderWidth = 2
 		cell.imageView.layer.cornerRadius = 3
+		cell.imageView.layer.masksToBounds = true
 		cell.layer.cornerRadius = 7
 
 		return cell
