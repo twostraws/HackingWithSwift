@@ -148,7 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		lastTouchPosition = nil
 	}
 
-	override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
+	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 		lastTouchPosition = nil
 	}
 

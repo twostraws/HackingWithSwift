@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 		let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
-		if notification.name == NSNotification.Name.UIKeyboardWillHide {
+		if notification.name == Notification.Name.UIKeyboardWillHide {
 			secret.contentInset = UIEdgeInsets.zero
 		} else {
 			secret.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
