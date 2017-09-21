@@ -41,11 +41,11 @@ class CardViewController: UIViewController {
 		perform(#selector(wiggle), with: nil, afterDelay: 1)
 	}
 
-	func cardTapped() {
+	@objc func cardTapped() {
 		delegate.cardTapped(self)
 	}
 
-	func wasntTapped() {
+	@objc func wasntTapped() {
 		UIView.animate(withDuration: 0.7) {
 			self.view.transform = CGAffineTransform(scaleX: 0.00001, y: 0.00001)
 			self.view.alpha = 0
@@ -59,7 +59,7 @@ class CardViewController: UIViewController {
 		})
 	}
 
-	func wiggle() {
+	@objc func wiggle() {
 		if GKRandomSource.sharedRandom().nextInt(upperBound: 4) == 1 {
 			UIView.animate(withDuration: 0.2, delay: 0, options: .allowUserInteraction, animations: {
 				self.back.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)

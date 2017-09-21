@@ -15,6 +15,7 @@ class ViewController: UITableViewController {
 		super.viewDidLoad()
 
 		title = "Storm Viewer"
+        navigationController?.navigationBar.prefersLargeTitles = true
 
 		let fm = FileManager.default
 		let path = Bundle.main.resourcePath!
@@ -48,4 +49,8 @@ class ViewController: UITableViewController {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return true
+    }
 }

@@ -10,16 +10,16 @@ import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet weak var cluesLabel: UILabel!
-	@IBOutlet weak var answersLabel: UILabel!
-	@IBOutlet weak var currentAnswer: UITextField!
-	@IBOutlet weak var scoreLabel: UILabel!
+	@IBOutlet var cluesLabel: UILabel!
+	@IBOutlet var answersLabel: UILabel!
+	@IBOutlet var currentAnswer: UITextField!
+	@IBOutlet var scoreLabel: UILabel!
 
 	var letterButtons = [UIButton]()
 	var activatedButtons = [UIButton]()
 	var solutions = [String]()
 
-	var score: Int = 0 {
+	var score = 0 {
 		didSet {
 			scoreLabel.text = "Score: \(score)"
 		}
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 		loadLevel()
 	}
 
-	func letterTapped(btn: UIButton) {
+	@objc func letterTapped(btn: UIButton) {
 		currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
 		activatedButtons.append(btn)
 		btn.isHidden = true
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
 					clueString += "\(index + 1). \(clue)\n"
 
 					let solutionWord = answer.replacingOccurrences(of: "|", with: "")
-					solutionString += "\(solutionWord.characters.count) letters\n"
+					solutionString += "\(solutionWord.count) letters\n"
 					solutions.append(solutionWord)
 
 					let bits = answer.components(separatedBy: "|")
@@ -93,9 +93,9 @@ class ViewController: UIViewController {
 		if let solutionPosition = solutions.index(of: currentAnswer.text!) {
 			activatedButtons.removeAll()
 
-			var splitClues = answersLabel.text!.components(separatedBy: "\n")
-			splitClues[solutionPosition] = currentAnswer.text!
-			answersLabel.text = splitClues.joined(separator: "\n")
+			var splitAnswers = answersLabel.text!.components(separatedBy: "\n")
+			splitAnswers[solutionPosition] = currentAnswer.text!
+			answersLabel.text = splitAnswers.joined(separator: "\n")
 
 			currentAnswer.text = ""
 			score += 1

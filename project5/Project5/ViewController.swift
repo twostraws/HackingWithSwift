@@ -46,7 +46,7 @@ class ViewController: UITableViewController {
 		tableView.reloadData()
 	}
 
-	func promptForAnswer() {
+	@objc func promptForAnswer() {
 		let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: .alert)
 		ac.addTextField()
 

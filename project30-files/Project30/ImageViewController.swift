@@ -31,8 +31,8 @@ class ImageViewController: UIViewController {
 		// make the image view fill the screen
 		imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 		imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-		imageView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
-		imageView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+		imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+		imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
 		// schedule an animation that does something vaguely interesting
 		animTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in

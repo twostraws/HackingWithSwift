@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet var imageView: UIImageView!
 
 	var currentDrawType = 0
 
@@ -166,7 +166,7 @@ class ViewController: UIViewController {
 			paragraphStyle.alignment = .center
 
 			// 3
-			let attrs = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSParagraphStyleAttributeName: paragraphStyle]
+			let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSAttributedStringKey.paragraphStyle: paragraphStyle]
 
 			// 4
 			let string = "The best-laid schemes o'\nmice an' men gang aft agley"

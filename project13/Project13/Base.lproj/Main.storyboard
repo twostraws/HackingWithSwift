@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f6U-lS-1gO">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f6U-lS-1gO">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,17 +16,16 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project13" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G25-NO-Y52">
+                                <rect key="frame" x="0.0" y="64" width="375" height="470"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="icN-68-0cf"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="icN-68-0cf">
+                                        <rect key="frame" x="10" y="10" width="355" height="450"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -34,6 +36,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intensity:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R60-cW-b0b">
+                                <rect key="frame" x="16" y="563.5" width="72" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="BIP-uu-VN9"/>
                                 </constraints>
@@ -42,11 +45,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="w7V-Uj-DDf">
+                                <rect key="frame" x="96" y="558" width="262" height="31"/>
                                 <connections>
                                     <action selector="intensityChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="cHF-35-5hc"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-qb-Lrg">
+                                <rect key="frame" x="16" y="605" width="120" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="be0-yb-opr"/>
                                     <constraint firstAttribute="height" constant="44" id="zZ1-i3-Krf"/>
@@ -57,6 +62,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CA-6r-bDR">
+                                <rect key="frame" x="300" y="605" width="60" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="dnh-82-0jE"/>
                                 </constraints>
@@ -68,22 +74,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="G25-NO-Y52" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4oH-Qy-5m3"/>
-                            <constraint firstAttribute="trailing" secondItem="G25-NO-Y52" secondAttribute="trailing" id="Ade-iJ-iMf"/>
+                            <constraint firstItem="G25-NO-Y52" firstAttribute="leading" secondItem="ZQn-YT-yHj" secondAttribute="leading" id="4oH-Qy-5m3"/>
+                            <constraint firstItem="ZQn-YT-yHj" firstAttribute="trailing" secondItem="G25-NO-Y52" secondAttribute="trailing" id="Ade-iJ-iMf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w7V-Uj-DDf" secondAttribute="trailing" constant="3" id="FOz-i1-cYQ"/>
                             <constraint firstItem="R60-cW-b0b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="I7S-en-hfF"/>
                             <constraint firstItem="6CA-6r-bDR" firstAttribute="baseline" secondItem="XLQ-qb-Lrg" secondAttribute="firstBaseline" id="K2B-fc-hMn"/>
                             <constraint firstItem="R60-cW-b0b" firstAttribute="leading" secondItem="XLQ-qb-Lrg" secondAttribute="leading" id="KeG-ET-dX9"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XLQ-qb-Lrg" secondAttribute="bottom" constant="18" id="RoM-1q-Ptj"/>
+                            <constraint firstItem="ZQn-YT-yHj" firstAttribute="bottom" secondItem="XLQ-qb-Lrg" secondAttribute="bottom" constant="18" id="RoM-1q-Ptj"/>
                             <constraint firstItem="R60-cW-b0b" firstAttribute="centerY" secondItem="w7V-Uj-DDf" secondAttribute="centerY" id="W5P-nl-hvP"/>
                             <constraint firstItem="w7V-Uj-DDf" firstAttribute="top" secondItem="G25-NO-Y52" secondAttribute="bottom" constant="24" id="ZiT-ET-ELe"/>
-                            <constraint firstItem="G25-NO-Y52" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="abm-QD-0xJ"/>
+                            <constraint firstItem="G25-NO-Y52" firstAttribute="top" secondItem="ZQn-YT-yHj" secondAttribute="top" id="abm-QD-0xJ"/>
                             <constraint firstItem="w7V-Uj-DDf" firstAttribute="leading" secondItem="R60-cW-b0b" secondAttribute="trailing" constant="10" id="cb3-L7-bdq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6CA-6r-bDR" secondAttribute="trailing" constant="-1" id="ege-i4-Gkm"/>
                             <constraint firstItem="XLQ-qb-Lrg" firstAttribute="top" secondItem="6CA-6r-bDR" secondAttribute="top" id="fAT-Bi-eaj"/>
                             <constraint firstItem="XLQ-qb-Lrg" firstAttribute="top" secondItem="w7V-Uj-DDf" secondAttribute="bottom" constant="17" id="gyB-1x-TH5"/>
                             <constraint firstItem="XLQ-qb-Lrg" firstAttribute="baseline" secondItem="6CA-6r-bDR" secondAttribute="firstBaseline" id="zEV-LM-wKV"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZQn-YT-yHj"/>
                     </view>
                     <navigationItem key="navigationItem" id="OMA-kX-FDf"/>
                     <connections>
@@ -101,7 +108,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f6U-lS-1gO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nmw-0Q-VJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

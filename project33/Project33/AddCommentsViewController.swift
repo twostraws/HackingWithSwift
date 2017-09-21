@@ -25,8 +25,8 @@ class AddCommentsViewController: UIViewController, UITextViewDelegate {
 
 		comments.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 		comments.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-		comments.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
-		comments.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+		comments.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+		comments.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 	}
 
 	override func viewDidLoad() {
@@ -37,7 +37,7 @@ class AddCommentsViewController: UIViewController, UITextViewDelegate {
 		comments.text = placeholder
 	}
 
-	func submitTapped() {
+	@objc func submitTapped() {
 		let vc = SubmitViewController()
 		vc.genre = genre
 

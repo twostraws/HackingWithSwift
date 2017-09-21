@@ -44,7 +44,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		return cell
 	}
 
-	func addNewPerson() {
+	@objc func addNewPerson() {
 		let picker = UIImagePickerController()
 		picker.allowsEditing = true
 		picker.delegate = self

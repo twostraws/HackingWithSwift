@@ -21,7 +21,7 @@ myInt
 //}
 
 // THIS EXTENDS ALL INTEGER TYPES
-extension Integer {
+extension BinaryInteger {
 	func squared() -> Self {
 		return self * self
 	}

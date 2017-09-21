@@ -91,7 +91,7 @@ class SubmitViewController: UIViewController {
 		}
 	}
 
-	func doneTapped() {
+	@objc func doneTapped() {
 		_ = navigationController?.popToRootViewController(animated: true)
 	}
 }

@@ -14,7 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var player: SKSpriteNode!
 
 	var scoreLabel: SKLabelNode!
-	var score: Int = 0 {
+	var score = 0 {
 		didSet {
 			scoreLabel.text = "Score: \(score)"
 		}
@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		player = SKSpriteNode(imageNamed: "player")
 		player.position = CGPoint(x: 100, y: 384)
 		player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
-		player.physicsBody!.contactTestBitMask = 1
+		player.physicsBody?.contactTestBitMask = 1
 		addChild(player)
 
 		scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
@@ -52,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
 	}
 
-	func createEnemy() {
+	@objc func createEnemy() {
 		possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleEnemies) as! [String]
 		let randomDistribution = GKRandomDistribution(lowestValue: 50, highestValue: 736)
 

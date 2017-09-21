@@ -12,8 +12,8 @@ import UIKit
 import WatchConnectivity
 
 class ViewController: UIViewController, WCSessionDelegate {
-	@IBOutlet weak var cardContainer: UIView!
-	@IBOutlet weak var gradientView: GradientView!
+	@IBOutlet var cardContainer: UIView!
+	@IBOutlet var gradientView: GradientView!
 	var allCards = [CardViewController]()
 
 	var music: AVAudioPlayer!
@@ -34,7 +34,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 		playMusic()
 
 		if (WCSession.isSupported()) {
-			let session = WCSession.default()
+			let session = WCSession.default
 			session.delegate = self
 			session.activate()
 		}
@@ -49,7 +49,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 		present(ac, animated: true)
 	}
 
-	func loadCards() {
+	@objc func loadCards() {
 		for card in allCards {
 			card.view.removeFromSuperview()
 			card.removeFromParentViewController()
@@ -135,7 +135,7 @@ class ViewController: UIViewController, WCSessionDelegate {
 		cell.lifetime = 5.0
 		cell.velocity = 100
 		cell.velocityRange = 50
-		cell.emissionLongitude = CGFloat(M_PI)
+		cell.emissionLongitude = .pi
 		cell.spinRange = 5
 		cell.scale = 0.5
 		cell.scaleRange = 0.25
@@ -188,10 +188,10 @@ class ViewController: UIViewController, WCSessionDelegate {
 		}
 
 		// send a message to the watch if it's reachable
-		if (WCSession.default().isReachable) {
+		if (WCSession.default.isReachable) {
 			// this is a meaningless message, but it's enough for our purposes
 			let message = ["Message": "Hello"]
-			WCSession.default().sendMessage(message, replyHandler: nil)
+			WCSession.default.sendMessage(message, replyHandler: nil)
 		}
 
 		// update our rate limiting property

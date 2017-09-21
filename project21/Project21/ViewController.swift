@@ -24,7 +24,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func registerLocal() {
+	@objc func registerLocal() {
 		let center = UNUserNotificationCenter.current()
 
 		center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
@@ -36,7 +36,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 		}
 	}
 
-	func scheduleLocal() {
+	@objc func scheduleLocal() {
 		registerCategories()
 
 		let center = UNUserNotificationCenter.current()
@@ -84,7 +84,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
 			case "show":
 				print("Show more information…")
-				break
 
 			default:
 				break

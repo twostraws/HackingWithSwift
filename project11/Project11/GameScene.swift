@@ -12,7 +12,7 @@ import SpriteKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
 	var scoreLabel: SKLabelNode!
 
-	var score: Int = 0 {
+	var score = 0 {
 		didSet {
 			scoreLabel.text = "Score: \(score)"
 		}
@@ -78,14 +78,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 					box.position = location
 
 					box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
-					box.physicsBody!.isDynamic = false
+					box.physicsBody?.isDynamic = false
 
 					addChild(box)
 				} else {
 					let ball = SKSpriteNode(imageNamed: "ballRed")
 					ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
 					ball.physicsBody!.contactTestBitMask = ball.physicsBody!.collisionBitMask
-					ball.physicsBody!.restitution = 0.4
+					ball.physicsBody?.restitution = 0.4
 					ball.position = location
 					ball.name = "ball"
 					addChild(ball)
@@ -98,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		let bouncer = SKSpriteNode(imageNamed: "bouncer")
 		bouncer.position = position
 		bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
-		bouncer.physicsBody!.isDynamic = false
+		bouncer.physicsBody?.isDynamic = false
 		addChild(bouncer)
 	}
 
@@ -120,12 +120,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		slotGlow.position = position
 
 		slotBase.physicsBody = SKPhysicsBody(rectangleOf: slotBase.size)
-		slotBase.physicsBody!.isDynamic = false
+		slotBase.physicsBody?.isDynamic = false
 
 		addChild(slotBase)
 		addChild(slotGlow)
 
-		let spin = SKAction.rotate(byAngle: CGFloat.pi, duration: 10)
+		let spin = SKAction.rotate(byAngle: .pi, duration: 10)
 		let spinForever = SKAction.repeatForever(spin)
 		slotGlow.run(spinForever)
 	}
@@ -155,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		if nodeA.name == "ball" {
 			collisionBetween(ball: nodeA, object: nodeB)
-		} else if contact.bodyB.node?.name == "ball" {
+		} else if nodeB.name == "ball" {
 			collisionBetween(ball: nodeB, object: nodeA)
 		}
 	}

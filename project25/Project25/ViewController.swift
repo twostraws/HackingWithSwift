@@ -48,7 +48,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		return cell
 	}
 
-	func importPicture() {
+	@objc func importPicture() {
 		let picker = UIImagePickerController()
 		picker.allowsEditing = true
 		picker.delegate = self
@@ -79,7 +79,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		}
 	}
 
-	func showConnectionPrompt() {
+	@objc func showConnectionPrompt() {
 		let ac = UIAlertController(title: "Connect to others", message: nil, preferredStyle: .actionSheet)
 		ac.addAction(UIAlertAction(title: "Host a session", style: .default, handler: startHosting))
 		ac.addAction(UIAlertAction(title: "Join a session", style: .default, handler: joinSession))
@@ -106,7 +106,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 
 	}
 
-	func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL, withError error: Error?) {
+	func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
 
 	}
 

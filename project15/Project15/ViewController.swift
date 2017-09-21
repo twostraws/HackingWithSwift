@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet weak var tap: UIButton!
+	@IBOutlet var tap: UIButton!
 
 	var imageView: UIImageView!
 	var currentAnimation = 0

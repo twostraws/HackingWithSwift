@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SJH-IK-gK3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SJH-IK-gK3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +15,12 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project2" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDN-Lv-9Lg">
+                                <rect key="frame" x="87.5" y="100" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KDN-Lv-9Lg" secondAttribute="height" multiplier="2:1" id="NZd-jC-plC"/>
                                 </constraints>
@@ -29,6 +30,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ad5-ft-jdL">
+                                <rect key="frame" x="87.5" y="230" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ad5-ft-jdL" secondAttribute="height" multiplier="2:1" id="lTg-dI-fJQ"/>
                                 </constraints>
@@ -38,6 +40,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9A-sJ-FIC">
+                                <rect key="frame" x="87.5" y="360" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="G9A-sJ-FIC" secondAttribute="height" multiplier="2:1" id="RC1-Qk-7kz"/>
                                 </constraints>
@@ -50,15 +53,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="G9A-sJ-FIC" firstAttribute="height" secondItem="KDN-Lv-9Lg" secondAttribute="height" id="93O-eE-hea"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="G9A-sJ-FIC" secondAttribute="bottom" constant="20" id="Lzx-CA-rSb"/>
-                            <constraint firstItem="KDN-Lv-9Lg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="Qgp-ln-Krq"/>
+                            <constraint firstItem="kCX-jc-5nn" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="G9A-sJ-FIC" secondAttribute="bottom" constant="20" id="Lzx-CA-rSb"/>
+                            <constraint firstItem="KDN-Lv-9Lg" firstAttribute="top" secondItem="kCX-jc-5nn" secondAttribute="top" constant="36" id="Qgp-ln-Krq"/>
                             <constraint firstItem="ad5-ft-jdL" firstAttribute="height" secondItem="KDN-Lv-9Lg" secondAttribute="height" id="TR0-Nz-W4S"/>
-                            <constraint firstItem="G9A-sJ-FIC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UB5-Qx-Z1E"/>
-                            <constraint firstItem="ad5-ft-jdL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UIn-wq-eQY"/>
+                            <constraint firstItem="G9A-sJ-FIC" firstAttribute="centerX" secondItem="kCX-jc-5nn" secondAttribute="centerX" id="UB5-Qx-Z1E"/>
+                            <constraint firstItem="ad5-ft-jdL" firstAttribute="centerX" secondItem="kCX-jc-5nn" secondAttribute="centerX" id="UIn-wq-eQY"/>
                             <constraint firstItem="ad5-ft-jdL" firstAttribute="top" secondItem="KDN-Lv-9Lg" secondAttribute="bottom" constant="30" id="XeY-ms-QKH"/>
                             <constraint firstItem="G9A-sJ-FIC" firstAttribute="top" secondItem="ad5-ft-jdL" secondAttribute="bottom" constant="30" id="g4a-LT-tyM"/>
-                            <constraint firstItem="KDN-Lv-9Lg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kqZ-c7-ff4"/>
+                            <constraint firstItem="KDN-Lv-9Lg" firstAttribute="centerX" secondItem="kCX-jc-5nn" secondAttribute="centerX" id="kqZ-c7-ff4"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="kCX-jc-5nn"/>
                     </view>
                     <navigationItem key="navigationItem" id="cMU-OS-DtR"/>
                     <connections>
@@ -77,7 +81,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SJH-IK-gK3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x4g-h4-yEh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

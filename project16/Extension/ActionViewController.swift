@@ -10,7 +10,7 @@ import UIKit
 import MobileCoreServices
 
 class ActionViewController: UIViewController {
-	@IBOutlet weak var script: UITextView!
+	@IBOutlet var script: UITextView!
 
 	var pageTitle = ""
 	var pageURL = ""
@@ -56,7 +56,7 @@ class ActionViewController: UIViewController {
 		extensionContext!.completeRequest(returningItems: [item])
 	}
 
-	func adjustForKeyboard(notification: Notification) {
+	@objc func adjustForKeyboard(notification: Notification) {
 		let userInfo = notification.userInfo!
 
 		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue

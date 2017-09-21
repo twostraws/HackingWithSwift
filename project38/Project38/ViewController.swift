@@ -43,11 +43,11 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
 		}
 	}
 
-	func fetchCommits() {
+	@objc func fetchCommits() {
 		let newestCommitDate = getNewestCommitDate()
 
-		if let data = try? Data(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100&since=\(newestCommitDate)")!) {
-			let jsonCommits = JSON(data: data)
+		if let data = try? String(contentsOf: URL(string: "https://api.github.com/repos/apple/swift/commits?per_page=100&since=\(newestCommitDate)")!) {
+			let jsonCommits = JSON(parseJSON: data)
 			let jsonCommitArray = jsonCommits.arrayValue
 
 			print("Received \(jsonCommitArray.count) new commits.")
@@ -174,7 +174,7 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
 		}
 	}
 
-	func changeFilter() {
+	@objc func changeFilter() {
 		let ac = UIAlertController(title: "Filter commits…", message: nil, preferredStyle: .actionSheet)
 
 		// 1

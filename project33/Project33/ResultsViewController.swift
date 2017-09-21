@@ -70,7 +70,7 @@ class ResultsViewController: UITableViewController {
 			// the user's comments about this whistle
 			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
 
-			if whistle.comments.characters.count == 0 {
+			if whistle.comments.count == 0 {
 				cell.textLabel?.text = "Comments: None"
 			} else {
 				cell.textLabel?.text = whistle.comments
@@ -108,7 +108,7 @@ class ResultsViewController: UITableViewController {
 
 		ac.addAction(UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] action in
 			if let textField = ac.textFields?[0] {
-				if textField.text!.characters.count > 0 {
+				if textField.text!.count > 0 {
 					self.add(suggestion: textField.text!)
 				}
 			}
@@ -151,7 +151,7 @@ class ResultsViewController: UITableViewController {
 		}
 	}
 
-	func downloadTapped() {
+	@objc func downloadTapped() {
 		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 		spinner.tintColor = UIColor.black
 		spinner.startAnimating()
@@ -178,7 +178,7 @@ class ResultsViewController: UITableViewController {
 		}
 	}
 
-	func listenTapped() {
+	@objc func listenTapped() {
 		do {
 			whistlePlayer = try AVAudioPlayer(contentsOf: whistle.audio)
 			whistlePlayer.play()

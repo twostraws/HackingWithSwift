@@ -23,8 +23,8 @@ class ViewController: UITableViewController {
 		}
 
 		if let url = URL(string: urlString) {
-			if let data = try? Data(contentsOf: url) {
-				let json = JSON(data: data)
+			if let data = try? String(contentsOf: url) {
+				let json = JSON(parseJSON: data)
 
 				if json["metadata"]["responseInfo"]["status"].intValue == 200 {
 					parse(json: json)

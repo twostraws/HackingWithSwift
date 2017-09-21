@@ -167,11 +167,11 @@ class ViewController: UIViewController {
 
 		DispatchQueue.global().async { [unowned self] in
 			let strategistTime = CFAbsoluteTimeGetCurrent()
-			let column = self.columnForAIMove()!
+			guard let column = self.columnForAIMove() else { return }
 			let delta = CFAbsoluteTimeGetCurrent() - strategistTime
 
 			let aiTimeCeiling = 1.0
-			let delay = min(aiTimeCeiling - delta, aiTimeCeiling)
+			let delay = aiTimeCeiling - delta
 
 			DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
 				self.makeAIMove(in: column)

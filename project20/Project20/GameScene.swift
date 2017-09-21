@@ -17,7 +17,7 @@ class GameScene: SKScene {
 	let bottomEdge = -22
 	let rightEdge = 1024 + 22
 
-	var score: Int = 0 {
+	var score = 0 {
 		didSet {
 			// your code here
 		}
@@ -40,6 +40,7 @@ class GameScene: SKScene {
 
 		// 2
 		let firework = SKSpriteNode(imageNamed: "rocket")
+        firework.colorBlendFactor = 1
 		firework.name = "firework"
 		node.addChild(firework)
 
@@ -47,15 +48,12 @@ class GameScene: SKScene {
 		switch GKRandomSource.sharedRandom().nextInt(upperBound: 3) {
 		case 0:
 			firework.color = .cyan
-			firework.colorBlendFactor = 1
 
 		case 1:
 			firework.color = .green
-			firework.colorBlendFactor = 1
 
 		case 2:
 			firework.color = .red
-			firework.colorBlendFactor = 1
 
 		default:
 			break
@@ -80,7 +78,7 @@ class GameScene: SKScene {
 		addChild(node)
 	}
 
-	func launchFireworks() {
+	@objc func launchFireworks() {
 		let movementAmount: CGFloat = 1800
 
 		switch GKRandomSource.sharedRandom().nextInt(upperBound: 4) {

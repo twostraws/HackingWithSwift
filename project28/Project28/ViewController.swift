@@ -10,7 +10,7 @@ import LocalAuthentication
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet weak var secret: UITextView!
+	@IBOutlet var secret: UITextView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func adjustForKeyboard(notification: Notification) {
+	@objc func adjustForKeyboard(notification: Notification) {
 		let userInfo = notification.userInfo!
 
 		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -60,14 +60,14 @@ class ViewController: UIViewController {
 					if success {
 						self.unlockSecretMessage()
 					} else {
-						let ac = UIAlertController(title: "Authentication failed", message: "Your fingerprint could not be verified; please try again.", preferredStyle: .alert)
+						let ac = UIAlertController(title: "Authentication failed", message: "You could not be verified; please try again.", preferredStyle: .alert)
 						ac.addAction(UIAlertAction(title: "OK", style: .default))
 						self.present(ac, animated: true)
 					}
 				}
 			}
 		} else {
-			let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .alert)
+			let ac = UIAlertController(title: "Biometry unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
 			ac.addAction(UIAlertAction(title: "OK", style: .default))
 			self.present(ac, animated: true)
 		}
@@ -77,14 +77,14 @@ class ViewController: UIViewController {
 		secret.isHidden = false
 		title = "Secret stuff!"
 
-		if let text = KeychainWrapper.standardKeychainAccess().string(forKey: "SecretMessage") {
+		if let text = KeychainWrapper.standard.string(forKey: "SecretMessage") {
 			secret.text = text
 		}
 	}
 
-	func saveSecretMessage() {
+	@objc func saveSecretMessage() {
 		if !secret.isHidden {
-			KeychainWrapper.standardKeychainAccess().setString(secret.text, forKey: "SecretMessage")
+			KeychainWrapper.standard.set(secret.text, forKey: "SecretMessage")
 			secret.resignFirstResponder()
 			secret.isHidden = true
 			title = "Nothing to see here"

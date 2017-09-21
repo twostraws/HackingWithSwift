@@ -17,7 +17,7 @@ class ViewController: UITableViewController {
 		performSelector(inBackground: #selector(fetchJSON), with: nil)
 	}
 
-	func fetchJSON() {
+	@objc func fetchJSON() {
 		let urlString: String
 
 		if navigationController?.tabBarItem.tag == 0 {
@@ -27,8 +27,8 @@ class ViewController: UITableViewController {
 		}
 
 		if let url = URL(string: urlString) {
-			if let data = try? Data(contentsOf: url) {
-				let json = JSON(data: data)
+			if let data = try? String(contentsOf: url) {
+				let json = JSON(parseJSON: data)
 
 				if json["metadata"]["responseInfo"]["status"].intValue == 200 {
 					self.parse(json: json)
@@ -73,7 +73,7 @@ class ViewController: UITableViewController {
 		navigationController?.pushViewController(vc, animated: true)
 	}
 
-	func showError() {
+	@objc func showError() {
 		let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: "OK", style: .default))
 		present(ac, animated: true)

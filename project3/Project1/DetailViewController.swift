@@ -6,17 +6,17 @@
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import Social
 import UIKit
 
 class DetailViewController: UIViewController {
-	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet var imageView: UIImageView!
 	var selectedImage: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		title = selectedImage
+        navigationItem.largeTitleDisplayMode = .never
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
 
 		if let imageToLoad = selectedImage {
@@ -24,33 +24,23 @@ class DetailViewController: UIViewController {
 		}
     }
 
-	func shareTapped() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
+    }
+
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return navigationController!.hidesBarsOnTap
+    }
+
+	@objc func shareTapped() {
 		let vc = UIActivityViewController(activityItems: [imageView.image!], applicationActivities: [])
 		vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
 		present(vc, animated: true)
-
-		//if let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook) {
-		//	vc.setInitialText("Look at this great picture!")
-		//	vc.add(imageView.image!)
-		//	vc.add(URL(string: "http://www.photolib.noaa.gov/nssl"))
-		//	present(vc, animated: true)
-		//}
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

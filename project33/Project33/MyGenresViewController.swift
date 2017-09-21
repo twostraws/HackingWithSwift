@@ -69,7 +69,7 @@ class MyGenresViewController: UITableViewController {
 		tableView.deselectRow(at: indexPath, animated: false)
 	}
 
-	func saveTapped() {
+	@objc func saveTapped() {
 		let defaults = UserDefaults.standard
 		defaults.set(myGenres, forKey: "myGenres")
 

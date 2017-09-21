@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fqr-Pz-03F">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fqr-Pz-03F">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,27 +13,25 @@
         <scene sceneID="7MM-of-jgj">
             <objects>
                 <viewController title="Image" id="ObA-dk-sSI" customClass="ActionViewController" customModule="Extension" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
-                        <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YwC-mc-kSO">
+                                <rect key="frame" x="0.0" y="64" width="320" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YwC-mc-kSO" secondAttribute="trailing" id="HLz-Os-WZA"/>
-                            <constraint firstItem="YwC-mc-kSO" firstAttribute="bottom" secondItem="n38-gi-rB5" secondAttribute="top" id="Hji-Qo-uxJ"/>
-                            <constraint firstItem="YwC-mc-kSO" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="OAC-ji-iD7"/>
-                            <constraint firstItem="YwC-mc-kSO" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" id="X9m-qT-edP"/>
+                            <constraint firstItem="V6X-3s-YwE" firstAttribute="trailing" secondItem="YwC-mc-kSO" secondAttribute="trailing" id="HLz-Os-WZA"/>
+                            <constraint firstItem="YwC-mc-kSO" firstAttribute="bottom" secondItem="V6X-3s-YwE" secondAttribute="bottom" id="Hji-Qo-uxJ"/>
+                            <constraint firstItem="YwC-mc-kSO" firstAttribute="leading" secondItem="V6X-3s-YwE" secondAttribute="leading" id="OAC-ji-iD7"/>
+                            <constraint firstItem="YwC-mc-kSO" firstAttribute="top" secondItem="V6X-3s-YwE" secondAttribute="top" id="X9m-qT-edP"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="V6X-3s-YwE"/>
                     </view>
                     <navigationItem key="navigationItem" id="lC6-bz-7tG"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -50,7 +51,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-Pz-03F" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xjg-Aj-H8L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

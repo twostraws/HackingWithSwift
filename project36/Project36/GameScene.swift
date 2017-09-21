@@ -105,7 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		bottomSky.anchorPoint = CGPoint(x: 0.5, y: 1)
 
 		topSky.position = CGPoint(x: frame.midX, y: frame.height)
-		bottomSky.position = CGPoint(x: frame.midX, y: bottomSky.frame.height / 2)
+		bottomSky.position = CGPoint(x: frame.midX, y: bottomSky.frame.height)
 
 		addChild(topSky)
 		addChild(bottomSky)
@@ -159,8 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		scoreLabel = SKLabelNode(fontNamed: "Optima-ExtraBlack")
 		scoreLabel.fontSize = 24
 
-		scoreLabel.position = CGPoint(x: frame.maxX - 20, y: frame.maxY - 40)
-		scoreLabel.horizontalAlignmentMode = .right
+		scoreLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 60)
 		scoreLabel.text = "SCORE: 0"
 		scoreLabel.fontColor = UIColor.black
 
@@ -185,7 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		let topRock = SKSpriteNode(texture: rockTexture)
 		topRock.physicsBody = SKPhysicsBody(texture: rockTexture, size: rockTexture.size())
 		topRock.physicsBody?.isDynamic = false
-		topRock.zRotation = CGFloat(M_PI)
+		topRock.zRotation = .pi
 		topRock.xScale = -1.0
 
 		let bottomRock = SKSpriteNode(texture: rockTexture)
@@ -210,7 +209,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		let xPosition = frame.width + topRock.frame.width
 
 		let max = Int(frame.height / 3)
-		let rand = GKRandomDistribution(lowestValue: -100, highestValue: max)
+		let rand = GKRandomDistribution(lowestValue: -50, highestValue: max)
 		let yPosition = CGFloat(rand.nextInt())
 
 		// this next value affects the width of the gap between rocks

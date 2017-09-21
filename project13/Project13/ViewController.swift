@@ -10,8 +10,8 @@ import CoreImage
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-	@IBOutlet weak var imageView: UIImageView!
-	@IBOutlet weak var intensity: UISlider!
+	@IBOutlet var imageView: UIImageView!
+	@IBOutlet var intensity: UISlider!
 	var currentImage: UIImage!
 
 	var context: CIContext!
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		applyProcessing()
 	}
 
-	func importPicture() {
+	@objc func importPicture() {
 		let picker = UIImagePickerController()
 		picker.allowsEditing = true
 		picker.delegate = self
@@ -99,7 +99,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		applyProcessing()
 	}
 
-	func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+	@objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
 		if let error = error {
 			let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
 			ac.addAction(UIAlertAction(title: "OK", style: .default))

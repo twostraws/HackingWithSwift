@@ -19,7 +19,7 @@ enum SequenceType: Int {
 
 class GameScene: SKScene {
 	var gameScore: SKLabelNode!
-	var score: Int = 0 {
+	var score = 0 {
 		didSet {
 			gameScore.text = "Score: \(score)"
 		}
@@ -161,7 +161,7 @@ class GameScene: SKScene {
 				node.name = ""
 
 				// 3
-				node.physicsBody!.isDynamic = false
+				node.physicsBody?.isDynamic = false
 
 				// 4
 				let scaleOut = SKAction.scale(to: 0.001, duration:0.2)
@@ -188,7 +188,7 @@ class GameScene: SKScene {
 				addChild(emitter)
 
 				node.name = ""
-				node.parent!.physicsBody!.isDynamic = false
+				node.parent?.physicsBody?.isDynamic = false
 
 				let scaleOut = SKAction.scale(to: 0.001, duration:0.2)
 				let fadeOut = SKAction.fadeOut(withDuration: 0.2)
@@ -196,7 +196,7 @@ class GameScene: SKScene {
 
 				let seq = SKAction.sequence([group, SKAction.removeFromParent()])
 
-				node.parent!.run(seq)
+				node.parent?.run(seq)
 
 				let index = activeEnemies.index(of: node.parent as! SKSpriteNode)!
 				activeEnemies.remove(at: index)
@@ -324,9 +324,9 @@ class GameScene: SKScene {
 
 		// 5
 		enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
-		enemy.physicsBody!.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
-		enemy.physicsBody!.angularVelocity = randomAngularVelocity
-		enemy.physicsBody!.collisionBitMask = 0
+		enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+		enemy.physicsBody?.angularVelocity = randomAngularVelocity
+		enemy.physicsBody?.collisionBitMask = 0
 
 		addChild(enemy)
 		activeEnemies.append(enemy)

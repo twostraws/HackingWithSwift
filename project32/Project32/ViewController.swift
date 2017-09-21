@@ -60,17 +60,9 @@ class ViewController: UITableViewController {
 		return cell
 	}
 
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-
-	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-
 	func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
-		let titleAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline), NSForegroundColorAttributeName: UIColor.purple]
-		let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .subheadline)]
+		let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedStringKey.foregroundColor: UIColor.purple]
+		let subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline)]
 
 		let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
 		let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
@@ -82,7 +74,10 @@ class ViewController: UITableViewController {
 
 	func showTutorial(_ which: Int) {
 		if let url = URL(string: "https://www.hackingwithswift.com/read/\(which + 1)") {
-			let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+
+			let vc = SFSafariViewController(url: url, configuration: config)
 			present(vc, animated: true)
 		}
 	}

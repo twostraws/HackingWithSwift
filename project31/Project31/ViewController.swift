@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
-	@IBOutlet weak var addressBar: UITextField!
-	@IBOutlet weak var stackView: UIStackView!
+	@IBOutlet var addressBar: UITextField!
+	@IBOutlet var stackView: UIStackView!
 
 	weak var activeWebView: UIWebView?
 
@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
 		title = "Multibrowser"
 	}
 
-	func addWebView() {
+	@objc func addWebView() {
 		let webView = UIWebView()
 		webView.delegate = self
 
@@ -45,7 +45,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
 		webView.addGestureRecognizer(recognizer)
 	}
 
-	func deleteWebView() {
+	@objc func deleteWebView() {
 		// safely unwrap our webview
 		if let webView = activeWebView {
 			if let index = stackView.arrangedSubviews.index(of: webView) {
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UITextFieldDelegate, 
 		updateUI(for: webView)
 	}
 
-	func webViewTapped(_ recognizer: UITapGestureRecognizer) {
+	@objc func webViewTapped(_ recognizer: UITapGestureRecognizer) {
 		if let selectedWebView = recognizer.view as? UIWebView {
 			selectWebView(selectedWebView)
 		}

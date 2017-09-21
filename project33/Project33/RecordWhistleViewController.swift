@@ -154,12 +154,12 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		}
 	}
 
-	func nextTapped() {
+	@objc func nextTapped() {
 		let vc = SelectGenreViewController()
 		navigationController?.pushViewController(vc, animated: true)
 	}
 
-	func recordTapped() {
+	@objc func recordTapped() {
 		if whistleRecorder == nil {
 			startRecording()
 
@@ -180,7 +180,7 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		}
 	}
 
-	func playTapped() {
+	@objc func playTapped() {
 		let audioURL = RecordWhistleViewController.getWhistleURL()
 
 		do {

@@ -10,9 +10,9 @@ import GameplayKit
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet weak var button1: UIButton!
-	@IBOutlet weak var button2: UIButton!
-	@IBOutlet weak var button3: UIButton!
+	@IBOutlet var button1: UIButton!
+	@IBOutlet var button2: UIButton!
+	@IBOutlet var button3: UIButton!
 
 	var countries = [String]()
 	var correctAnswer = 0

@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isGameOver = false
 	var scoreLabel: SKLabelNode!
 
-	var score: Int = 0 {
+	var score = 0 {
 		didSet {
 			scoreLabel.text = "Score: \(score)"
 		}
@@ -61,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				let lines = levelString.components(separatedBy: "\n")
 
 				for (row, line) in lines.reversed().enumerated() {
-					for (column, letter) in line.characters.enumerated() {
+					for (column, letter) in line.enumerated() {
 						let position = CGPoint(x: (64 * column) + 32, y: (64 * row) + 32)
 
 						if letter == "x" {
@@ -70,8 +70,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 							node.position = position
 
 							node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-							node.physicsBody!.categoryBitMask = CollisionTypes.wall.rawValue
-							node.physicsBody!.isDynamic = false
+							node.physicsBody?.categoryBitMask = CollisionTypes.wall.rawValue
+							node.physicsBody?.isDynamic = false
 							addChild(node)
 						} else if letter == "v"  {
 							// load vortex
@@ -80,22 +80,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 							node.position = position
 							node.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi, duration: 1)))
 							node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-							node.physicsBody!.isDynamic = false
+							node.physicsBody?.isDynamic = false
 
-							node.physicsBody!.categoryBitMask = CollisionTypes.vortex.rawValue
-							node.physicsBody!.contactTestBitMask = CollisionTypes.player.rawValue
-							node.physicsBody!.collisionBitMask = 0
+							node.physicsBody?.categoryBitMask = CollisionTypes.vortex.rawValue
+							node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+							node.physicsBody?.collisionBitMask = 0
 							addChild(node)
 						} else if letter == "s"  {
 							// load star
 							let node = SKSpriteNode(imageNamed: "star")
 							node.name = "star"
 							node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-							node.physicsBody!.isDynamic = false
+							node.physicsBody?.isDynamic = false
 
-							node.physicsBody!.categoryBitMask = CollisionTypes.star.rawValue
-							node.physicsBody!.contactTestBitMask = CollisionTypes.player.rawValue
-							node.physicsBody!.collisionBitMask = 0
+							node.physicsBody?.categoryBitMask = CollisionTypes.star.rawValue
+							node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+							node.physicsBody?.collisionBitMask = 0
 							node.position = position
 							addChild(node)
 						} else if letter == "f"  {
@@ -103,11 +103,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 							let node = SKSpriteNode(imageNamed: "finish")
 							node.name = "finish"
 							node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-							node.physicsBody!.isDynamic = false
+							node.physicsBody?.isDynamic = false
 
-							node.physicsBody!.categoryBitMask = CollisionTypes.finish.rawValue
-							node.physicsBody!.contactTestBitMask = CollisionTypes.player.rawValue
-							node.physicsBody!.collisionBitMask = 0
+							node.physicsBody?.categoryBitMask = CollisionTypes.finish.rawValue
+							node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+							node.physicsBody?.collisionBitMask = 0
 							node.position = position
 							addChild(node)
 						}
@@ -121,12 +121,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		player = SKSpriteNode(imageNamed: "player")
 		player.position = CGPoint(x: 96, y: 672)
 		player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width / 2)
-		player.physicsBody!.allowsRotation = false
-		player.physicsBody!.linearDamping = 0.5
+		player.physicsBody?.allowsRotation = false
+		player.physicsBody?.linearDamping = 0.5
 
-		player.physicsBody!.categoryBitMask = CollisionTypes.player.rawValue
-		player.physicsBody!.contactTestBitMask = CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue
-		player.physicsBody!.collisionBitMask = CollisionTypes.wall.rawValue
+		player.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
+		player.physicsBody?.contactTestBitMask = CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue
+		player.physicsBody?.collisionBitMask = CollisionTypes.wall.rawValue
 		addChild(player)
 	}
 
@@ -176,7 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	func playerCollided(with node: SKNode) {
 		if node.name == "vortex" {
-			player.physicsBody!.isDynamic = false
+			player.physicsBody?.isDynamic = false
 			isGameOver = true
 			score -= 1
 

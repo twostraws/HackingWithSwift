@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="U9B-vl-jGd">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U9B-vl-jGd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,15 +14,12 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project31" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCV-n0-onT">
+                                <rect key="frame" x="5" y="69" width="365" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -26,19 +27,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="eZ7-rO-3Zg"/>
                                 </connections>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GKF-Ao-LWn"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GKF-Ao-LWn">
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GKF-Ao-LWn" secondAttribute="bottom" id="0Ub-tn-p7k"/>
+                            <constraint firstItem="ouQ-fm-Rui" firstAttribute="bottom" secondItem="GKF-Ao-LWn" secondAttribute="bottom" id="0Ub-tn-p7k"/>
                             <constraint firstItem="GKF-Ao-LWn" firstAttribute="top" secondItem="cCV-n0-onT" secondAttribute="bottom" constant="5" id="1VK-2m-Tyb"/>
                             <constraint firstItem="GKF-Ao-LWn" firstAttribute="top" secondItem="cCV-n0-onT" secondAttribute="bottom" constant="5" id="8Ic-tf-FM2"/>
-                            <constraint firstAttribute="trailing" secondItem="GKF-Ao-LWn" secondAttribute="trailing" id="BVS-3H-kGK"/>
-                            <constraint firstItem="cCV-n0-onT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="H6h-Eu-UXd"/>
-                            <constraint firstItem="GKF-Ao-LWn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Iv0-c0-dLO"/>
-                            <constraint firstAttribute="trailing" secondItem="cCV-n0-onT" secondAttribute="trailing" constant="5" id="LCT-fG-gvg"/>
-                            <constraint firstItem="cCV-n0-onT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="pHQ-Mw-cEt"/>
+                            <constraint firstItem="ouQ-fm-Rui" firstAttribute="trailing" secondItem="GKF-Ao-LWn" secondAttribute="trailing" id="BVS-3H-kGK"/>
+                            <constraint firstItem="cCV-n0-onT" firstAttribute="leading" secondItem="ouQ-fm-Rui" secondAttribute="leading" constant="5" id="H6h-Eu-UXd"/>
+                            <constraint firstItem="GKF-Ao-LWn" firstAttribute="leading" secondItem="ouQ-fm-Rui" secondAttribute="leading" id="Iv0-c0-dLO"/>
+                            <constraint firstItem="ouQ-fm-Rui" firstAttribute="trailing" secondItem="cCV-n0-onT" secondAttribute="trailing" constant="5" id="LCT-fG-gvg"/>
+                            <constraint firstItem="cCV-n0-onT" firstAttribute="top" secondItem="ouQ-fm-Rui" secondAttribute="top" constant="5" id="pHQ-Mw-cEt"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ouQ-fm-Rui"/>
                     </view>
                     <navigationItem key="navigationItem" id="Nlt-zG-l2o"/>
                     <connections>
@@ -56,7 +60,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U9B-vl-jGd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qXM-2V-vOk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -66,9 +66,9 @@ class ViewController: UIViewController {
 		}
 	}
 
-	override var prefersStatusBarHidden: Bool {
-		return true
-	}
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()

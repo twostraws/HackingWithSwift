@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-	@IBOutlet weak var detailLabel: UILabel!
+	@IBOutlet var detailLabel: UILabel!
 	var detailItem: Commit?
 
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-	func showAuthorCommits() {
+	@objc func showAuthorCommits() {
 		// this is your homework!
 	}
 }

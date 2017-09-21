@@ -36,7 +36,7 @@ class ViewController: UITableViewController {
 		return cell
 	}
 
-	func searchTapped() {
+	@objc func searchTapped() {
 		let ac = UIAlertController(title: "Filter…", message: nil, preferredStyle: .alert)
 		ac.addTextField()
 
