@@ -35,6 +35,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSFaceIDUsageDescription</key>
-	<string>Permit to use Face ID</string>
+	<string>Identify yourself!</string>
 </dict>
 </plist>
