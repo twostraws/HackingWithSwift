@@ -14,16 +14,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	@IBOutlet var intensity: UISlider!
 	var currentImage: UIImage!
 
-	var context: CIContext!
 	var currentFilter: CIFilter!
+    let context = CIContext()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		title = "YACIFP"
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
-
-		context = CIContext()
 		currentFilter = CIFilter(name: "CISepiaTone")
 	}
 
@@ -80,9 +78,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey) }
 		if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey) }
 		if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2), forKey: kCIInputCenterKey) }
-
-        if let ciimage = currentFilter.outputImage {
-            let processedImage = UIImage(ciImage: ciimage)
+        
+        if let cgimg = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
+            let processedImage = UIImage(cgImage: cgimg)
             self.imageView.image = processedImage
         }
 	}
