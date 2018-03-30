@@ -67,9 +67,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		let url = navigationAction.request.url
 
-		if let host = url!.host {
+		if let host = url?.host {
 			for website in websites {
-				if host.range(of: website) != nil {
+				if host.contains(website) {
 					decisionHandler(.allow)
 					return
 				}

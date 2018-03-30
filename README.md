@@ -24,6 +24,7 @@ Practical iOS 11 delivers seven all-new projects designed to teach you the new f
 
 Swift Coding Challenges is an all-new book written from the ground up to put your Swift 4 skills to the test. I've written a variety of coding challenges that start off simple but slowly get harder, and it's down to you to solve them. I outline each problem, provide you with sample input and output, add in some hints in case you hit problems, then provide a sample solution and explain how it works.
 
+- [What's new in Swift 4.1?](https://www.hackingwithswift.com/articles/50/whats-new-in-swift-4-1)
 - [What's new in Swift 4?](https://www.hackingwithswift.com/swift4)
 - [What's new in Swift 3?](https://www.hackingwithswift.com/swift3)
 - [What's new in iOS 11?](https://www.hackingwithswift.com/whats-new-in-ios-11)
