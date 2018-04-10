@@ -85,7 +85,7 @@ class ViewController: UITableViewController {
 
 		let titleString = NSMutableAttributedString(string: "\(title)", attributes: titleAttributes)
 
-		if subtitle.characters.count > 0 {
+		if subtitle.count > 0 {
 			let subtitleString = NSAttributedString(string: "\n\(subtitle)", attributes: subtitleAttributes)
 			titleString.append(subtitleString)
 		}
