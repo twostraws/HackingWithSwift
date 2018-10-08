@@ -18,15 +18,21 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
 		let fm = FileManager.default
-		let path = Bundle.main.resourcePath!
-		let items = try! fm.contentsOfDirectory(atPath: path)
-
-		for item in items {
-			if item.hasPrefix("nssl") {
-				pictures.append(item)
-			}
-		}
-	}
+        
+        guard let resourcePath = Bundle.main.resourcePath else { return }
+    
+        do {
+            let items = try fm.contentsOfDirectory(atPath: resourcePath)
+            for item in items {
+                if item.hasPrefix("nssl") {
+                    pictures.append(item)
+                }
+            }
+        } catch  {
+            print("\(error.localizedDescription)")
+        }
+        
+    }
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return pictures.count
@@ -43,11 +49,6 @@ class ViewController: UITableViewController {
 			vc.selectedImage = pictures[indexPath.row]
 			navigationController?.pushViewController(vc, animated: true)
 		}
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 
     override func prefersHomeIndicatorAutoHidden() -> Bool {
