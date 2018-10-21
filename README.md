@@ -36,3 +36,5 @@ I've also written some other free tutorials you might enjoy:
 
 - [Hacking with PHP is a free tutorial series that teaches PHP, MySQL and more](http://www.hackingwithphp.com)
 - [Hacking with React is a free tutorial series that teaches React, React Router, ES6, Jest and more](http://www.hackingwithreact.com)
+
+My Changes
