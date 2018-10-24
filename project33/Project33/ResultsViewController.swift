@@ -24,7 +24,7 @@ class ResultsViewController: UITableViewController {
 
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
-		let reference = CKReference(recordID: whistle.recordID, action: .deleteSelf)
+        let reference = CKRecord.Reference(recordID: whistle.recordID, action: .deleteSelf)
 		let pred = NSPredicate(format: "owningWhistle == %@", reference)
 		let sort = NSSortDescriptor(key: "creationDate", ascending: true)
 		let query = CKQuery(recordType: "Suggestions", predicate: pred)
@@ -68,7 +68,7 @@ class ResultsViewController: UITableViewController {
 
 		if indexPath.section == 0 {
 			// the user's comments about this whistle
-			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
+			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 
 			if whistle.comments.count == 0 {
 				cell.textLabel?.text = "Comments: None"
@@ -76,7 +76,7 @@ class ResultsViewController: UITableViewController {
 				cell.textLabel?.text = whistle.comments
 			}
 		} else {
-			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+			cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .body)
 
 			if indexPath.row == suggestions.count {
 				// this is our extra row
@@ -91,11 +91,11 @@ class ResultsViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
+		return UITableView.automaticDimension
 	}
 
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
+		return UITableView.automaticDimension
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -120,7 +120,7 @@ class ResultsViewController: UITableViewController {
 
 	func add(suggestion: String) {
 		let whistleRecord = CKRecord(recordType: "Suggestions")
-		let reference = CKReference(recordID: whistle.recordID, action: .deleteSelf)
+        let reference = CKRecord.Reference(recordID: whistle.recordID, action: .deleteSelf)
 		whistleRecord["text"] = suggestion as CKRecordValue
 		whistleRecord["owningWhistle"] = reference as CKRecordValue
 
@@ -152,7 +152,7 @@ class ResultsViewController: UITableViewController {
 	}
 
 	@objc func downloadTapped() {
-		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+		let spinner = UIActivityIndicatorView(style: .gray)
 		spinner.tintColor = UIColor.black
 		spinner.startAnimating()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)

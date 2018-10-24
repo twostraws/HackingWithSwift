@@ -20,14 +20,14 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
     var whistlePlayer: AVAudioPlayer!
 
 	override func loadView() {
-		super.loadView()
+        view = UIView()
 
 		view.backgroundColor = UIColor.gray
 
 		stackView = UIStackView()
 		stackView.spacing = 30
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.distribution = UIStackViewDistribution.fillEqually
+        stackView.distribution = UIStackView.Distribution.fillEqually
 		stackView.alignment = .center
 		stackView.axis = .vertical
 		view.addSubview(stackView)
@@ -46,7 +46,7 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		recordingSession = AVAudioSession.sharedInstance()
 
 		do {
-			try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
 			try recordingSession.setActive(true)
 			recordingSession.requestRecordPermission() { [unowned self] allowed in
 				DispatchQueue.main.async {
@@ -66,7 +66,7 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		recordButton = UIButton()
 		recordButton.translatesAutoresizingMaskIntoConstraints = false
 		recordButton.setTitle("Tap to Record", for: .normal)
-		recordButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
+		recordButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 		recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
 		stackView.addArrangedSubview(recordButton)
 
@@ -75,14 +75,14 @@ class RecordWhistleViewController: UIViewController, AVAudioRecorderDelegate {
 		playButton.setTitle("Tap to Play", for: .normal)
 		playButton.isHidden = true
 		playButton.alpha = 0
-		playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
+		playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 		playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
 		stackView.addArrangedSubview(playButton)
 	}
 
 	func loadFailUI() {
 		let failLabel = UILabel()
-		failLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+		failLabel.font = UIFont.preferredFont(forTextStyle: .headline)
 		failLabel.text = "Recording failed: please ensure the app has access to your microphone."
 		failLabel.numberOfLines = 0
 

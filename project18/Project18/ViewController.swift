@@ -21,9 +21,5 @@ class ViewController: UIViewController {
 			print("Got number \(i)")
 		}
 	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-	}
 }
 

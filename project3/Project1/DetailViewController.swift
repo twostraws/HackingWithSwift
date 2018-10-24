@@ -12,6 +12,10 @@ class DetailViewController: UIViewController {
 	@IBOutlet var imageView: UIImageView!
 	var selectedImage: String?
 
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return navigationController?.hidesBarsOnTap ?? false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,10 +36,6 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
-    }
-
-    override func prefersHomeIndicatorAutoHidden() -> Bool {
-        return navigationController!.hidesBarsOnTap
     }
 
 	@objc func shareTapped() {

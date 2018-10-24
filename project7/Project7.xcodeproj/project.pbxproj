@@ -12,8 +12,9 @@
 		51903F331D61DEA70067473C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51903F311D61DEA70067473C /* Main.storyboard */; };
 		51903F351D61DEA70067473C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51903F341D61DEA70067473C /* Assets.xcassets */; };
 		51903F381D61DEA70067473C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51903F361D61DEA70067473C /* LaunchScreen.storyboard */; };
-		51903F401D61EB5E0067473C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51903F3F1D61EB5E0067473C /* SwiftyJSON.swift */; };
 		51903F421D61F6240067473C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51903F411D61F6240067473C /* DetailViewController.swift */; };
+		51B1B295217F57A400B9A75F /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B1B294217F57A400B9A75F /* Petitions.swift */; };
+		51B1B297217F57A900B9A75F /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B1B296217F57A900B9A75F /* Petition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +25,9 @@
 		51903F341D61DEA70067473C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51903F371D61DEA70067473C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51903F391D61DEA70067473C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51903F3F1D61EB5E0067473C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		51903F411D61F6240067473C /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		51B1B294217F57A400B9A75F /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		51B1B296217F57A900B9A75F /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +63,12 @@
 				51903F2D1D61DEA70067473C /* AppDelegate.swift */,
 				51903F2F1D61DEA70067473C /* ViewController.swift */,
 				51903F411D61F6240067473C /* DetailViewController.swift */,
-				51903F3F1D61EB5E0067473C /* SwiftyJSON.swift */,
 				51903F311D61DEA70067473C /* Main.storyboard */,
 				51903F341D61DEA70067473C /* Assets.xcassets */,
 				51903F361D61DEA70067473C /* LaunchScreen.storyboard */,
 				51903F391D61DEA70067473C /* Info.plist */,
+				51B1B294217F57A400B9A75F /* Petitions.swift */,
+				51B1B296217F57A900B9A75F /* Petition.swift */,
 			);
 			path = Project7;
 			sourceTree = "<group>";
@@ -144,10 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51903F401D61EB5E0067473C /* SwiftyJSON.swift in Sources */,
 				51903F301D61DEA70067473C /* ViewController.swift in Sources */,
 				51903F2E1D61DEA70067473C /* AppDelegate.swift in Sources */,
 				51903F421D61F6240067473C /* DetailViewController.swift in Sources */,
+				51B1B295217F57A400B9A75F /* Petitions.swift in Sources */,
+				51B1B297217F57A900B9A75F /* Petition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +226,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -274,7 +278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -292,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -306,7 +310,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

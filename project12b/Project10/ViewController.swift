@@ -29,11 +29,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		}
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return people.count
 	}
@@ -63,10 +58,10 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		present(picker, animated: true)
 	}
 
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		var newImage: UIImage
 
-		if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+		if let possibleImage = info[.editedImage] as? UIImage {
 			newImage = possibleImage
 		} else {
 			return
@@ -75,7 +70,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		let imageName = UUID().uuidString
 		let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
 
-		if let jpegData = UIImageJPEGRepresentation(newImage, 80) {
+        if let jpegData = newImage.jpegData(compressionQuality: 0.8) {
 			try? jpegData.write(to: imagePath)
 		}
 

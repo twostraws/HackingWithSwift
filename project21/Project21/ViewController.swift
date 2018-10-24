@@ -19,11 +19,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocal))
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	@objc func registerLocal() {
 		let center = UNUserNotificationCenter.current()
 
@@ -49,7 +44,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 		content.body = "The early bird catches the worm, but the second mouse gets the cheese."
 		content.categoryIdentifier = "alarm"
 		content.userInfo = ["customData": "fizzbuzz"]
-		content.sound = UNNotificationSound.default()
+		content.sound = UNNotificationSound.default
 
 		var dateComponents = DateComponents()
 		dateComponents.hour = 10

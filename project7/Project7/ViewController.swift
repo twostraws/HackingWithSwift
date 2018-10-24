@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UITableViewController {
-	var petitions = [[String: String]]()
+	var petitions = [Petition]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,31 +22,24 @@ class ViewController: UITableViewController {
 			urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
 		}
 
-		if let url = URL(string: urlString) {
-			if let data = try? String(contentsOf: url) {
-				let json = JSON(parseJSON: data)
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
+                return
+            }
+        }
 
-				if json["metadata"]["responseInfo"]["status"].intValue == 200 {
-					parse(json: json)
-					return
-				}
-			}
-		}
-
-		showError()
+        showError()
 	}
 
-	func parse(json: JSON) {
-		for result in json["results"].arrayValue {
-			let title = result["title"].stringValue
-			let body = result["body"].stringValue
-			let sigs = result["signatureCount"].stringValue
-			let obj = ["title": title, "body": body, "sigs": sigs]
-			petitions.append(obj)
-		}
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
 
-		tableView.reloadData()
-	}
+        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
+            petitions = jsonPetitions.results
+            tableView.reloadData()
+        }
+    }
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return petitions.count
@@ -56,8 +49,8 @@ class ViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
 		let petition = petitions[indexPath.row]
-		cell.textLabel?.text = petition["title"]
-		cell.detailTextLabel?.text = petition["body"]
+        cell.textLabel?.text = petition.title
+        cell.detailTextLabel?.text = petition.body
 
 		return cell
 	}
@@ -72,11 +65,6 @@ class ViewController: UITableViewController {
 		let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: "OK", style: .default))
 		present(ac, animated: true)
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 }
 

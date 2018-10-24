@@ -15,12 +15,13 @@ class AddCommentsViewController: UIViewController, UITextViewDelegate {
 	let placeholder = "If you have any additional comments that might help identify your tune, enter them here."
 
 	override func loadView() {
-		super.loadView()
+		view = UIView()
+        view.backgroundColor = .white
 
 		comments = UITextView()
 		comments.translatesAutoresizingMaskIntoConstraints = false
 		comments.delegate = self
-		comments.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		comments.font = UIFont.preferredFont(forTextStyle: .body)
 		view.addSubview(comments)
 
 		comments.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

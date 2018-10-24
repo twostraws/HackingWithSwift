@@ -24,11 +24,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
 		 mapView.addAnnotations([london, oslo, paris, rome, washington])
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		// 1
 		let identifier = "Capital"

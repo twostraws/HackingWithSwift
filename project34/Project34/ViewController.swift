@@ -52,11 +52,6 @@ class ViewController: UIViewController {
 		}
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	@IBAction func makeMove(_ sender: UIButton) {
 		let column = sender.tag
 
@@ -160,7 +155,7 @@ class ViewController: UIViewController {
 	func startAIMove() {
 		columnButtons.forEach { $0.isEnabled = false }
 
-		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+		let spinner = UIActivityIndicatorView(style: .gray)
 		spinner.startAnimating()
 
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner)

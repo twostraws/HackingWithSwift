@@ -42,7 +42,6 @@
 		51AE38291D652D0E00A73A03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AE38271D652D0E00A73A03 /* Main.storyboard */; };
 		51AE382B1D652D0F00A73A03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51AE382A1D652D0F00A73A03 /* Assets.xcassets */; };
 		51AE382E1D652D0F00A73A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AE382C1D652D0F00A73A03 /* LaunchScreen.storyboard */; };
-		51B433DA1D65C1080051003B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B433D91D65C1080051003B /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,7 +82,6 @@
 		51AE382A1D652D0F00A73A03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51AE382D1D652D0F00A73A03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51AE382F1D652D0F00A73A03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51B433D91D65C1080051003B /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +153,6 @@
 				51AE381F1D652D0E00A73A03 /* GameScene.sks */,
 				51AE38231D652D0E00A73A03 /* GameScene.swift */,
 				51AE38251D652D0E00A73A03 /* GameViewController.swift */,
-				51B433D91D65C1080051003B /* Helper.swift */,
 				51AE38271D652D0E00A73A03 /* Main.storyboard */,
 				51AE382A1D652D0F00A73A03 /* Assets.xcassets */,
 				51AE382C1D652D0F00A73A03 /* LaunchScreen.storyboard */,
@@ -271,7 +268,6 @@
 				51AE38241D652D0E00A73A03 /* GameScene.swift in Sources */,
 				51AE38261D652D0E00A73A03 /* GameViewController.swift in Sources */,
 				51AE381E1D652D0E00A73A03 /* AppDelegate.swift in Sources */,
-				51B433DA1D65C1080051003B /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -399,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -418,7 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -432,7 +428,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

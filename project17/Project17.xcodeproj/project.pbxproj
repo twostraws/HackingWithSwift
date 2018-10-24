@@ -36,7 +36,6 @@
 		515538A01D66155200CFEBA7 /* swoosh3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5155388A1D66155200CFEBA7 /* swoosh3.caf */; };
 		515538A11D66155200CFEBA7 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5155388B1D66155200CFEBA7 /* whack.caf */; };
 		515538A21D66155200CFEBA7 /* wrong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5155388C1D66155200CFEBA7 /* wrong.caf */; };
-		515538A41D66155500CFEBA7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515538A31D66155500CFEBA7 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +70,6 @@
 		5155388A1D66155200CFEBA7 /* swoosh3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = swoosh3.caf; sourceTree = "<group>"; };
 		5155388B1D66155200CFEBA7 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
 		5155388C1D66155200CFEBA7 /* wrong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wrong.caf; sourceTree = "<group>"; };
-		515538A31D66155500CFEBA7 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +110,6 @@
 				5155386B1D6610D300CFEBA7 /* Assets.xcassets */,
 				5155386D1D6610D300CFEBA7 /* LaunchScreen.storyboard */,
 				515538701D6610D300CFEBA7 /* Info.plist */,
-				515538A31D66155500CFEBA7 /* Helper.swift */,
 				515538761D66155200CFEBA7 /* Content */,
 			);
 			path = Project17;
@@ -247,7 +244,6 @@
 				515538651D6610D300CFEBA7 /* GameScene.swift in Sources */,
 				515538671D6610D300CFEBA7 /* GameViewController.swift in Sources */,
 				5155385F1D6610D200CFEBA7 /* AppDelegate.swift in Sources */,
-				515538A41D66155500CFEBA7 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -375,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -394,7 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -408,7 +404,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project17;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

@@ -29,11 +29,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		mcSession.delegate = self
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return images.count
 	}
@@ -55,8 +50,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		present(picker, animated: true)
 	}
 
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		guard let image = info[.editedImage] as? UIImage else { return }
 
 		dismiss(animated: true)
 
@@ -66,7 +61,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		// 1
 		if mcSession.connectedPeers.count > 0 {
 			// 2
-			if let imageData = UIImagePNGRepresentation(image) {
+			if let imageData = image.pngData() {
 				// 3
 				do {
 					try mcSession.send(imageData, toPeers: mcSession.connectedPeers, with: .reliable)
@@ -142,7 +137,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 
 	func sendImage(img: UIImage) {
 		if mcSession.connectedPeers.count > 0 {
-			if let imageData = UIImagePNGRepresentation(img) {
+			if let imageData = img.pngData() {
 				do {
 					try mcSession.send(imageData, toPeers: mcSession.connectedPeers, with: .reliable)
 				} catch let error as NSError {

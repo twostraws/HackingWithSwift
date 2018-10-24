@@ -6,7 +6,6 @@
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -72,9 +71,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 				editingMode = !editingMode
 			} else {
 				if editingMode {
-					let size = CGSize(width: GKRandomDistribution(lowestValue: 16, highestValue: 128).nextInt(), height: 16)
-					let box = SKSpriteNode(color: RandomColor(), size: size)
-					box.zRotation = RandomCGFloat(min: 0, max: 3)
+                    let size = CGSize(width: Int.random(in: 16...128), height: 16)
+                    let box = SKSpriteNode(color: UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1), size: size)
+                    box.zRotation = CGFloat.random(in: 0...3)
 					box.position = location
 
 					box.physicsBody = SKPhysicsBody(rectangleOf: box.size)

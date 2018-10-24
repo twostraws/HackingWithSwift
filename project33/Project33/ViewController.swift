@@ -57,8 +57,8 @@ class ViewController: UITableViewController {
 		operation.recordFetchedBlock = { record in
 			let whistle = Whistle()
 			whistle.recordID = record.recordID
-			whistle.genre = record["genre"] as! String
-			whistle.comments = record["comments"] as! String
+			whistle.genre = record["genre"]
+			whistle.comments = record["comments"]
 			newWhistles.append(whistle)
 		}
 
@@ -80,8 +80,8 @@ class ViewController: UITableViewController {
 	}
 
 	func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
-		let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline), NSAttributedStringKey.foregroundColor: UIColor.purple]
-		let subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)]
+        let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+		let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
 
 		let titleString = NSMutableAttributedString(string: "\(title)", attributes: titleAttributes)
 
@@ -103,14 +103,6 @@ class ViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.whistles.count
-	}
-
-	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
-	}
-
-	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

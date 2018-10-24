@@ -8,7 +8,6 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
 	var currentGame: GameScene!
@@ -37,7 +36,7 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
 
-				currentGame = scene as! GameScene
+				currentGame = scene as? GameScene
 				currentGame.viewController = self
             }
             
@@ -58,11 +57,6 @@ class GameViewController: UIViewController {
         } else {
             return .all
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {

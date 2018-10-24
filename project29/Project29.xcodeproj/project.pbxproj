@@ -14,7 +14,6 @@
 		517348231D67959F008DBF2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517348211D67959F008DBF2B /* Main.storyboard */; };
 		517348251D67959F008DBF2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517348241D67959F008DBF2B /* Assets.xcassets */; };
 		517348281D67959F008DBF2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517348261D67959F008DBF2B /* LaunchScreen.storyboard */; };
-		517348301D6795BA008DBF2B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173482F1D6795BA008DBF2B /* Helper.swift */; };
 		517348321D6796A6008DBF2B /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517348311D6796A6008DBF2B /* BuildingNode.swift */; };
 		517348341D67C250008DBF2B /* Assets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 517348331D67C250008DBF2B /* Assets.atlas */; };
 		517348371D67C285008DBF2B /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = 517348351D67C285008DBF2B /* hitBuilding.sks */; };
@@ -31,7 +30,6 @@
 		517348241D67959F008DBF2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		517348271D67959F008DBF2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		517348291D67959F008DBF2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5173482F1D6795BA008DBF2B /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		517348311D6796A6008DBF2B /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 		517348331D67C250008DBF2B /* Assets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Assets.atlas; sourceTree = "<group>"; };
 		517348351D67C285008DBF2B /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				517348331D67C250008DBF2B /* Assets.atlas */,
 				517348261D67959F008DBF2B /* LaunchScreen.storyboard */,
 				517348291D67959F008DBF2B /* Info.plist */,
-				5173482F1D6795BA008DBF2B /* Helper.swift */,
 				517348311D6796A6008DBF2B /* BuildingNode.swift */,
 				517348351D67C285008DBF2B /* hitBuilding.sks */,
 				517348361D67C285008DBF2B /* hitPlayer.sks */,
@@ -167,7 +164,6 @@
 				517348321D6796A6008DBF2B /* BuildingNode.swift in Sources */,
 				517348201D67959F008DBF2B /* GameViewController.swift in Sources */,
 				517348181D67959F008DBF2B /* AppDelegate.swift in Sources */,
-				517348301D6795BA008DBF2B /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -295,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -314,7 +310,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project29;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -328,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project29;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

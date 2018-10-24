@@ -145,7 +145,7 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
 		}
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			let commit = fetchedResultsController.object(at: indexPath)
 			container.viewContext.delete(commit)

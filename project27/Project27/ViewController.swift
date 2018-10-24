@@ -18,11 +18,6 @@ class ViewController: UIViewController {
 		drawRectangle()
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	@IBAction func redrawTapped(_ sender: AnyObject) {
 		currentDrawType += 1
 
@@ -166,7 +161,7 @@ class ViewController: UIViewController {
 			paragraphStyle.alignment = .center
 
 			// 3
-			let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+            let attrs = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSAttributedString.Key.paragraphStyle: paragraphStyle]
 
 			// 4
 			let string = "The best-laid schemes o'\nmice an' men gang aft agley"

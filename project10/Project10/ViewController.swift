@@ -17,11 +17,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return people.count
 	}
@@ -51,13 +46,13 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		present(picker, animated: true)
 	}
 
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		guard let image = info[.originalImage] as? UIImage else { return }
 
 		let imageName = UUID().uuidString
 		let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
 
-		if let jpegData = UIImageJPEGRepresentation(image, 80) {
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
 			try? jpegData.write(to: imagePath)
 		}
 
@@ -93,3 +88,9 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 	}
 }
 
+
+struct Meh {
+    @objc func doDoo() {
+        
+    }
+}

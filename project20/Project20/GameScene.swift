@@ -6,7 +6,6 @@
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene {
@@ -45,7 +44,7 @@ class GameScene: SKScene {
 		node.addChild(firework)
 
 		// 3
-		switch GKRandomSource.sharedRandom().nextInt(upperBound: 3) {
+        switch Int.random(in: 0...2) {
 		case 0:
 			firework.color = .cyan
 
@@ -81,7 +80,7 @@ class GameScene: SKScene {
 	@objc func launchFireworks() {
 		let movementAmount: CGFloat = 1800
 
-		switch GKRandomSource.sharedRandom().nextInt(upperBound: 4) {
+        switch Int.random(in: 0...3) {
 		case 0:
 			// fire five, straight up
 			createFirework(xMovement: 0, x: 512, y: bottomEdge)

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import GameplayKit
 import SpriteKit
 
 enum GameState {
@@ -208,9 +207,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		// 3
 		let xPosition = frame.width + topRock.frame.width
 
-		let max = Int(frame.height / 3)
-		let rand = GKRandomDistribution(lowestValue: -50, highestValue: max)
-		let yPosition = CGFloat(rand.nextInt())
+		let max = CGFloat(frame.height / 3)
+		let yPosition = CGFloat.random(in: -50...max)
 
 		// this next value affects the width of the gap between rocks
 		// make it smaller to make your game harder – if you're feeling evil!

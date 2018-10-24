@@ -21,11 +21,11 @@ class ActionViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
 
 		let notificationCenter = NotificationCenter.default
-		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
-		notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
 		if let inputItem = extensionContext!.inputItems.first as? NSExtensionItem {
-			if let itemProvider = inputItem.attachments?.first as? NSItemProvider {
+			if let itemProvider = inputItem.attachments?.first {
 				itemProvider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { [unowned self] (dict, error) in
 					let itemDictionary = dict as! NSDictionary
 					let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as! NSDictionary
@@ -41,11 +41,6 @@ class ActionViewController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 	@IBAction func done() {
 		let item = NSExtensionItem()
 		let argument: NSDictionary = ["customJavaScript": script.text]
@@ -59,10 +54,10 @@ class ActionViewController: UIViewController {
 	@objc func adjustForKeyboard(notification: Notification) {
 		let userInfo = notification.userInfo!
 
-		let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 		let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
-		if notification.name == Notification.Name.UIKeyboardWillHide {
+        if notification.name == UIResponder.keyboardWillHideNotification {
 			script.contentInset = UIEdgeInsets.zero
 		} else {
 			script.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)

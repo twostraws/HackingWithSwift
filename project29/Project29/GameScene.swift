@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		var currentX: CGFloat = -15
 
 		while currentX < 1024 {
-			let size = CGSize(width: RandomInt(min: 2, max: 4) * 40, height: RandomInt(min: 300, max: 600))
+            let size = CGSize(width: Int.random(in: 2...4) * 40, height: Int.random(in: 300...600))
 			currentX += size.width + 2
 
 			let building = BuildingNode(color: UIColor.red, size: size)

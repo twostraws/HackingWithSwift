@@ -2,21 +2,23 @@
 //  Author+CoreDataProperties.swift
 //  Project38
 //
-//  Created by TwoStraws on 26/08/2016.
-//  Copyright © 2016 Paul Hudson. All rights reserved.
+//  Created by Paul Hudson on 24/10/2018.
+//  Copyright © 2018 Paul Hudson. All rights reserved.
+//
 //
 
 import Foundation
 import CoreData
 
+
 extension Author {
 
     @nonobjc public class func createFetchRequest() -> NSFetchRequest<Author> {
-        return NSFetchRequest<Author>(entityName: "Author");
+        return NSFetchRequest<Author>(entityName: "Author")
     }
 
-    @NSManaged public var name: String
     @NSManaged public var email: String
+    @NSManaged public var name: String
     @NSManaged public var commits: NSSet
 
 }

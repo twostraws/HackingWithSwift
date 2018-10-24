@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UITableViewController {
-	var petitions = [[String: String]]()
+	var petitions = [Petition]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -17,41 +17,36 @@ class ViewController: UITableViewController {
 		performSelector(inBackground: #selector(fetchJSON), with: nil)
 	}
 
-	@objc func fetchJSON() {
-		let urlString: String
+    @objc func fetchJSON() {
+        let urlString: String
 
-		if navigationController?.tabBarItem.tag == 0 {
-			urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
-		} else {
-			urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
-		}
+        if navigationController?.tabBarItem.tag == 0 {
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+        } else {
+            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
+        }
 
-		if let url = URL(string: urlString) {
-			if let data = try? String(contentsOf: url) {
-				let json = JSON(parseJSON: data)
-
-				if json["metadata"]["responseInfo"]["status"].intValue == 200 {
-					self.parse(json: json)
-					return
-				}
-			}
-		}
+        if let url = URL(string: urlString) {
+            if let data = try? Data(contentsOf: url) {
+                parse(json: data)
+                return
+            }
+        }
 
 
-		performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
-	}
+        performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
+    }
 
-	func parse(json: JSON) {
-		for result in json["results"].arrayValue {
-			let title = result["title"].stringValue
-			let body = result["body"].stringValue
-			let sigs = result["signatureCount"].stringValue
-			let obj = ["title": title, "body": body, "sigs": sigs]
-			petitions.append(obj)
-		}
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
 
-		tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
-	}
+        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
+            petitions = jsonPetitions.results
+            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+        } else {
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
+        }
+    }
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return petitions.count
@@ -61,8 +56,8 @@ class ViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
 		let petition = petitions[indexPath.row]
-		cell.textLabel?.text = petition["title"]
-		cell.detailTextLabel?.text = petition["body"]
+		cell.textLabel?.text = petition.title
+		cell.detailTextLabel?.text = petition.body
 
 		return cell
 	}
@@ -79,4 +74,3 @@ class ViewController: UITableViewController {
 		present(ac, animated: true)
 	}
 }
-

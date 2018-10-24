@@ -6,7 +6,6 @@
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import GameplayKit
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -53,11 +52,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
 
 	@objc func createEnemy() {
-		possibleEnemies = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleEnemies) as! [String]
-		let randomDistribution = GKRandomDistribution(lowestValue: 50, highestValue: 736)
+		possibleEnemies.shuffle()
 
 		let sprite = SKSpriteNode(imageNamed: possibleEnemies[0])
-		sprite.position = CGPoint(x: 1200, y: randomDistribution.nextInt())
+        sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736))
 		addChild(sprite)
 
 		sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)

@@ -36,11 +36,6 @@ class ViewController: UITableViewController {
 		tableView.allowsSelectionDuringEditing = true
 	}
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return projects.count
 	}
@@ -61,8 +56,8 @@ class ViewController: UITableViewController {
 	}
 
 	func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
-		let titleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedStringKey.foregroundColor: UIColor.purple]
-		let subtitleAttributes = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .subheadline)]
+        let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+        let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
 
 		let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
 		let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
@@ -86,7 +81,7 @@ class ViewController: UITableViewController {
 		showTutorial(indexPath.row)
 	}
 
-	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 		if favorites.contains(indexPath.row) {
 			return .delete
 		} else {
@@ -94,7 +89,7 @@ class ViewController: UITableViewController {
 		}
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .insert {
 			favorites.append(indexPath.row)
 			index(item: indexPath.row)

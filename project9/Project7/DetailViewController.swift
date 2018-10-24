@@ -11,7 +11,7 @@ import WebKit
 
 class DetailViewController: UIViewController {
 	var webView: WKWebView!
-	var detailItem: [String: String]!
+	var detailItem: Petition?
 
 	override func loadView() {
 		webView = WKWebView()
@@ -21,19 +21,20 @@ class DetailViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		guard detailItem != nil else { return }
+		guard let detailItem = detailItem else { return }
 
-		if let body = detailItem["body"] {
-			var html = "<html>"
-			html += "<head>"
-			html += "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
-			html += "<style> body { font-size: 150%; } </style>"
-			html += "</head>"
-			html += "<body>"
-			html += body
-			html += "</body>"
-			html += "</html>"
-			webView.loadHTMLString(html, baseURL: nil)
-		}
+        let html = """
+        <html>
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style> body { font-size: 150%; } </style>
+        </head>
+        <body>
+        \(detailItem.body)
+        </body>
+        </html>
+        """
+
+        webView.loadHTMLString(html, baseURL: nil)
 	}
 }

@@ -18,14 +18,13 @@ class SubmitViewController: UIViewController {
 	var spinner: UIActivityIndicatorView!
 
 	override func loadView() {
-		super.loadView()
-
+		view = UIView()
 		view.backgroundColor = UIColor.gray
 
 		stackView = UIStackView()
 		stackView.spacing = 10
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.distribution = UIStackViewDistribution.fillEqually
+        stackView.distribution = UIStackView.Distribution.fillEqually
 		stackView.alignment = .center
 		stackView.axis = .vertical
 		view.addSubview(stackView)
@@ -42,7 +41,7 @@ class SubmitViewController: UIViewController {
 		status.numberOfLines = 0
 		status.textAlignment = .center
 
-		spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+		spinner = UIActivityIndicatorView(style: .whiteLarge)
 		spinner.translatesAutoresizingMaskIntoConstraints = false
 		spinner.hidesWhenStopped = true
 		spinner.startAnimating()

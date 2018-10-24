@@ -6,7 +6,6 @@
 //  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
-import GameplayKit
 import UIKit
 
 class ViewController: UITableViewController {
@@ -40,8 +39,7 @@ class ViewController: UITableViewController {
 	}
 
 	func startGame() {
-		allWords = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: allWords) as! [String]
-		title = allWords[0]
+		title = allWords.randomElement()
 		usedWords.removeAll(keepingCapacity: true)
 		tableView.reloadData()
 	}
@@ -119,4 +117,3 @@ class ViewController: UITableViewController {
 		present(ac, animated: true)
 	}
 }
-
