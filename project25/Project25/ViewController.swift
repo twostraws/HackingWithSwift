@@ -80,6 +80,19 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		ac.addAction(UIAlertAction(title: "Join a session", style: .default, handler: joinSession))
 		ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 		present(ac, animated: true)
+		
+		/*
+		for iPad, to prevent app crashing with this output:
+		*** Terminating app due to uncaught exception ‘NSGenericException’, reason: 
+		‘Your application has presented a UIAlertController (<UIAlertController: 0x7f9d0ad52ca0>)
+		of style UIAlertControllerStyleActionSheet. 
+		*/
+		
+        	if let popoverController = ac.popoverPresentationController {
+            		popoverController.sourceView = self.view
+            		popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            		popoverController.permittedArrowDirections = []
+        	}
 	}
 
 	func startHosting(action: UIAlertAction) {
