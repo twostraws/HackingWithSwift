@@ -2,13 +2,12 @@
 //  GameViewController.swift
 //  Project17
 //
-//  Created by Paul Hudson on 03/04/2019.
-//  Copyright © 2019 Hacking with Swift. All rights reserved.
+//  Created by TwoStraws on 18/08/2016.
+//  Copyright © 2016 Paul Hudson. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
 

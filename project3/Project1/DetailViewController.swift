@@ -12,10 +12,6 @@ class DetailViewController: UIViewController {
 	@IBOutlet var imageView: UIImageView!
 	var selectedImage: String?
 
-    override var prefersHomeIndicatorAutoHidden: Bool {
-        return navigationController?.hidesBarsOnTap ?? false
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
