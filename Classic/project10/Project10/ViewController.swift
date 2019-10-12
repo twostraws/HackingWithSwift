@@ -87,10 +87,3 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 		return documentsDirectory
 	}
 }
-
-
-struct Meh {
-    @objc func doDoo() {
-        
-    }
-}
