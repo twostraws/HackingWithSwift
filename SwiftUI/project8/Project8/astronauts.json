@@ -1,0 +1,162 @@
+[
+	{
+        "id": "grissom",
+		"name": "Virgil I. \"Gus\" Grissom",
+		"description": "Virgil Ivan \"Gus\" Grissom (April 3, 1926 – January 27, 1967) was one of the seven original National Aeronautics and Space Administration's Project Mercury astronauts, and the first of the Mercury Seven to die. He was also a Project Gemini and an Apollo program astronaut. Grissom was the second American to fly in space, and the first member of the NASA Astronaut Corps to fly in space twice.\n\nIn addition, Grissom was a World War II and Korean War veteran, U.S. Air Force test pilot, and a mechanical engineer. He was a recipient of the Distinguished Flying Cross, and the Air Medal with an oak leaf cluster, a two-time recipient of the NASA Distinguished Service Medal, and, posthumously, the Congressional Space Medal of Honor."
+	},
+	{
+        "id": "white",
+		"name": "Edward H. White II",
+		"description": "Edward Higgins White II (November 14, 1930 – January 27, 1967) (Lt Col, USAF) was an American aeronautical engineer, U.S. Air Force officer, test pilot, and NASA astronaut. On June 3, 1965, he became the first American to walk in space. White died along with astronauts Virgil \"Gus\" Grissom and Roger B. Chaffee during prelaunch testing for the first crewed Apollo mission at Cape Canaveral.\n\nHe was awarded the NASA Distinguished Service Medal for his flight in Gemini 4 and was then awarded the Congressional Space Medal of Honor posthumously."
+	},
+	{
+        "id": "chaffee",
+		"name": "Roger B. Chaffee",
+		"description": "Roger Bruce Chaffee (February 15, 1935 – January 27, 1967) was an American naval officer and aviator, aeronautical engineer, and NASA astronaut in the Apollo program. Chaffee was born in Grand Rapids, Michigan, where he became an Eagle Scout. He graduated from Central High School in 1953, and accepted a Naval Reserve Officers Training Corps (NROTC) scholarship.\n\nHe began his college education at Illinois Institute of Technology, where he was involved in the fraternity Phi Kappa Sigma. He transferred to Purdue University in 1954, continuing his involvement in Phi Kappa Sigma and obtaining his private pilot's license."
+	},
+	{
+        "id": "schirra",
+		"name": "Walter M. Schirra",
+		"description": "Walter Marty Schirra Jr. (March 12, 1923 – May 3, 2007) (Captain, USN, Ret.) was an American naval aviator and NASA astronaut. In 1959, he became one of the original seven astronauts chosen for Project Mercury, which was the United States' first effort to put human beings into space. On October 3, 1962, he flew the six-orbit, nine-hour, Mercury-Atlas 8 mission, in a spacecraft he nicknamed Sigma 7.\n\nAt the time of his mission in Sigma 7, Schirra became the fifth American and ninth human to travel into space. In the two-man Gemini program, he achieved the first space rendezvous, station-keeping his Gemini 6A spacecraft within 1 foot (30 cm) of the sister Gemini 7 spacecraft in December 1965. In October 1968, he commanded Apollo 7, an 11-day low Earth orbit shakedown test of the three-man Apollo Command/Service Module and the first crewed launch for the Apollo program."
+	},
+	{
+        "id": "eisele",
+		"name": "Donn F. Eisele",
+		"description": "Donn Fulton Eisele (June 23, 1930 – December 2, 1987) (Colonel, USAF) was a United States Air Force officer, test pilot, and later a NASA astronaut. He occupied the command module pilot seat during the flight of Apollo 7 in 1968.\n\nAfter retiring from both NASA and the Air Force, he became the Peace Corps country director for Thailand, before moving into private business."
+	},
+	{
+        "id": "cunningham",
+		"name": "R. Walter Cunningham",
+		"description": "Ronnie Walter Cunningham (born March 16, 1932), (Col, USMCR, Ret.) is a retired American astronaut. In 1968, he was a Lunar Module Pilot on the Apollo 7 mission.\n\nHe was NASA's third civilian astronaut (after Neil Armstrong and Elliot See), and has also been a fighter pilot, physicist, entrepreneur, venture capitalist, and author of The All-American Boys."
+	},
+	{
+        "id": "borman",
+		"name": "Frank F. Borman II",
+		"description": "Frank Frederick Borman II (born March 14, 1928) is a retired United States Air Force (USAF) colonel, aeronautical engineer, test pilot, businessman, rancher, and NASA astronaut. He was the commander of Apollo 8, the first mission to fly around the Moon, and together with crewmates Jim Lovell and Bill Anders, became the first of 24 humans to do so, for which he was awarded the Congressional Space Medal of Honor.\n\nAs of 2019, he is the oldest living former American astronaut, eleven days older than Lovell."
+	},
+	{
+        "id": "lovell",
+		"name": "James A. Lovell Jr.",
+		"description": "James Arthur Lovell Jr. (born March 25, 1928) is a former NASA astronaut, Naval Aviator, mechanical engineer, and retired Navy captain. In 1968, as command module pilot of Apollo 8, he became one of the first three humans to fly to and orbit the Moon. He then commanded the 1970 Apollo 13 lunar mission which, after a critical failure en route, circled around the Moon and returned safely to Earth through the efforts of the crew and mission control.\n\nLovell had previously flown on two Gemini missions, Gemini 7 in 1965 and Gemini 12 in 1966. He was the first person to fly into space four times."
+	},
+	{
+        "id": "anders",
+		"name": "William A. Anders",
+		"description": "William Alison Anders (born October 17, 1933), is a retired United States Air Force Major general, former electrical engineer, nuclear engineer, NASA astronaut, and businessman. In December 1968, as a crew member of Apollo 8, he was one of the first three people to leave low Earth orbit and travel to the Moon.\n\nAlong with fellow astronauts Frank Borman and Jim Lovell, Anders circled the Moon ten times, and broadcast live images and commentary back to Earth. During one of the mission's lunar orbits he photographed the iconic image, Earthrise."
+	},
+	{
+        "id": "mcdivitt",
+		"name": "James A. McDivitt",
+		"description": "James Alton McDivitt (born June 10, 1929), (Brigadier General, USAF, Ret.), is an American former test pilot, United States Air Force pilot, aeronautical engineer, and NASA astronaut who flew in the Gemini and Apollo programs.\n\nHe commanded the Gemini 4 flight during which Ed White performed the first U.S. spacewalk, and later the Apollo 9 flight which was the first crewed flight test of the Lunar Module and the complete set of Apollo flight hardware. He later became Manager of Lunar Landing Operations and was the Apollo Spacecraft Program Manager from 1969 to 1972."
+	},
+	{
+        "id": "scott",
+		"name": "David R. Scott",
+		"description": "David Randolph Scott (born June 6, 1932) (Col, USAF, Ret.) is a retired test pilot and NASA astronaut who was the seventh person to walk on the Moon. The commander of Apollo 15, Scott was selected as an astronaut as part of the third group in 1963. Scott flew three times in space, and is the only living commander of an Apollo mission that landed on the Moon and one of four surviving Moon walkers.\n\nBefore becoming an astronaut, Scott graduated from the United States Military Academy at West Point and joined the Air Force. After serving as a fighter pilot in Europe, he graduated from the Air Force Experimental Test Pilot School and the Aerospace Research Pilot School. Scott retired from the Air Force in 1975 with the rank of colonel, and more than 5,600 hours of logged flying time."
+	},
+	{
+        "id": "schweickart",
+		"name": "Russell L. Schweickart",
+		"description": "Russell Louis \"Rusty\" Schweickart (born October 25, 1935) is an American aeronautical engineer, and a former NASA astronaut, research scientist, U.S. Air Force fighter pilot, as well as a former business executive and government executive. Schweickart was selected in 1963 for NASA's third astronaut group. He was the Lunar Module Pilot on the 1969 Apollo 9 mission, the first crewed flight test of the lunar module, on which he performed the first in-space test of the portable life support system used by the Apollo astronauts who walked on the Moon.\n\nAs backup Commander of the first crewed Skylab mission in 1973, he was responsible for developing the hardware and procedures used by the first crew to perform critical in-flight repairs of the Skylab station. After Skylab, he served for a time as Director of User Affairs in NASA's Office of Applications."
+	},
+	{
+        "id": "stafford",
+		"name": "Thomas P. Stafford",
+		"description": "Thomas Patten Stafford (born September 17, 1930; Lt Gen, USAF, Ret.) is an American former Air Force officer, test pilot, and NASA astronaut.\n\nAfter graduating from the United States Naval Academy, Stafford commissioned in the United States Air Force, flying the F-86 Sabre prior becoming a test pilot.\n\nHe was selected to become an astronaut in 1962, and flew aboard Gemini 6A and Gemini 9. In 1969, Stafford was the Commander of Apollo 10, the second crewed mission to orbit the Moon and the first to fly a Lunar Module in lunar orbit, descending to an altitude of nine miles."
+	},
+	{
+        "id": "young",
+		"name": "John W. Young",
+		"description": "John Watts Young (September 24, 1930 – January 5, 2018) was an American astronaut, naval officer and aviator, test pilot, and aeronautical engineer. He became the ninth person to walk on the Moon as Commander of the Apollo 16 mission in 1972.\n\nYoung enjoyed the longest career of any astronaut, becoming the first person to fly six space missions over the course of 42 years of active NASA service. He is the only person to have piloted and commanded four different classes of spacecraft: Gemini, the Apollo Command and Service Module, the Apollo Lunar Module, and the Space Shuttle."
+	},
+	{
+        "id": "cernan",
+		"name": "Eugene A. Cernan",
+		"description": "Eugene Andrew Cernan (/ˈsɜːrnən/; March 14, 1934 – January 16, 2017) was an American astronaut, naval aviator, electrical engineer, aeronautical engineer, and fighter pilot. During the Apollo 17 mission, Cernan became the eleventh person to walk on the Moon. Since he re-entered the Apollo Lunar Module after Harrison Schmitt on their third and final lunar excursion, he was the last person to walk on the Moon.\n\nCernan traveled into space three times; as pilot of Gemini 9A in June 1966, as lunar module pilot of Apollo 10 in May 1969, and as commander of Apollo 17 in December 1972, the final Apollo lunar landing. Cernan was also a backup crew member of the Gemini 12, Apollo 7 and Apollo 14 space missions."
+	},
+	{
+        "id": "armstrong",
+		"name": "Neil A. Armstrong",
+		"description": "Neil Alden Armstrong (August 5, 1930 – August 25, 2012) was an American astronaut and aeronautical engineer and the first person to walk on the Moon. He was also a naval aviator, test pilot, and university professor.\n\nA graduate of Purdue University, Armstrong studied aeronautical engineering; his college tuition was paid for by the U.S. Navy under the Holloway Plan. He became a midshipman in 1949 and a naval aviator the following year. He saw action in the Korean War, flying the Grumman F9F Panther from the aircraft carrier USS Essex. In September 1951, while making a low bombing run, Armstrong's aircraft was damaged when it collided with an anti-aircraft cable which cut off a large portion of one wing. Armstrong was forced to bail out.\n\nAfter the war, he completed his bachelor's degree at Purdue and became a test pilot at the National Advisory Committee for Aeronautics (NACA) High-Speed Flight Station at Edwards Air Force Base in California. He was the project pilot on Century Series fighters and flew the North American X-15 seven times. He was also a participant in the U.S. Air Force's Man in Space Soonest and X-20 Dyna-Soar human spaceflight programs."
+	},
+	{
+        "id": "collins",
+		"name": "Michael Collins",
+		"description": "Michael Collins (born October 31, 1930) is a former American astronaut, test pilot and major general of the United States Air Force Reserves. Selected as part of the third group of fourteen astronauts in 1963, he flew into space twice. His first spaceflight was on Gemini 10, in which he and Command Pilot John Young performed orbital rendezvous with two different spacecraft and undertook two extravehicular activities (EVAs, also known as spacewalks).\n\nHis second spaceflight was as the Command Module Pilot for Apollo 11. While he stayed in orbit around the Moon in the command module, Neil Armstrong and Buzz Aldrin left in the lunar module to make the first crewed landing on its surface.\n\nCollins is one of 24 people to have flown to the Moon, which he orbited thirty times. He was the seventeenth American in space, the fourth person (and third American) to perform a spacewalk, the first person to have performed more than one spacewalk, and, after Young, who flew the command module on Apollo 10, the second person to orbit the Moon alone."
+	},
+	{
+        "id": "aldrin",
+		"name": "Edwin E. Aldrin Jr.",
+		"description": "Buzz Aldrin (born Edwin Eugene Aldrin Jr.; January 20, 1930) is an American engineer and a former astronaut and fighter pilot. Aldrin made three spacewalks as pilot of the 1966 Gemini 12 mission, and as the Apollo Lunar Module pilot on the 1969 Apollo 11 mission, he and mission commander Neil Armstrong were the first two humans to land on the Moon.\n\nBorn in Glen Ridge, New Jersey, Aldrin graduated third in the class of 1951 from the United States Military Academy at West Point, with a degree in mechanical engineering. He was commissioned into the United States Air Force, and served as a jet fighter pilot during the Korean War. He flew 66 combat missions and shot down two MiG-15 aircraft."
+	},
+	{
+        "id": "conrad",
+		"name": "Charles Conrad, Jr.",
+		"description": "Charles \"Pete\" Conrad Jr. (June 2, 1930 – July 8, 1999) (Captain, USN), was an American NASA astronaut, aeronautical engineer, naval officer and aviator, test pilot, and during the Apollo 12 mission became the third man to walk on the Moon. Conrad was selected in NASA's second astronaut class.\n\nHe set an eight-day space endurance record along with his Command Pilot Gordon Cooper on his first spaceflight, the Gemini 5 mission. Conrad also commanded the Gemini 11 mission. He became the third human to walk on the moon during the Apollo 12 mission.\n\nAfter Apollo, he commanded Skylab 2, the first crewed Skylab mission. On the mission, he and his crewmates repaired significant launch damage to the Skylab space station. For this, President Jimmy Carter awarded him the Congressional Space Medal of Honor in 1978."
+	},
+	{
+        "id": "gordon",
+		"name": "Richard F. Gordon, Jr.",
+		"description": "Richard Francis Gordon Jr. (October 5, 1929 – November 6, 2017) was an American naval officer and aviator, chemist, test pilot, and NASA astronaut, and an American football executive. He was one of 24 people to have flown to the Moon, as the Command Module Pilot of the 1969 Apollo 12 mission which orbited the Moon 45 times.\n\nPrior to his lunar flight Gordon had flown in space as the Pilot of the 1966 Gemini 11 mission."
+	},
+	{
+        "id": "bean",
+		"name": "Alan L. Bean",
+		"description": "Alan LaVern Bean (March 15, 1932 – May 26, 2018) was an American naval officer and aviator, aeronautical engineer, test pilot, and NASA astronaut; he was the fourth person to walk on the Moon. He was selected to become an astronaut by NASA in 1963 as part of Astronaut Group 3.\n\nHe made his first flight into space aboard Apollo 12, the second crewed mission to land on the Moon, at age 37 in November 1969. He made his second and final flight into space on the Skylab 3 mission in 1973, the second crewed mission to the Skylab space station.\n\nAfter retiring from the United States Navy in 1975 and NASA in 1981, he pursued his interest in painting, depicting various space-related scenes and documenting his own experiences in space as well as that of his fellow Apollo program astronauts. He was the last living crew member of Apollo 12."
+	},
+	{
+        "id": "swigert",
+		"name": "John L. Swigert, Jr.",
+		"description": "John Leonard Swigert Jr. (August 30, 1931 – December 27, 1982) was an American test pilot, mechanical and aerospace engineer, United States Air Force pilot, and NASA astronaut. He was one of twenty-four astronauts who have flown to the Moon.\n\nBefore joining NASA in 1966, Swigert was a civilian test pilot and fighter pilot in the Air National Guard. After leaving NASA, he was elected to Congress from Colorado's new 6th district, but died before being sworn in."
+	},
+	{
+        "id": "haise",
+		"name": "Fred W. Haise, Jr.",
+		"description": "Fred Wallace Haise Jr. (born November 14, 1933) is an American former NASA astronaut, fighter pilot with the U.S. Marine Corps and the U.S. Air Force and test pilot. He is one of only 24 people to have flown to the Moon, having flown as Lunar Module Pilot on Apollo 13.\n\nHe was to have been the sixth person to land and walk on the Moon, but the Apollo 13 mission was aborted before lunar landing. He went on to fly Space Shuttle Approach and Landing Tests in 1977, and retired from NASA in 1979."
+	},
+	{
+        "id": "shepard",
+		"name": "Alan B. Shepard Jr.",
+		"description": "Rear Admiral Alan Bartlett Shepard Jr. (November 18, 1923 – July 21, 1998) was an American astronaut, naval aviator, test pilot, and businessman. In 1961 he became the first American to travel into space, and in 1971 he walked on the Moon.\n\nA graduate of the United States Naval Academy at Annapolis, Shepard saw action with the surface navy during World War II.\n\nHe became a naval aviator in 1946, and a test pilot in 1950. He was selected as one of the original NASA Mercury Seven astronauts in 1959, and in May 1961 he made the first crewed Project Mercury flight, MR-3, in a spacecraft he named Freedom 7. His craft entered space, but was not capable of achieving orbit. He became the second person, and the first American, to travel into space, and the first space traveler to manually control the orientation of his craft.\n\nIn the final stages of Project Mercury, Shepard was scheduled to pilot the Mercury-Atlas 10 (MA-10), which was planned as a three-day mission. He named Mercury Spacecraft 15B Freedom 7 II in honor of his first spacecraft, but the mission was canceled."
+	},
+	{
+        "id": "roosa",
+		"name": "Stuart A. Roosa",
+		"description": "Stuart Allen \"Stu\" Roosa (August 16, 1933 – December 12, 1994), Col., USAF, was an American aeronautical engineer, United States Air Force pilot, test pilot, and NASA astronaut, who was the Command Module Pilot for the Apollo 14 mission. The mission lasted from January 31 to February 9, 1971 and was the third mission to land astronauts (Alan Shepard and Edgar Mitchell) on the Moon.\n\nWhile Shepard and Mitchell spent two days on the lunar surface, Roosa conducted experiments from orbit in the Command Module Kitty Hawk. He was one of 24 men to travel to the Moon, which he orbited 34 times."
+	},
+	{
+        "id": "mitchell",
+		"name": "Edgar D. Mitchell",
+		"description": "Edgar Dean \"Ed\" Mitchell (September 17, 1930 – February 4, 2016) was a United States Navy officer and aviator, test pilot, aeronautical engineer, ufologist and NASA astronaut. As the Lunar Module Pilot of Apollo 14, he spent nine hours working on the lunar surface in the Fra Mauro Highlands region, making him the sixth person to walk on the Moon.\n\nThe legacy of his post-NASA scientific and parapsychology work is carried on through the Institute of Noetic Sciences."
+	},
+	{
+        "id": "worden",
+		"name": "Alfred M. Worden",
+		"description": "Alfred Merrill \"Al\" Worden (born February 7, 1932), (Col, USAF, Ret.), is an American astronaut and engineer who was the Command Module Pilot for the Apollo 15 lunar mission in 1971.\n\nOne of only 24 people to have flown to the Moon, he orbited it 74 times in the Command Module Endeavour."
+	},
+	{
+        "id": "irwin",
+		"name": "James B. Irwin",
+		"description": "James Benson \"Jim\" Irwin (March 17, 1930 – August 8, 1991) (Col, USAF) was an American astronaut, aeronautical engineer, test pilot, and a United States Air Force pilot. He served as Apollo Lunar Module pilot for Apollo 15, the fourth human lunar landing.\n\nHe was the eighth person to walk on the Moon and the first, and youngest, of those astronauts to die."
+	},
+	{
+        "id": "mattingly",
+		"name": "Thomas K. Mattingly II",
+		"description": "Thomas Kenneth Mattingly II (born March 17, 1936), (RADM, USN, Ret.), better known as Ken Mattingly, is a former American naval officer and aviator, aeronautical engineer, test pilot, Rear Admiral in the United States Navy and astronaut who flew on the Apollo 16, STS-4 and STS-51-C missions.\n\nHe flew as Command Module Pilot for Apollo 16 and made 64 lunar orbits, making him one of 24 people to have flown to the Moon.\n\nMattingly and his commander from Apollo 16, John Young, are the only persons to have flown to the Moon and also a Space Shuttle orbital mission (Fred Haise, his former training crewmate from Apollo 13, did atmospheric flight testing of the Space Shuttle \"Approach and Landing Tests\")."
+	},
+	{
+        "id": "duke",
+		"name": "Charles M. Duke Jr.",
+		"description": "Charles Moss Duke Jr. (born October 3, 1935) is an American former astronaut, retired U.S. Air Force officer and test pilot. As Lunar Module Pilot for Apollo 16 in 1972, he became the tenth and youngest person to walk on the Moon.\n\nDuke has logged 4,147 hours flying time, which includes 3,632 hours in jet aircraft; and 265 hours in space, plus 20 hours and 15 minutes of extravehicular activity."
+	},
+	{
+        "id": "evans",
+		"name": "Ronald E. Evans",
+		"description": "Ronald Ellwin Evans Jr. (November 10, 1933 – April 7, 1990), (Capt, USN), was an American naval officer and aviator, electrical engineer, aeronautical engineer, NASA astronaut, and one of 24 people to have flown to the Moon.\n\nEvans was selected as an astronaut by NASA as part of Astronaut Group 5 in 1966 and made his only flight into space as Command Module Pilot aboard Apollo 17 in December, 1972, the last crewed mission to the Moon, with Commander Eugene Cernan and Lunar Module Pilot Harrison Schmitt.\n\nDuring the flight, he and five mice orbited the Moon a record 75 times as his two crewmates descended to the surface. Consequently, he is the last person to orbit the Moon alone and holds the record for the most time spent in lunar orbit at 148 hours. In 1975 Evans served as backup Command Module Pilot for the Apollo-Soyuz Test Project mission."
+	},
+	{
+        "id": "schmitt",
+		"name": "Harrison H. Schmitt",
+		"description": "Harrison Hagan \"Jack\" Schmitt (born July 3, 1935) is an American geologist, retired NASA astronaut, university professor, former U.S. senator from New Mexico, and, as a crew member of Apollo 17, the most recent living person to have walked on the Moon.\n\nIn December 1972, as one of the crew on board Apollo 17, Schmitt became the first member of NASA's first scientist-astronaut group to fly in space. As Apollo 17 was the last of the Apollo missions, he also became the twelfth and second-youngest person to set foot on the Moon, and the second-to-last person to step off of the Moon (he boarded the Lunar Module shortly before commander Eugene Cernan).\n\nSchmitt also remains the only professional scientist to have flown beyond low Earth orbit and to have visited the Moon. He was influential within the community of geologists supporting the Apollo program and, before starting his own preparations for an Apollo mission, had been one of the scientists training those Apollo astronauts chosen to visit the lunar surface."
+	}
+]
