@@ -23,11 +23,21 @@ Pro Swift is the sequel to Hacking with Swift, and includes a 250-page guide to 
 
 Swift Coding Challenges is an all-new book written from the ground up to put your Swift skills to the test. I've written a variety of coding challenges that start off simple but slowly get harder, and it's down to you to solve them. I outline each problem, provide you with sample input and output, add in some hints in case you hit problems, then provide a sample solution and explain how it works.
 
+### Swift
+- [What's new in Swift 5.2?](https://www.hackingwithswift.com/articles/212/whats-new-in-swift-5-2)
+- [What's new in Swift 5.1?](https://www.hackingwithswift.com/articles/182/whats-new-in-swift-5-1)
+- [What's new in Swift 5.0?](https://www.hackingwithswift.com/articles/126/whats-new-in-swift-5-0)
 - [What's new in Swift 4.2?](https://www.hackingwithswift.com/articles/77/whats-new-in-swift-4-2)
 - [What's new in Swift 4.1?](https://www.hackingwithswift.com/articles/50/whats-new-in-swift-4-1)
 - [What's new in Swift 4?](https://www.hackingwithswift.com/swift4)
 - [What's new in Swift 3?](https://www.hackingwithswift.com/swift3)
+
+### iOS
+- [What's new in iOS 13?](https://www.hackingwithswift.com/articles/193/whats-new-in-ios-13)
+- [What's new in iOS 12?](https://www.hackingwithswift.com/articles/121/whats-new-in-ios-12)
 - [What's new in iOS 11?](https://www.hackingwithswift.com/whats-new-in-ios-11)
 - [What's new in iOS 10?](https://www.hackingwithswift.com/ios10)
+
+### Example Code
 - [Free Swift example code](https://www.hackingwithswift.com/example-code)
 
