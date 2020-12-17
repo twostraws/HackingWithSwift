@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		318B9126258BB64F00AF9015 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318B9125258BB64F00AF9015 /* SceneDelegate.swift */; };
 		51E407211D6CFAD600568D7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E407201D6CFAD600568D7F /* AppDelegate.swift */; };
 		51E407231D6CFAD600568D7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E407221D6CFAD600568D7F /* ViewController.swift */; };
 		51E407261D6CFAD600568D7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E407241D6CFAD600568D7F /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		318B9125258BB64F00AF9015 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		51E4071D1D6CFAD600568D7F /* Project32.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project32.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E407201D6CFAD600568D7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E407221D6CFAD600568D7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				51E407201D6CFAD600568D7F /* AppDelegate.swift */,
+				318B9125258BB64F00AF9015 /* SceneDelegate.swift */,
 				51E407221D6CFAD600568D7F /* ViewController.swift */,
 				51E407241D6CFAD600568D7F /* Main.storyboard */,
 				51E407271D6CFAD600568D7F /* Assets.xcassets */,
@@ -107,6 +110,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -140,6 +144,7 @@
 			files = (
 				51E407231D6CFAD600568D7F /* ViewController.swift in Sources */,
 				51E407211D6CFAD600568D7F /* AppDelegate.swift in Sources */,
+				318B9126258BB64F00AF9015 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +285,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B5C26XE59E;
 				INFOPLIST_FILE = Project32/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project32;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -294,6 +300,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B5C26XE59E;
 				INFOPLIST_FILE = Project32/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackingwithswift.Project32;
 				PRODUCT_NAME = "$(TARGET_NAME)";
