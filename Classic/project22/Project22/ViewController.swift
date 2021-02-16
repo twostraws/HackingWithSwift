@@ -36,6 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 	func startScanning() {
 		let uuid = UUID(uuidString: "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5")!
+        
         let beaconIDConstraint = CLBeaconIdentityConstraint(uuid: uuid, major: CLBeaconMajorValue(123), minor: CLBeaconMinorValue(456))
         let beaconRegion = CLBeaconRegion(beaconIdentityConstraint: beaconIDConstraint, identifier: "MyBeacon")
         
