@@ -47,6 +47,7 @@ struct ContentView: View {
                             Text("\(self.tipPercentages[$0])%")
                         }
                     }
+                    .textCase(nil)
                     .pickerStyle(SegmentedPickerStyle())
                 }
 
