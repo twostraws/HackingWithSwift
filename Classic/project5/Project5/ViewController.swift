@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UITableViewController {
-	var wallWords = [String]()
+	var allWords = [String]()
 	var usedWords = [String]()
 
 	override func viewDidLoad() {
