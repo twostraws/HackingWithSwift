@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreML
 
 struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
@@ -17,7 +18,15 @@ struct ContentView: View {
     @State private var alertMessage = ""
     @State private var showingAlert = false
 
-    let model = SleepCalculator()
+    let model: SleepCalculator = {
+    do {
+        let config = MLModelConfiguration()
+        return try SleepCalculator(configuration: config)
+    } catch {
+        print(error)
+        fatalError("Couldn't create SleepCalculator")
+    }
+    }()
 
     static var defaultWakeTime: Date {
         var components = DateComponents()
