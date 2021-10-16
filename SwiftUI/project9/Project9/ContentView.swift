@@ -372,14 +372,44 @@ struct InsettableArc: InsettableShape {
 }
 
 struct ContentView: View {
+    @State private var innerRadius = 125.0
+    @State private var outerRadius = 75.0
+    @State private var distance = 25.0
+    @State private var amount: CGFloat = 1.0
+    @State private var hue = 0.6
+
     var body: some View {
-        Path { path in
-            path.move(to: CGPoint(x: 200, y: 100))
-            path.addLine(to: CGPoint(x: 100, y: 300))
-            path.addLine(to: CGPoint(x: 300, y: 300))
-            path.addLine(to: CGPoint(x: 200, y: 100))
+        VStack(spacing: 0) {
+            Spacer()
+
+            Spirograph(innerRadius: Int(innerRadius), outerRadius: Int(outerRadius), distance: Int(distance), amount: amount)
+                .stroke(Color(hue: hue, saturation: 1, brightness: 1), lineWidth: 1)
+                .frame(width: 300, height: 300)
+
+            Spacer()
+
+            Group {
+                Text("Inner radius: \(Int(innerRadius))")
+                Slider(value: $innerRadius, in: 10...150, step: 1)
+                    .padding([.horizontal, .bottom])
+
+                Text("Outer radius: \(Int(outerRadius))")
+                Slider(value: $outerRadius, in: 10...150, step: 1)
+                    .padding([.horizontal, .bottom])
+
+                Text("Distance: \(Int(distance))")
+                Slider(value: $distance, in: 1...150, step: 1)
+                    .padding([.horizontal, .bottom])
+
+                Text("Amount: \(amount, specifier: "%.2f")")
+                Slider(value: $amount)
+                    .padding([.horizontal, .bottom])
+
+                Text("Color")
+                Slider(value: $hue)
+                    .padding(.horizontal)
+            }
         }
-        .stroke(Color.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
     }
 }
 
