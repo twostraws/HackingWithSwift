@@ -1,9 +1,8 @@
 //
 //  ImageSaver.swift
-//  Project13
+//  Instafilter
 //
-//  Created by Paul Hudson on 17/02/2020.
-//  Copyright © 2020 Paul Hudson. All rights reserved.
+//  Created by Paul Hudson on 02/12/2021.
 //
 
 import UIKit
@@ -13,10 +12,10 @@ class ImageSaver: NSObject {
     var errorHandler: ((Error) -> Void)?
 
     func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
     }
 
-    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             errorHandler?(error)
         } else {

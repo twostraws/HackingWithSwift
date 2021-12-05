@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "singapore@4x.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
