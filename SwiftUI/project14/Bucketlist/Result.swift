@@ -1,9 +1,8 @@
 //
 //  Result.swift
-//  Project14
+//  Bucketlist
 //
-//  Created by Paul Hudson on 17/02/2020.
-//  Copyright © 2020 Paul Hudson. All rights reserved.
+//  Created by Paul Hudson on 10/12/2021.
 //
 
 import Foundation
@@ -25,7 +24,7 @@ struct Page: Codable, Comparable {
         terms?["description"]?.first ?? "No further information"
     }
 
-    static func < (lhs: Page, rhs: Page) -> Bool {
+    static func <(lhs: Page, rhs: Page) -> Bool {
         lhs.title < rhs.title
     }
 }
