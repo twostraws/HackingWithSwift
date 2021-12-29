@@ -24,8 +24,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		view.backgroundColor = UIColor.gray
 	}
 
-	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-		if status == .authorizedAlways {
+	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        	if manager.authorizationStatus == .authorizedAlways {
 			if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
 				if CLLocationManager.isRangingAvailable() {
 					startScanning()
@@ -64,7 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		}
 	}
 
-	func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+	func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
 		if beacons.count > 0 {
 			let beacon = beacons[0]
 			update(distance: beacon.proximity)
