@@ -24,6 +24,9 @@ Pro Swift is the sequel to Hacking with Swift, and includes a 250-page guide to 
 Swift Coding Challenges is an all-new book written from the ground up to put your Swift skills to the test. I've written a variety of coding challenges that start off simple but slowly get harder, and it's down to you to solve them. I outline each problem, provide you with sample input and output, add in some hints in case you hit problems, then provide a sample solution and explain how it works.
 
 ### Swift
+- [What's new in Swift 5.5?](https://www.hackingwithswift.com/articles/233/whats-new-in-swift-5-5)
+- [What's new in Swift 5.4?](https://www.hackingwithswift.com/articles/228/whats-new-in-swift-5-4)
+- [What's new in Swift 5.3?](https://www.hackingwithswift.com/articles/218/whats-new-in-swift-5-3)
 - [What's new in Swift 5.2?](https://www.hackingwithswift.com/articles/212/whats-new-in-swift-5-2)
 - [What's new in Swift 5.1?](https://www.hackingwithswift.com/articles/182/whats-new-in-swift-5-1)
 - [What's new in Swift 5.0?](https://www.hackingwithswift.com/articles/126/whats-new-in-swift-5-0)
@@ -33,6 +36,8 @@ Swift Coding Challenges is an all-new book written from the ground up to put you
 - [What's new in Swift 3?](https://www.hackingwithswift.com/swift3)
 
 ### iOS
+- [What’s new in SwiftUI for iOS 15](https://www.hackingwithswift.com/articles/235/whats-new-in-swiftui-for-ios-15)
+- [What’s new in SwiftUI for iOS 14](https://www.hackingwithswift.com/articles/221/whats-new-in-swiftui-for-ios-14)
 - [What's new in iOS 13?](https://www.hackingwithswift.com/articles/193/whats-new-in-ios-13)
 - [What's new in iOS 12?](https://www.hackingwithswift.com/articles/121/whats-new-in-ios-12)
 - [What's new in iOS 11?](https://www.hackingwithswift.com/whats-new-in-ios-11)
