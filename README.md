@@ -38,6 +38,7 @@ Swift Coding Challenges is an all-new book written from the ground up to put you
 - [What's new in Swift 3?](https://www.hackingwithswift.com/swift3)
 
 ### iOS
+- [What’s new in SwiftUI for iOS 16](https://www.hackingwithswift.com/articles/250/whats-new-in-swiftui-for-ios-16)
 - [What’s new in SwiftUI for iOS 15](https://www.hackingwithswift.com/articles/235/whats-new-in-swiftui-for-ios-15)
 - [What’s new in SwiftUI for iOS 14](https://www.hackingwithswift.com/articles/221/whats-new-in-swiftui-for-ios-14)
 - [What's new in iOS 13?](https://www.hackingwithswift.com/articles/193/whats-new-in-ios-13)
