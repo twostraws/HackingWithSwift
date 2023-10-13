@@ -2,17 +2,17 @@
 //  ContentView.swift
 //  GuessTheFlag
 //
-//  Created by Paul Hudson on 20/10/2021.
+//  Created by Paul Hudson on 11/10/2023.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
+    @State private var correctAnswer = Int.random(in: 0...2)
+
     @State private var showingScore = false
     @State private var scoreTitle = ""
-
-    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
-    @State private var correctAnswer = Int.random(in: 0...2)
 
     var body: some View {
         ZStack {
@@ -27,7 +27,7 @@ struct ContentView: View {
 
                 Text("Guess the Flag")
                     .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
 
                 VStack(spacing: 15) {
                     VStack {
@@ -44,8 +44,7 @@ struct ContentView: View {
                             flagTapped(number)
                         } label: {
                             Image(countries[number])
-                                .renderingMode(.original)
-                                .clipShape(Capsule())
+                                .clipShape(.capsule)
                                 .shadow(radius: 5)
                         }
                     }
@@ -53,13 +52,13 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 20)
                 .background(.regularMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(.rect(cornerRadius: 20))
 
                 Spacer()
                 Spacer()
 
                 Text("Score: ???")
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .font(.title.bold())
 
                 Spacer()
@@ -89,8 +88,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
