@@ -2,23 +2,24 @@
 //  AddView.swift
 //  iExpense
 //
-//  Created by Paul Hudson on 01/11/2021.
+//  Created by Paul Hudson on 16/10/2023.
 //
 
 import SwiftUI
 
 struct AddView: View {
-    @ObservedObject var expenses: Expenses
     @Environment(\.dismiss) var dismiss
 
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = 0.0
 
+    var expenses: Expenses
+
     let types = ["Business", "Personal"]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 TextField("Name", text: $name)
 
@@ -43,8 +44,6 @@ struct AddView: View {
     }
 }
 
-struct AddView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView(expenses: Expenses())
-    }
+#Preview {
+    AddView(expenses: Expenses())
 }
