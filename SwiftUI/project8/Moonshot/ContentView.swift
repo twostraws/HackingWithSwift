@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Moonshot
 //
-//  Created by Paul Hudson on 09/11/2021.
+//  Created by Paul Hudson on 29/10/2023.
 //
 
 import SwiftUI
@@ -16,7 +16,7 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(missions) { mission in
@@ -33,17 +33,17 @@ struct ContentView: View {
                                 VStack {
                                     Text(mission.displayName)
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .foregroundStyle(.white)
 
                                     Text(mission.formattedLaunchDate)
                                         .font(.caption)
-                                        .foregroundColor(.white.opacity(0.5))
+                                        .foregroundStyle(.white.opacity(0.5))
                                 }
                                 .padding(.vertical)
                                 .frame(maxWidth: .infinity)
                                 .background(.lightBackground)
                             }
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .clipShape(.rect(cornerRadius: 10))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.lightBackground)
@@ -60,8 +60,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

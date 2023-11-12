@@ -2,7 +2,7 @@
 //  AstronautView.swift
 //  Moonshot
 //
-//  Created by Paul Hudson on 09/11/2021.
+//  Created by Paul Hudson on 31/10/2023.
 //
 
 import SwiftUI
@@ -27,10 +27,9 @@ struct AstronautView: View {
     }
 }
 
-struct AstronautView_Previews: PreviewProvider {
-    static let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+#Preview {
+    let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
 
-    static var previews: some View {
-        AstronautView(astronaut: astronauts["armstrong"]!)
-    }
+    return AstronautView(astronaut: astronauts["aldrin"]!)
+        .preferredColorScheme(.dark)
 }

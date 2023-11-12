@@ -2,13 +2,13 @@
 //  CheckoutView.swift
 //  CupcakeCorner
 //
-//  Created by Paul Hudson on 18/11/2021.
+//  Created by Paul Hudson on 11/11/2023.
 //
 
 import SwiftUI
 
 struct CheckoutView: View {
-    @ObservedObject var order: Order
+    var order: Order
 
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
@@ -25,7 +25,7 @@ struct CheckoutView: View {
                 }
                 .frame(height: 233)
 
-                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                Text("Your total cost is \(order.cost, format: .currency(code: "USD"))")
                     .font(.title)
 
                 Button("Place Order") {
@@ -38,6 +38,7 @@ struct CheckoutView: View {
         }
         .navigationTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollBounceBehavior(.basedOnSize)
         .alert("Thank you!", isPresented: $showingConfirmation) {
             Button("OK") { }
         } message: {
@@ -63,13 +64,11 @@ struct CheckoutView: View {
             confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
             showingConfirmation = true
         } catch {
-            print("Checkout failed.")
+            print("Check out failed: \(error.localizedDescription)")
         }
     }
 }
 
-struct CheckoutView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckoutView(order: Order())
-    }
+#Preview {
+    CheckoutView(order: Order())
 }

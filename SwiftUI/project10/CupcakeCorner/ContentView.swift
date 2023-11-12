@@ -2,20 +2,20 @@
 //  ContentView.swift
 //  CupcakeCorner
 //
-//  Created by Paul Hudson on 17/11/2021.
+//  Created by Paul Hudson on 09/11/2023.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var order = Order()
+    @State private var order = Order()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     Picker("Select your cake type", selection: $order.type) {
-                        ForEach(Order.types.indices) {
+                        ForEach(Order.types.indices, id: \.self) {
                             Text(Order.types[$0])
                         }
                     }
@@ -24,19 +24,18 @@ struct ContentView: View {
                 }
 
                 Section {
-                    Toggle("Any special requests?", isOn: $order.specialRequestEnabled.animation())
+                    Toggle("Any special requests?", isOn: $order.specialRequestEnabled)
 
                     if order.specialRequestEnabled {
                         Toggle("Add extra frosting", isOn: $order.extraFrosting)
+
                         Toggle("Add extra sprinkles", isOn: $order.addSprinkles)
                     }
                 }
 
                 Section {
-                    NavigationLink {
+                    NavigationLink("Delivery details") {
                         AddressView(order: order)
-                    } label: {
-                        Text("Delivery details")
                     }
                 }
             }
@@ -45,8 +44,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

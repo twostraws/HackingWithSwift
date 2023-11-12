@@ -2,22 +2,31 @@
 //  Order.swift
 //  CupcakeCorner
 //
-//  Created by Paul Hudson on 18/11/2021.
+//  Created by Paul Hudson on 10/11/2023.
 //
 
-import SwiftUI
+import Foundation
 
-class Order: ObservableObject, Codable {
-    enum CodingKeys: CodingKey {
-        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
+@Observable
+class Order: Codable {
+    enum CodingKeys: String, CodingKey {
+        case _type = "type"
+        case _quantity = "quantity"
+        case _specialRequestEnabled = "specialRequestEnabled"
+        case _extraFrosting = "extraFrosting"
+        case _addSprinkles = "addSprinkles"
+        case _name = "name"
+        case _city = "city"
+        case _streetAddress = "streetAddress"
+        case _zip = "zip"
     }
 
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
 
-    @Published var type = 0
-    @Published var quantity = 3
+    var type = 0
+    var quantity = 3
 
-    @Published var specialRequestEnabled = false {
+    var specialRequestEnabled = false {
         didSet {
             if specialRequestEnabled == false {
                 extraFrosting = false
@@ -26,13 +35,13 @@ class Order: ObservableObject, Codable {
         }
     }
 
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
+    var extraFrosting = false
+    var addSprinkles = false
 
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
+    var name = ""
+    var streetAddress = ""
+    var city = ""
+    var zip = ""
 
     var hasValidAddress: Bool {
         if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
@@ -42,55 +51,23 @@ class Order: ObservableObject, Codable {
         return true
     }
 
-    var cost: Double {
+    var cost: Decimal {
         // $2 per cake
-        var cost = Double(quantity) * 2
+        var cost = Decimal(quantity) * 2
 
         // complicated cakes cost more
-        cost += (Double(type) / 2)
+        cost += Decimal(type) / 2
 
         // $1/cake for extra frosting
         if extraFrosting {
-            cost += Double(quantity)
+            cost += Decimal(quantity)
         }
 
         // $0.50/cake for sprinkles
         if addSprinkles {
-            cost += Double(quantity) / 2
+            cost += Decimal(quantity) / 2
         }
 
         return cost
-    }
-
-    init() { }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-
-        try container.encode(type, forKey: .type)
-        try container.encode(quantity, forKey: .quantity)
-
-        try container.encode(extraFrosting, forKey: .extraFrosting)
-        try container.encode(addSprinkles, forKey: .addSprinkles)
-
-        try container.encode(name, forKey: .name)
-        try container.encode(streetAddress, forKey: .streetAddress)
-        try container.encode(city, forKey: .city)
-        try container.encode(zip, forKey: .zip)
-    }
-
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        type = try container.decode(Int.self, forKey: .type)
-        quantity = try container.decode(Int.self, forKey: .quantity)
-
-        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
-        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-
-        name = try container.decode(String.self, forKey: .name)
-        streetAddress = try container.decode(String.self, forKey: .streetAddress)
-        city = try container.decode(String.self, forKey: .city)
-        zip = try container.decode(String.self, forKey: .zip)
     }
 }
