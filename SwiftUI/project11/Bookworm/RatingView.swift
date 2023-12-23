@@ -2,7 +2,7 @@
 //  RatingView.swift
 //  Bookworm
 //
-//  Created by Paul Hudson on 23/11/2021.
+//  Created by Paul Hudson on 17/11/2023.
 //
 
 import SwiftUI
@@ -26,26 +26,26 @@ struct RatingView: View {
             }
 
             ForEach(1..<maximumRating + 1, id: \.self) { number in
-                image(for: number)
-                    .foregroundColor(number > rating ? offColor : onColor)
-                    .onTapGesture {
-                        rating = number
-                    }
+                Button {
+                    rating = number
+                } label: {
+                    image(for: number)
+                        .foregroundStyle(number > rating ? offColor : onColor)
+                }
             }
         }
+        .buttonStyle(.plain)
     }
 
     func image(for number: Int) -> Image {
         if number > rating {
-            return offImage ?? onImage
+            offImage ?? onImage
         } else {
-            return onImage
+            onImage
         }
     }
 }
 
-struct RatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingView(rating: .constant(4))
-    }
+#Preview {
+    RatingView(rating: .constant(4))
 }

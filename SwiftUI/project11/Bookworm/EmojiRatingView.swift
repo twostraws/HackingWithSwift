@@ -2,32 +2,34 @@
 //  EmojiRatingView.swift
 //  Bookworm
 //
-//  Created by Paul Hudson on 23/11/2021.
+//  Created by Paul Hudson on 17/11/2023.
 //
 
 import SwiftUI
 
 struct EmojiRatingView: View {
-    let rating: Int16
+    let rating: Int
 
     var body: some View {
         switch rating {
         case 1:
-            return Text("🙈")
+            Text("☹️")
+
         case 2:
-            return Text("😔")
+            Text("🥱")
+
         case 3:
-            return Text("🙂")
+            Text("🫤")
+
         case 4:
-            return Text("😊")
+            Text("😊")
+
         default:
-            return Text("🤩")
+            Text("🤯")
         }
     }
 }
 
-struct EmojiRatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmojiRatingView(rating: 3)
-    }
+#Preview {
+    EmojiRatingView(rating: 3)
 }
