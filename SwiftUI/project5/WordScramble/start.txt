@@ -4501,7 +4501,6 @@ frumpish
 frustums
 fuchsias
 fuddling
-fuehrers
 fugitive
 fulcrums
 fulfills
