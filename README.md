@@ -2,7 +2,7 @@
 
 This is the source code to accompany Hacking with Swift, [a free tutorial series that teaches Swift coding for iOS](https://www.hackingwithswift.com). There is one folder for the classic Hacking with Swift course, which teaches UIKit and SpriteKit, and another folder for the SwiftUI edition.
 
-All projects should be compatible with Xcode 11 and iOS 13. Where appropriate, separate project files have been provided so that you can follow the tutorial from scratch without having to dig around in the completed project folder.
+All SwiftUI projects should be compatible with Xcode 15 and iOS 17. Where appropriate, separate project files have been provided so that you can follow the tutorial from scratch without having to dig around in the completed project folder.
 
 If you have questions, you can find me on Twitter [@twostraws](https://www.twitter.com/twostraws).
 
