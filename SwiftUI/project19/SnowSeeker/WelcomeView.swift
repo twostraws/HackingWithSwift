@@ -2,7 +2,7 @@
 //  WelcomeView.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 23/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
@@ -14,13 +14,11 @@ struct WelcomeView: View {
                 .font(.largeTitle)
 
             Text("Please select a resort from the left-hand menu; swipe from the left edge to show it.")
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView()
-    }
+#Preview {
+    WelcomeView()
 }

@@ -2,67 +2,76 @@
 //  DetailView.swift
 //  Bookworm
 //
-//  Created by Paul Hudson on 23/11/2021.
+//  Created by Paul Hudson on 18/11/2023.
 //
 
+import SwiftData
 import SwiftUI
 
 struct DetailView: View {
-    let book: Book
-
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     @State private var showingDeleteAlert = false
+
+    let book: Book
 
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomTrailing) {
-                Image(book.genre ?? "Fantasy")
+                Image(book.genre)
                     .resizable()
                     .scaledToFit()
 
-                Text(book.genre?.uppercased() ?? "FANTASY")
-                    .font(.caption)
+                Text(book.genre.uppercased())
                     .fontWeight(.black)
                     .padding(8)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .background(.black.opacity(0.75))
-                    .clipShape(Capsule())
+                    .clipShape(.capsule)
                     .offset(x: -5, y: -5)
             }
 
-            Text(book.author ?? "Unknown Author")
+            Text(book.author)
                 .font(.title)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
 
-            Text(book.review ?? "No review")
+            Text(book.review)
                 .padding()
 
-            RatingView(rating: .constant(Int(book.rating)))
+            RatingView(rating: .constant(book.rating))
                 .font(.largeTitle)
         }
-        .navigationTitle(book.title ?? "Unknown Book")
+        .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Delete book?", isPresented: $showingDeleteAlert) {
+        .scrollBounceBehavior(.basedOnSize)
+        .alert("Delete book", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteBook)
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("Are you sure?")
         }
         .toolbar {
-            Button {
+            Button("Delete this book", systemImage: "trash") {
                 showingDeleteAlert = true
-            } label: {
-                Label("Delete this book", systemImage: "trash")
             }
         }
     }
 
     func deleteBook() {
-        moc.delete(book)
-
-//        try? moc.save()
+        modelContext.delete(book)
         dismiss()
     }
 }
 
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Book.self, configurations: config)
+        let example = Book(title: "Test Book", author: "Test Author", genre: "Fantasy", review: "This was a great book; I really enjoyed it.", rating: 4)
+
+        return DetailView(book: example)
+            .modelContainer(container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}

@@ -2,9 +2,10 @@
 //  HotProspectsApp.swift
 //  HotProspects
 //
-//  Created by Paul Hudson on 14/12/2021.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -13,5 +14,6 @@ struct HotProspectsApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Prospect.self)
     }
 }

@@ -2,37 +2,36 @@
 //  ContentView.swift
 //  Bookworm
 //
-//  Created by Paul Hudson on 23/11/2021.
+//  Created by Paul Hudson on 16/11/2023.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.title),
-        SortDescriptor(\.author)
-    ]) var books: FetchedResults<Book>
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: [
+        SortDescriptor(\Book.title),
+        SortDescriptor(\Book.author)
+    ]) var books: [Book]
 
     @State private var showingAddScreen = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(books) { book in
-                    NavigationLink {
-                        DetailView(book: book)
-                    } label: {
+                    NavigationLink(value: book) {
                         HStack {
                             EmojiRatingView(rating: book.rating)
                                 .font(.largeTitle)
 
                             VStack(alignment: .leading) {
-                                Text(book.title ?? "Unknown Title")
+                                Text(book.title)
                                     .font(.headline)
 
-                                Text(book.author ?? "Unknown Author")
-                                    .foregroundColor(.secondary)
+                                Text(book.author)
+                                    .foregroundStyle(.secondary)
                             }
                         }
                     }
@@ -40,16 +39,17 @@ struct ContentView: View {
                 .onDelete(perform: deleteBooks)
             }
             .navigationTitle("Bookworm")
+            .navigationDestination(for: Book.self) { book in
+                DetailView(book: book)
+            }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add Book", systemImage: "plus") {
                         showingAddScreen.toggle()
-                    } label: {
-                        Label("Add Book", systemImage: "plus")
                     }
                 }
             }
@@ -62,15 +62,11 @@ struct ContentView: View {
     func deleteBooks(at offsets: IndexSet) {
         for offset in offsets {
             let book = books[offset]
-            moc.delete(book)
+            modelContext.delete(book)
         }
-
-//        try? moc.save()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

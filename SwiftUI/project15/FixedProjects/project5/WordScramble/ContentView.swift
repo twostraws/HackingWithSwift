@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  WordScramble
 //
-//  Created by Paul Hudson on 28/10/2021.
+//  Created by Paul Hudson on 15/10/2023.
 //
 
 import SwiftUI
@@ -17,11 +17,11 @@ struct ContentView: View {
     @State private var showingError = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     TextField("Enter your word", text: $newWord)
-                        .autocapitalization(.none)
+                        .textInputAutocapitalization(.never)
                 }
 
                 Section {
@@ -32,16 +32,14 @@ struct ContentView: View {
                         }
                         .accessibilityElement()
                         .accessibilityLabel(word)
-                        .accessibilityHint("\(word.count) letters")
+                        .accessibilityHint("\(word.count) letters")   
                     }
                 }
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
-            .alert(errorTitle, isPresented: $showingError) {
-                Button("OK", role: .cancel) { }
-            } message: {
+            .alert(errorTitle, isPresented: $showingError) { } message: {
                 Text(errorMessage)
             }
         }
@@ -49,6 +47,7 @@ struct ContentView: View {
 
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+
         guard answer.count > 0 else { return }
 
         guard isOriginal(word: answer) else {
@@ -107,7 +106,6 @@ struct ContentView: View {
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
-
         return misspelledRange.location == NSNotFound
     }
 
@@ -118,8 +116,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

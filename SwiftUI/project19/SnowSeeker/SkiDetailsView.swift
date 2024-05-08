@@ -2,7 +2,7 @@
 //  SkiDetailsView.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 23/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
@@ -30,8 +30,6 @@ struct SkiDetailsView: View {
     }
 }
 
-struct SkiDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SkiDetailsView(resort: Resort.example)
-    }
+#Preview {
+    SkiDetailsView(resort: .example)
 }

@@ -1,8 +1,8 @@
 //
 //  Result.swift
-//  Bucketlist
+//  BucketList
 //
-//  Created by Paul Hudson on 10/12/2021.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import Foundation

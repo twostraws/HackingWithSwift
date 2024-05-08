@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Flashzilla
 //
-//  Created by Paul Hudson on 07/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
@@ -10,13 +10,14 @@ import SwiftUI
 extension View {
     func stacked(at position: Int, in total: Int) -> some View {
         let offset = Double(total - position)
-        return self.offset(x: 0, y: offset * 10)
+        return self.offset(y: offset * 10)
     }
 }
 
 struct ContentView: View {
-    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
-    @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
+    @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
+    @Environment(\.accessibilityVoiceOverEnabled) var accessibilityVoiceOverEnabled
+
     @State private var cards = [Card]()
 
     @State private var timeRemaining = 100
@@ -24,30 +25,29 @@ struct ContentView: View {
 
     @Environment(\.scenePhase) var scenePhase
     @State private var isActive = true
-
     @State private var showingEditScreen = false
 
     var body: some View {
         ZStack {
-            Image("background")
+            Image(decorative: "background")
                 .resizable()
                 .ignoresSafeArea()
 
             VStack {
                 Text("Time: \(timeRemaining)")
                     .font(.largeTitle)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 5)
                     .background(.black.opacity(0.75))
-                    .clipShape(Capsule())
+                    .clipShape(.capsule)
 
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
                         CardView(card: cards[index]) {
-                            withAnimation {
-                                removeCard(at: index)
-                            }
+                           withAnimation {
+                               removeCard(at: index)
+                           }
                         }
                         .stacked(at: index, in: cards.count)
                         .allowsHitTesting(index == cards.count - 1)
@@ -60,8 +60,8 @@ struct ContentView: View {
                     Button("Start Again", action: resetCards)
                         .padding()
                         .background(.white)
-                        .foregroundColor(.black)
-                        .clipShape(Capsule())
+                        .foregroundStyle(.black)
+                        .clipShape(.capsule)
                 }
             }
 
@@ -75,17 +75,17 @@ struct ContentView: View {
                         Image(systemName: "plus.circle")
                             .padding()
                             .background(.black.opacity(0.7))
-                            .clipShape(Circle())
+                            .clipShape(.circle)
                     }
                 }
 
                 Spacer()
             }
-            .foregroundColor(.white)
+            .foregroundStyle(.white)
             .font(.largeTitle)
             .padding()
 
-            if differentiateWithoutColor || voiceOverEnabled {
+            if accessibilityDifferentiateWithoutColor || accessibilityVoiceOverEnabled {
                 VStack {
                     Spacer()
 
@@ -98,10 +98,10 @@ struct ContentView: View {
                             Image(systemName: "xmark.circle")
                                 .padding()
                                 .background(.black.opacity(0.7))
-                                .clipShape(Circle())
+                                .clipShape(.circle)
                         }
                         .accessibilityLabel("Wrong")
-                        .accessibilityHint("Mark your answer as being incorrect")
+                        .accessibilityHint("Mark your answer as being incorrect.")
 
                         Spacer()
 
@@ -113,14 +113,11 @@ struct ContentView: View {
                             Image(systemName: "checkmark.circle")
                                 .padding()
                                 .background(.black.opacity(0.7))
-                                .clipShape(Circle())
+                                .clipShape(.circle)
                         }
                         .accessibilityLabel("Correct")
-                        .accessibilityHint("Mark your answer is being correct.")
+                        .accessibilityHint("Mark your answer as being correct.")
                     }
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    .padding()
                 }
             }
         }
@@ -131,8 +128,8 @@ struct ContentView: View {
                 timeRemaining -= 1
             }
         }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
                 if cards.isEmpty == false {
                     isActive = true
                 }
@@ -144,21 +141,20 @@ struct ContentView: View {
         .onAppear(perform: resetCards)
     }
 
+    func removeCard(at index: Int) {
+        guard index >= 0 else { return }
+        cards.remove(at: index)
+
+        if cards.isEmpty {
+            isActive = false
+        }
+    }
+
     func loadData() {
         if let data = UserDefaults.standard.data(forKey: "Cards") {
             if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
                 cards = decoded
             }
-        }
-    }
-
-    func removeCard(at index: Int) {
-        guard index >= 0 else { return }
-
-        cards.remove(at: index)
-
-        if cards.isEmpty {
-            isActive = false
         }
     }
 
@@ -169,8 +165,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

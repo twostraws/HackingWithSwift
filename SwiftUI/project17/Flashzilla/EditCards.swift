@@ -2,7 +2,7 @@
 //  EditCards.swift
 //  Flashzilla
 //
-//  Created by Paul Hudson on 11/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
@@ -14,12 +14,12 @@ struct EditCards: View {
     @State private var newAnswer = ""
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section("Add new card") {
                     TextField("Prompt", text: $newPrompt)
                     TextField("Answer", text: $newAnswer)
-                    Button("Add card", action: addCard)
+                    Button("Add Card", action: addCard)
                 }
 
                 Section {
@@ -27,9 +27,8 @@ struct EditCards: View {
                         VStack(alignment: .leading) {
                             Text(cards[index].prompt)
                                 .font(.headline)
-
                             Text(cards[index].answer)
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                         }
                     }
                     .onDelete(perform: removeCards)
@@ -39,7 +38,6 @@ struct EditCards: View {
             .toolbar {
                 Button("Done", action: done)
             }
-            .listStyle(.grouped)
             .onAppear(perform: loadData)
         }
     }
@@ -78,8 +76,6 @@ struct EditCards: View {
     }
 }
 
-struct EditCards_Previews: PreviewProvider {
-    static var previews: some View {
-        EditCards()
-    }
+#Preview {
+    EditCards()
 }

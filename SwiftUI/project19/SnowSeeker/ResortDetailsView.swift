@@ -2,7 +2,7 @@
 //  ResortDetailsView.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 23/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
@@ -12,12 +12,9 @@ struct ResortDetailsView: View {
 
     var size: String {
         switch resort.size {
-        case 1:
-            return "Small"
-        case 2:
-            return "Average"
-        default:
-            return "Large"
+        case 1: "Small"
+        case 2: "Average"
+        default: "Large"
         }
     }
 
@@ -45,8 +42,6 @@ struct ResortDetailsView: View {
     }
 }
 
-struct ResortDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResortDetailsView(resort: Resort.example)
-    }
+#Preview {
+    ResortDetailsView(resort: .example)
 }

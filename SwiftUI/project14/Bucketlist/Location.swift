@@ -1,25 +1,25 @@
 //
 //  Location.swift
-//  Bucketlist
+//  BucketList
 //
-//  Created by Paul Hudson on 09/12/2021.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import Foundation
-import CoreLocation
+import MapKit
 
-struct Location: Identifiable, Codable, Equatable {
+struct Location: Codable, Equatable, Identifiable {
     var id: UUID
     var name: String
     var description: String
-    let latitude: Double
-    let longitude: Double
+    var latitude: Double
+    var longitude: Double
 
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
-    static let example = Location(id: UUID(), name: "Buckingham Palace", description: "Where Queen Elizabeth lives with her dorgis", latitude: 51.501, longitude: -0.141)
+    static let example = Location(id: UUID(), name: "Buckingham Palace", description: "Lit by over 40,000 lightbulbs.", latitude: 51.501, longitude: -0.141)
 
     static func ==(lhs: Location, rhs: Location) -> Bool {
         lhs.id == rhs.id

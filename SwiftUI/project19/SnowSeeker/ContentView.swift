@@ -2,39 +2,37 @@
 //  ContentView.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 18/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
 
-extension View {
-    @ViewBuilder func phoneOnlyNavigationView() -> some View {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            self.navigationViewStyle(.stack)
-        } else {
-            self
-        }
-    }
-}
-
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
 
-    @StateObject var favorites = Favorites()
+    @State private var favorites = Favorites()
     @State private var searchText = ""
 
+    var filteredResorts: [Resort] {
+        if searchText.isEmpty {
+           resorts
+        } else {
+            resorts.filter { $0.name.localizedStandardContains(searchText) }
+        }
+    }
+
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             List(filteredResorts) { resort in
-                NavigationLink {
-                    ResortView(resort: resort)
-                } label: {
+                NavigationLink(value: resort) {
                     HStack {
                         Image(resort.country)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 40, height: 25)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .clipShape(
+                                .rect(cornerRadius: 5)
+                            )
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
                                     .stroke(.black, lineWidth: 1)
@@ -44,37 +42,30 @@ struct ContentView: View {
                             Text(resort.name)
                                 .font(.headline)
                             Text("\(resort.runs) runs")
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                         }
 
                         if favorites.contains(resort) {
                             Spacer()
                             Image(systemName: "heart.fill")
-                                .accessibilityLabel("This is a favorite resort")
-                                .foregroundColor(.red)
+                            .accessibilityLabel("This is a favorite resort")
+                                .foregroundStyle(.red)
                         }
                     }
                 }
             }
             .navigationTitle("Resorts")
+            .navigationDestination(for: Resort.self) { resort in
+                ResortView(resort: resort)
+            }
             .searchable(text: $searchText, prompt: "Search for a resort")
-
+        } detail: {
             WelcomeView()
         }
-        .environmentObject(favorites)
-    }
-
-    var filteredResorts: [Resort] {
-        if searchText.isEmpty {
-            return resorts
-        } else {
-            return resorts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
-        }
+        .environment(favorites)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

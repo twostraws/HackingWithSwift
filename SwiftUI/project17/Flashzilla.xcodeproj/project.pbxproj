@@ -3,32 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51920CF127886EB100C66951 /* FlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51920CF027886EB100C66951 /* FlashzillaApp.swift */; };
-		51920CF327886EB100C66951 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51920CF227886EB100C66951 /* ContentView.swift */; };
-		51920CF527886EB300C66951 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51920CF427886EB300C66951 /* Assets.xcassets */; };
-		51920CF827886EB300C66951 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51920CF727886EB300C66951 /* Preview Assets.xcassets */; };
-		51B67857278E45390095B91A /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B67856278E45390095B91A /* EditCards.swift */; };
-		51BA8C59278B11A900A3D9A5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BA8C58278B11A900A3D9A5 /* Card.swift */; };
-		51BA8C5B278B125C00A3D9A5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BA8C5A278B125C00A3D9A5 /* CardView.swift */; };
+		51766B902BEB981E00E3A166 /* FlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51766B8F2BEB981E00E3A166 /* FlashzillaApp.swift */; };
+		51766B922BEB981E00E3A166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51766B912BEB981E00E3A166 /* ContentView.swift */; };
+		51766B942BEB982000E3A166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51766B932BEB982000E3A166 /* Assets.xcassets */; };
+		51766B972BEB982000E3A166 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51766B962BEB982000E3A166 /* Preview Assets.xcassets */; };
+		51766B9E2BEB985100E3A166 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51766B9D2BEB985100E3A166 /* Card.swift */; };
+		51766BA02BEB985E00E3A166 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51766B9F2BEB985E00E3A166 /* CardView.swift */; };
+		51766BA22BEB9C4500E3A166 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51766BA12BEB9C4500E3A166 /* EditCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		51920CED27886EB100C66951 /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		51920CF027886EB100C66951 /* FlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashzillaApp.swift; sourceTree = "<group>"; };
-		51920CF227886EB100C66951 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		51920CF427886EB300C66951 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		51920CF727886EB300C66951 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		51B67856278E45390095B91A /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
-		51BA8C58278B11A900A3D9A5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		51BA8C5A278B125C00A3D9A5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		51766B8C2BEB981E00E3A166 /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51766B8F2BEB981E00E3A166 /* FlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashzillaApp.swift; sourceTree = "<group>"; };
+		51766B912BEB981E00E3A166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		51766B932BEB982000E3A166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		51766B962BEB982000E3A166 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		51766B9D2BEB985100E3A166 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		51766B9F2BEB985E00E3A166 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		51766BA12BEB9C4500E3A166 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		51920CEA27886EB100C66951 /* Frameworks */ = {
+		51766B892BEB981E00E3A166 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,40 +38,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		51920CE427886EB100C66951 = {
+		51766B832BEB981E00E3A166 = {
 			isa = PBXGroup;
 			children = (
-				51920CEF27886EB100C66951 /* Flashzilla */,
-				51920CEE27886EB100C66951 /* Products */,
+				51766B8E2BEB981E00E3A166 /* Flashzilla */,
+				51766B8D2BEB981E00E3A166 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		51920CEE27886EB100C66951 /* Products */ = {
+		51766B8D2BEB981E00E3A166 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51920CED27886EB100C66951 /* Flashzilla.app */,
+				51766B8C2BEB981E00E3A166 /* Flashzilla.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		51920CEF27886EB100C66951 /* Flashzilla */ = {
+		51766B8E2BEB981E00E3A166 /* Flashzilla */ = {
 			isa = PBXGroup;
 			children = (
-				51920CF027886EB100C66951 /* FlashzillaApp.swift */,
-				51920CF227886EB100C66951 /* ContentView.swift */,
-				51BA8C5A278B125C00A3D9A5 /* CardView.swift */,
-				51BA8C58278B11A900A3D9A5 /* Card.swift */,
-				51B67856278E45390095B91A /* EditCards.swift */,
-				51920CF427886EB300C66951 /* Assets.xcassets */,
-				51920CF627886EB300C66951 /* Preview Content */,
+				51766B8F2BEB981E00E3A166 /* FlashzillaApp.swift */,
+				51766B912BEB981E00E3A166 /* ContentView.swift */,
+				51766B9F2BEB985E00E3A166 /* CardView.swift */,
+				51766B9D2BEB985100E3A166 /* Card.swift */,
+				51766BA12BEB9C4500E3A166 /* EditCards.swift */,
+				51766B932BEB982000E3A166 /* Assets.xcassets */,
+				51766B952BEB982000E3A166 /* Preview Content */,
 			);
 			path = Flashzilla;
 			sourceTree = "<group>";
 		};
-		51920CF627886EB300C66951 /* Preview Content */ = {
+		51766B952BEB982000E3A166 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				51920CF727886EB300C66951 /* Preview Assets.xcassets */,
+				51766B962BEB982000E3A166 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -79,13 +79,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		51920CEC27886EB100C66951 /* Flashzilla */ = {
+		51766B8B2BEB981E00E3A166 /* Flashzilla */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51920CFB27886EB300C66951 /* Build configuration list for PBXNativeTarget "Flashzilla" */;
+			buildConfigurationList = 51766B9A2BEB982000E3A166 /* Build configuration list for PBXNativeTarget "Flashzilla" */;
 			buildPhases = (
-				51920CE927886EB100C66951 /* Sources */,
-				51920CEA27886EB100C66951 /* Frameworks */,
-				51920CEB27886EB100C66951 /* Resources */,
+				51766B882BEB981E00E3A166 /* Sources */,
+				51766B892BEB981E00E3A166 /* Frameworks */,
+				51766B8A2BEB981E00E3A166 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -93,78 +93,78 @@
 			);
 			name = Flashzilla;
 			productName = Flashzilla;
-			productReference = 51920CED27886EB100C66951 /* Flashzilla.app */;
+			productReference = 51766B8C2BEB981E00E3A166 /* Flashzilla.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		51920CE527886EB100C66951 /* Project object */ = {
+		51766B842BEB981E00E3A166 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					51920CEC27886EB100C66951 = {
-						CreatedOnToolsVersion = 13.2.1;
+					51766B8B2BEB981E00E3A166 = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = 51920CE827886EB100C66951 /* Build configuration list for PBXProject "Flashzilla" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 51766B872BEB981E00E3A166 /* Build configuration list for PBXProject "Flashzilla" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 51920CE427886EB100C66951;
-			productRefGroup = 51920CEE27886EB100C66951 /* Products */;
+			mainGroup = 51766B832BEB981E00E3A166;
+			productRefGroup = 51766B8D2BEB981E00E3A166 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				51920CEC27886EB100C66951 /* Flashzilla */,
+				51766B8B2BEB981E00E3A166 /* Flashzilla */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		51920CEB27886EB100C66951 /* Resources */ = {
+		51766B8A2BEB981E00E3A166 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51920CF827886EB300C66951 /* Preview Assets.xcassets in Resources */,
-				51920CF527886EB300C66951 /* Assets.xcassets in Resources */,
+				51766B972BEB982000E3A166 /* Preview Assets.xcassets in Resources */,
+				51766B942BEB982000E3A166 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		51920CE927886EB100C66951 /* Sources */ = {
+		51766B882BEB981E00E3A166 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51920CF327886EB100C66951 /* ContentView.swift in Sources */,
-				51BA8C59278B11A900A3D9A5 /* Card.swift in Sources */,
-				51BA8C5B278B125C00A3D9A5 /* CardView.swift in Sources */,
-				51B67857278E45390095B91A /* EditCards.swift in Sources */,
-				51920CF127886EB100C66951 /* FlashzillaApp.swift in Sources */,
+				51766B922BEB981E00E3A166 /* ContentView.swift in Sources */,
+				51766B9E2BEB985100E3A166 /* Card.swift in Sources */,
+				51766BA02BEB985E00E3A166 /* CardView.swift in Sources */,
+				51766BA22BEB9C4500E3A166 /* EditCards.swift in Sources */,
+				51766B902BEB981E00E3A166 /* FlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		51920CF927886EB300C66951 /* Debug */ = {
+		51766B982BEB982000E3A166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -194,7 +194,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -208,24 +209,25 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		51920CFA27886EB300C66951 /* Release */ = {
+		51766B992BEB982000E3A166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -255,7 +257,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -263,17 +266,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		51920CFC27886EB300C66951 /* Debug */ = {
+		51766B9B2BEB982000E3A166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -287,9 +290,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,7 +305,7 @@
 			};
 			name = Debug;
 		};
-		51920CFD27886EB300C66951 /* Release */ = {
+		51766B9C2BEB982000E3A166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -317,9 +319,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,25 +337,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		51920CE827886EB100C66951 /* Build configuration list for PBXProject "Flashzilla" */ = {
+		51766B872BEB981E00E3A166 /* Build configuration list for PBXProject "Flashzilla" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51920CF927886EB300C66951 /* Debug */,
-				51920CFA27886EB300C66951 /* Release */,
+				51766B982BEB982000E3A166 /* Debug */,
+				51766B992BEB982000E3A166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51920CFB27886EB300C66951 /* Build configuration list for PBXNativeTarget "Flashzilla" */ = {
+		51766B9A2BEB982000E3A166 /* Build configuration list for PBXNativeTarget "Flashzilla" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51920CFC27886EB300C66951 /* Debug */,
-				51920CFD27886EB300C66951 /* Release */,
+				51766B9B2BEB982000E3A166 /* Debug */,
+				51766B9C2BEB982000E3A166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 51920CE527886EB100C66951 /* Project object */;
+	rootObject = 51766B842BEB981E00E3A166 /* Project object */;
 }

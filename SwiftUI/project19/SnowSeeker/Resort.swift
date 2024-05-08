@@ -2,23 +2,23 @@
 //  Resort.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 23/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import Foundation
 
-struct Resort: Codable, Identifiable {
-    let id: String
-    let name: String
-    let country: String
-    let description: String
-    let imageCredit: String
-    let price: Int
-    let size: Int
-    let snowDepth: Int
-    let elevation: Int
-    let runs: Int
-    let facilities: [String]
+struct Resort: Codable, Hashable, Identifiable {
+    var id: String
+    var name: String
+    var country: String
+    var description: String
+    var imageCredit: String
+    var price: Int
+    var size: Int
+    var snowDepth: Int
+    var elevation: Int
+    var runs: Int
+    var facilities: [String]
 
     var facilityTypes: [Facility] {
         facilities.map(Facility.init)

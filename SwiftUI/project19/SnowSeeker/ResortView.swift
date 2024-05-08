@@ -2,21 +2,20 @@
 //  ResortView.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 23/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
 
 struct ResortView: View {
-    let resort: Resort
-
-    @Environment(\.horizontalSizeClass) var sizeClass
-    @Environment(\.dynamicTypeSize) var typeSize
-
-    @EnvironmentObject var favorites: Favorites
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    @Environment(Favorites.self) var favorites
 
     @State private var selectedFacility: Facility?
     @State private var showingFacility = false
+
+    let resort: Resort
 
     var body: some View {
         ScrollView {
@@ -26,7 +25,7 @@ struct ResortView: View {
                     .scaledToFit()
 
                 HStack {
-                    if sizeClass == .compact && typeSize > .large {
+                    if horizontalSizeClass == .compact && dynamicTypeSize > .large {
                         VStack(spacing: 10) { ResortDetailsView(resort: resort) }
                         VStack(spacing: 10) { SkiDetailsView(resort: resort) }
                     } else {
@@ -35,7 +34,7 @@ struct ResortView: View {
                     }
                 }
                 .padding(.vertical)
-                .background(Color.primary.opacity(0.1))
+                .background(.primary.opacity(0.1))
                 .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
 
                 Group {
@@ -56,18 +55,19 @@ struct ResortView: View {
                             }
                         }
                     }
-
-                    Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites") {
-                        if favorites.contains(resort) {
-                            favorites.remove(resort)
-                        } else {
-                            favorites.add(resort)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding()
+                    .padding(.vertical)
                 }
                 .padding(.horizontal)
+
+                Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites") {
+                    if favorites.contains(resort) {
+                        favorites.remove(resort)
+                    } else {
+                        favorites.add(resort)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
             }
         }
         .navigationTitle("\(resort.name), \(resort.country)")
@@ -79,11 +79,6 @@ struct ResortView: View {
     }
 }
 
-struct ResortView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ResortView(resort: Resort.example)
-        }
-        .environmentObject(Favorites())
-    }
+#Preview {
+    ResortView(resort: .example)
 }

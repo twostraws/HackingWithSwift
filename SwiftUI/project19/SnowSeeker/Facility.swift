@@ -2,7 +2,7 @@
 //  Facility.swift
 //  SnowSeeker
 //
-//  Created by Paul Hudson on 25/01/2022.
+//  Created by Paul Hudson on 08/05/2024.
 //
 
 import SwiftUI
@@ -18,7 +18,7 @@ struct Facility: Identifiable {
         "Eco-friendly": "leaf.arrow.circlepath",
         "Family": "person.3"
     ]
-
+    
     private let descriptions = [
         "Accommodation": "This resort has popular on-site accommodation.",
         "Beginners": "This resort has lots of ski schools.",
@@ -29,9 +29,9 @@ struct Facility: Identifiable {
 
     var icon: some View {
         if let iconName = icons[name] {
-            return Image(systemName: iconName)
+            Image(systemName: iconName)
                 .accessibilityLabel(name)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         } else {
             fatalError("Unknown facility type: \(name)")
         }
@@ -39,7 +39,7 @@ struct Facility: Identifiable {
 
     var description: String {
         if let message = descriptions[name] {
-            return message
+            message
         } else {
             fatalError("Unknown facility type: \(name)")
         }

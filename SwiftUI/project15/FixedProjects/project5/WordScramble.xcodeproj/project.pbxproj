@@ -3,28 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51BB5E45272C58B5006323AD /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51BB5E44272C58B5006323AD /* start.txt */; };
-		51CE9EEB272B3EFC00238943 /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE9EEA272B3EFC00238943 /* WordScrambleApp.swift */; };
-		51CE9EED272B3EFC00238943 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE9EEC272B3EFC00238943 /* ContentView.swift */; };
-		51CE9EEF272B3EFD00238943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CE9EEE272B3EFD00238943 /* Assets.xcassets */; };
-		51CE9EF2272B3EFD00238943 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CE9EF1272B3EFD00238943 /* Preview Assets.xcassets */; };
+		51252BC12ADC50DB00423B1D /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51252BC02ADC50DB00423B1D /* WordScrambleApp.swift */; };
+		51252BC32ADC50DB00423B1D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51252BC22ADC50DB00423B1D /* ContentView.swift */; };
+		51252BC52ADC50DC00423B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51252BC42ADC50DC00423B1D /* Assets.xcassets */; };
+		51252BC82ADC50DC00423B1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51252BC72ADC50DC00423B1D /* Preview Assets.xcassets */; };
+		51252BCF2ADC678A00423B1D /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51252BCE2ADC678A00423B1D /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		51BB5E44272C58B5006323AD /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
-		51CE9EE7272B3EFC00238943 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		51CE9EEA272B3EFC00238943 /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
-		51CE9EEC272B3EFC00238943 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		51CE9EEE272B3EFD00238943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		51CE9EF1272B3EFD00238943 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		51252BBD2ADC50DB00423B1D /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51252BC02ADC50DB00423B1D /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
+		51252BC22ADC50DB00423B1D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		51252BC42ADC50DC00423B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		51252BC72ADC50DC00423B1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		51252BCE2ADC678A00423B1D /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		51CE9EE4272B3EFC00238943 /* Frameworks */ = {
+		51252BBA2ADC50DB00423B1D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,38 +34,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		51CE9EDE272B3EFC00238943 = {
+		51252BB42ADC50DB00423B1D = {
 			isa = PBXGroup;
 			children = (
-				51CE9EE9272B3EFC00238943 /* WordScramble */,
-				51CE9EE8272B3EFC00238943 /* Products */,
+				51252BBF2ADC50DB00423B1D /* WordScramble */,
+				51252BBE2ADC50DB00423B1D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		51CE9EE8272B3EFC00238943 /* Products */ = {
+		51252BBE2ADC50DB00423B1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51CE9EE7272B3EFC00238943 /* WordScramble.app */,
+				51252BBD2ADC50DB00423B1D /* WordScramble.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		51CE9EE9272B3EFC00238943 /* WordScramble */ = {
+		51252BBF2ADC50DB00423B1D /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
-				51CE9EEA272B3EFC00238943 /* WordScrambleApp.swift */,
-				51CE9EEC272B3EFC00238943 /* ContentView.swift */,
-				51BB5E44272C58B5006323AD /* start.txt */,
-				51CE9EEE272B3EFD00238943 /* Assets.xcassets */,
-				51CE9EF0272B3EFD00238943 /* Preview Content */,
+				51252BC02ADC50DB00423B1D /* WordScrambleApp.swift */,
+				51252BC22ADC50DB00423B1D /* ContentView.swift */,
+				51252BCE2ADC678A00423B1D /* start.txt */,
+				51252BC42ADC50DC00423B1D /* Assets.xcassets */,
+				51252BC62ADC50DC00423B1D /* Preview Content */,
 			);
 			path = WordScramble;
 			sourceTree = "<group>";
 		};
-		51CE9EF0272B3EFD00238943 /* Preview Content */ = {
+		51252BC62ADC50DC00423B1D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				51CE9EF1272B3EFD00238943 /* Preview Assets.xcassets */,
+				51252BC72ADC50DC00423B1D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -73,13 +73,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		51CE9EE6272B3EFC00238943 /* WordScramble */ = {
+		51252BBC2ADC50DB00423B1D /* WordScramble */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51CE9EF5272B3EFD00238943 /* Build configuration list for PBXNativeTarget "WordScramble" */;
+			buildConfigurationList = 51252BCB2ADC50DC00423B1D /* Build configuration list for PBXNativeTarget "WordScramble" */;
 			buildPhases = (
-				51CE9EE3272B3EFC00238943 /* Sources */,
-				51CE9EE4272B3EFC00238943 /* Frameworks */,
-				51CE9EE5272B3EFC00238943 /* Resources */,
+				51252BB92ADC50DB00423B1D /* Sources */,
+				51252BBA2ADC50DB00423B1D /* Frameworks */,
+				51252BBB2ADC50DB00423B1D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -87,76 +87,76 @@
 			);
 			name = WordScramble;
 			productName = WordScramble;
-			productReference = 51CE9EE7272B3EFC00238943 /* WordScramble.app */;
+			productReference = 51252BBD2ADC50DB00423B1D /* WordScramble.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		51CE9EDF272B3EFC00238943 /* Project object */ = {
+		51252BB52ADC50DB00423B1D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					51CE9EE6272B3EFC00238943 = {
-						CreatedOnToolsVersion = 13.1;
+					51252BBC2ADC50DB00423B1D = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 51CE9EE2272B3EFC00238943 /* Build configuration list for PBXProject "WordScramble" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 51252BB82ADC50DB00423B1D /* Build configuration list for PBXProject "WordScramble" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 51CE9EDE272B3EFC00238943;
-			productRefGroup = 51CE9EE8272B3EFC00238943 /* Products */;
+			mainGroup = 51252BB42ADC50DB00423B1D;
+			productRefGroup = 51252BBE2ADC50DB00423B1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				51CE9EE6272B3EFC00238943 /* WordScramble */,
+				51252BBC2ADC50DB00423B1D /* WordScramble */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		51CE9EE5272B3EFC00238943 /* Resources */ = {
+		51252BBB2ADC50DB00423B1D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51CE9EF2272B3EFD00238943 /* Preview Assets.xcassets in Resources */,
-				51BB5E45272C58B5006323AD /* start.txt in Resources */,
-				51CE9EEF272B3EFD00238943 /* Assets.xcassets in Resources */,
+				51252BC82ADC50DC00423B1D /* Preview Assets.xcassets in Resources */,
+				51252BCF2ADC678A00423B1D /* start.txt in Resources */,
+				51252BC52ADC50DC00423B1D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		51CE9EE3272B3EFC00238943 /* Sources */ = {
+		51252BB92ADC50DB00423B1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51CE9EED272B3EFC00238943 /* ContentView.swift in Sources */,
-				51CE9EEB272B3EFC00238943 /* WordScrambleApp.swift in Sources */,
+				51252BC32ADC50DB00423B1D /* ContentView.swift in Sources */,
+				51252BC12ADC50DB00423B1D /* WordScrambleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		51CE9EF3272B3EFD00238943 /* Debug */ = {
+		51252BC92ADC50DC00423B1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -186,7 +186,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -200,24 +201,25 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		51CE9EF4272B3EFD00238943 /* Release */ = {
+		51252BCA2ADC50DC00423B1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -247,7 +249,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -255,17 +258,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		51CE9EF6272B3EFD00238943 /* Debug */ = {
+		51252BCC2ADC50DC00423B1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -294,7 +297,7 @@
 			};
 			name = Debug;
 		};
-		51CE9EF7272B3EFD00238943 /* Release */ = {
+		51252BCD2ADC50DC00423B1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -326,25 +329,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		51CE9EE2272B3EFC00238943 /* Build configuration list for PBXProject "WordScramble" */ = {
+		51252BB82ADC50DB00423B1D /* Build configuration list for PBXProject "WordScramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51CE9EF3272B3EFD00238943 /* Debug */,
-				51CE9EF4272B3EFD00238943 /* Release */,
+				51252BC92ADC50DC00423B1D /* Debug */,
+				51252BCA2ADC50DC00423B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51CE9EF5272B3EFD00238943 /* Build configuration list for PBXNativeTarget "WordScramble" */ = {
+		51252BCB2ADC50DC00423B1D /* Build configuration list for PBXNativeTarget "WordScramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				51CE9EF6272B3EFD00238943 /* Debug */,
-				51CE9EF7272B3EFD00238943 /* Release */,
+				51252BCC2ADC50DC00423B1D /* Debug */,
+				51252BCD2ADC50DC00423B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 51CE9EDF272B3EFC00238943 /* Project object */;
+	rootObject = 51252BB52ADC50DB00423B1D /* Project object */;
 }
