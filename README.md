@@ -24,6 +24,7 @@ Pro Swift is the sequel to Hacking with Swift, and includes a 250-page guide to 
 Swift Coding Challenges is an all-new book written from the ground up to put your Swift skills to the test. I've written a variety of coding challenges that start off simple but slowly get harder, and it's down to you to solve them. I outline each problem, provide you with sample input and output, add in some hints in case you hit problems, then provide a sample solution and explain how it works.
 
 ### Swift
+- [What's new in Swift 6.1?](https://www.hackingwithswift.com/articles/276/whats-new-in-swift-6-1)
 - [What's new in Swift 6.0?](https://www.hackingwithswift.com/articles/269/whats-new-in-swift-6)
 - [What's new in Swift 5.9?](https://www.hackingwithswift.com/articles/258/whats-new-in-swift-5-9)
 - [What's new in Swift 5.8?](https://www.hackingwithswift.com/articles/256/whats-new-in-swift-5-8)
